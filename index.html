@@ -8,25 +8,40 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
+    <div id="underlay">
+        <div id="top-row" class="underlay-row">
+            <div id="p1-emu" class="underlay-tile"></div>
+            <div id="p2-emu" class="underlay-tile"></div>
+        </div>
+        <div id="bot-row" class="underlay-row">
+            <div id="p3-emu" class="underlay-tile"></div>
+            <div id="p4-emu" class="underlay-tile"></div>
+        </div>
+
+    </div>
+
     <!-- Plug Menu -->
-    <div id="plug-menu" class="body-container">
-        <button id="plug-one" class="button-default plug-button">PLUG 1</button>
-        <button id="plug-two" class="button-default plug-button">PLUG 2</button>
-        <button id="plug-three" class="button-default plug-button">PLUG 3</button>
-        <button id="plug-four" class="button-default plug-button">PLUG 4</button>
-        <button id="menu-button" class="button-default plug-button">MENU</button>
+    <div id="overlay">
+        <div id="plug-menu" class="body-container">
+            <button id="plug-one" class="button-default plug-button">PLUG 1</button>
+            <button id="plug-two" class="button-default plug-button">PLUG 2</button>
+            <button id="plug-three" class="button-default plug-button">PLUG 3</button>
+            <button id="plug-four" class="button-default plug-button">PLUG 4</button>
+            <button id="menu-button" class="button-default plug-button">MENU</button>
+        </div>
+        
+        <!-- Plug submenu -->
+        <div id="plug-submenu" class="body-container on-off-hidden">
+            <button id="plug-on" class="button-default on-off-cancel-button">ON</button>
+            <button id="plug-off" class="button-default on-off-cancel-button">OFF</button>
+            <button id="plug-cancel" class="button-default on-off-cancel-button">CANCEL</button>
+        </div>
     </div>
     
-    <!-- Plug submenu -->
-    <div id="plug-submenu" class="body-container">
-        <button id="plug-on" class="button-default on-off-cancel-button">ON</button>
-        <button id="plug-off" class="button-default on-off-cancel-button">OFF</button>
-        <button id="plug-cancel" class="button-default on-off-cancel-button">CANCEL</button>
-    </div>
 
 
 
-    <div id="main-window" class="body-container"></div>
+    <!-- <div id="main-window" class="body-container"></div> -->
 
 </body>
 </html>
