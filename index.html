@@ -23,18 +23,38 @@
     <!-- Plug Menu -->
     <div id="overlay">
         <div id="plug-menu" class="body-container">
-            <button id="plug-one" class="button-default plug-button">PLUG 1</button>
-            <button id="plug-two" class="button-default plug-button">PLUG 2</button>
-            <button id="plug-three" class="button-default plug-button">PLUG 3</button>
-            <button id="plug-four" class="button-default plug-button">PLUG 4</button>
+            <button 
+                id="plug-one" 
+                class="button-default plug-button grid-select"
+                onclick="setOnOff('p1-emu')">
+                PLUG 1
+            </button>
+            <button 
+                id="plug-two" 
+                class="button-default plug-button"
+                onclick="setOnOff('p2-emu')">
+                PLUG 2
+            </button>
+            <button 
+                id="plug-three" 
+                class="button-default plug-button"
+                onclick="setOnOff('p3-emu')">
+                PLUG 3
+            </button>
+            <button 
+                id="plug-four" 
+                class="button-default plug-button"
+                onclick="setOnOff('p4-emu')">
+                PLUG 4
+            </button>
             <button id="menu-button" class="button-default plug-button">MENU</button>
         </div>
         
         <!-- Plug submenu -->
-        <div id="plug-submenu" class="body-container on-off-hidden">
+        <div id="plug-submenu" class="body-container  hidden">
             <button id="plug-on" class="button-default on-off-cancel-button">ON</button>
             <button id="plug-off" class="button-default on-off-cancel-button">OFF</button>
-            <button id="plug-cancel" class="button-default on-off-cancel-button">CANCEL</button>
+            <button id="plug-cancel" class="button-default on-off-cancel-button">BACK</button>
         </div>
     </div>
     
@@ -42,6 +62,6 @@
 
 
     <!-- <div id="main-window" class="body-container"></div> -->
-
+<script src="script.js"></script>
 </body>
 </html>

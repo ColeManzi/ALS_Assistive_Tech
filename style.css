@@ -22,7 +22,7 @@ html, body {
 .underlay-tile {
     height: 100%;
     width: 50%;
-    font-size: 5em;
+    font-size: 3em;
     display: flex;
 }
 
@@ -63,19 +63,20 @@ html, body {
 }
 
 .body-container {
-    height: 600px;
-    width: 450px;
+    height: 151.4mm;
+    width: 85.9mm;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: gainsboro;
-    border: 2px solid black;
+    border: .25in solid black;
+    border-radius: 10px;
 }
 
 .button-default {
     border-width: 0px;
-    background-color: gainsboro;
+    background-color: #dcdcdc;
     font-size: 5em;
 }
 
@@ -99,6 +100,67 @@ html, body {
     
 }
 
-.on-off-hidden {
+.hidden {
     visibility: hidden;
+}
+
+@keyframes grid-select {
+    0% {
+        background: linear-gradient(
+        to bottom
+        , white 0%
+        , white 0%
+        , yellow 0%
+        , yellow 10%
+        , white 10%
+        , white 100%
+        );
+    }
+    /* 50% {
+        background: linear-gradient(
+        to bottom
+        , white 0%
+        , white 45%
+        , yellow 45%
+        , yellow 55%
+        , white 55%
+        , white 100%
+        );
+    } */
+    100% {
+        background: linear-gradient(
+        to bottom
+        , white 0%
+        , white 90%
+        , yellow 90%
+        , yellow 100%
+        , white 100%
+        , white 100%
+        );
+    }
+}
+
+.grid-select {
+    /* background-color: rgba(0, 0, 0, 0%); */
+        /* background: linear-gradient(
+        to top, 
+        white 0%, 
+        white 90%, 
+        yellow 10%, 
+        white 100%,
+        white 100%
+        ); */
+    /* background: linear-gradient(
+        to bottom
+        , white 0%
+        , white 45%
+        , yellow 45%
+        , yellow 55%
+        , white 55%
+        , white 100%
+    ); */
+    
+    animation-name: grid-select;
+    animation-duration: 2s;
+    animation-timing-function: linear;
 }
