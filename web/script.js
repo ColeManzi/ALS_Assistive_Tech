@@ -1,30 +1,44 @@
-let submenu = document.getElementById('plug-submenu')
-let on = document.getElementById('plug-on')
-let off = document.getElementById('plug-off')
-let pcan = document.getElementById('plug-cancel')
-
-
-const BGColors = {
-    'p1-emu':'red',
-    'p2-emu':'purple',
-    'p3-emu':'orange',
-    'p4-emu':'green'
+function init() {
+    setTime();
+    setTimeout(setTime, 1000);
 }
 
-
-const setOnOff = (gridID) => {
-    const ele = document.getElementById(gridID)
-    on.onclick =  () => {
-        ele.style.backgroundColor = BGColors[gridID]
-        eel.ToggleOn(gridID)
+function setTime() {
+    const currTime = new Date();
+    let hr = currTime.getHours();
+    let min = currTime.getMinutes();
+    let amPm = "AM"
+    if (min < 10) {
+        min = "0" + min;
     }
-
-    off.onclick = () => {
-        ele.style.backgroundColor = 'black'
-        eel.ToggleOff(gridID)
+    if (hr >= 12) {
+        hr = hr % 12;
+        amPm = "PM";
     }
-    pcan.onclick = () => submenu.classList.add('hidden')
-    submenu.classList.remove('hidden')
+    if (hr == 0) {
+        hr = 12;
+    }
+    document.getElementById("time").innerHTML = "<h2>" + hr + ":" + min + " " + amPm + "</h2>";
 }
 
+function openSubmenu(supermenuId, submenuId) {
+    let supermenu = document.getElementById(supermenuId)
+    let submenu = document.getElementById(submenuId)
+    supermenu.style.visibility = 'hidden'
+    submenu.style.visibility = 'visible'
+}
 
+function closeSubmenu(supermenuId, submenuId) {
+    let supermenu = document.getElementById(supermenuId)
+    let submenu = document.getElementById(submenuId)
+    submenu.style.visibility = 'hidden'
+    supermenu.style.visibility = 'visible'
+}
+
+function openPlugSubmenu(plugLabel) {
+    let titleElement = document.getElementById('plug-submenu-title')
+    titleElement.innerHTML = plugLabel == 'all' ? 'All Plugs' : 'Plug ' + plugLabel
+    titleElement.parentElement.setAttribute('plug-label', plugLabel)
+
+    openSubmenu('plug-select', 'plug-submenu')
+}

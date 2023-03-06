@@ -1,97 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assistive Tech Mock Up</title>
+    <title>Assistive Tech UI</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
-<body>
-    <script type="text/javascript" src="/eel.js"></script>
-    <div id="underlay">
-        <div id="top-row" class="underlay-row">
-            <div id="p1-emu" class="underlay-tile">ONE</div>
-            <div id="p2-emu" class="underlay-tile">TWO</div>
-        </div>
-        <div id="bot-row" class="underlay-row">
-            <div id="p3-emu" class="underlay-tile">THREE</div>
-            <div id="p4-emu" class="underlay-tile">FOUR</div>
-        </div>
 
-    </div>
-
-    <!-- Plug Menu -->
-    <div id="overlay">
-        <div id="plug-menu" class="body-container">
-            <button 
-                id="plug-one" 
-                class="button-default plug-button"
-                onclick="setOnOff('p1-emu')">
-                PLUG 1
-            </button>
-            <button 
-                id="plug-two" 
-                class="button-default plug-button"
-                onclick="setOnOff('p2-emu')">
-                PLUG 2
-            </button>
-            <button 
-                id="plug-three" 
-                class="button-default plug-button"
-                onclick="setOnOff('p3-emu')">
-                PLUG 3
-            </button>
-            <button 
-                id="plug-four" 
-                class="button-default plug-button"
-                onclick="setOnOff('p4-emu')">
-                PLUG 4
-            </button>
-            <button id="menu-button" class="button-default plug-button">MENU</button>
+<body onload="init()">
+    <script src="script.js"></script>
+    <div id="top-bar">
+        <div id="time">
+            <h2>00:00 PM</h2>
         </div>
-        
-        <!-- Plug submenu -->
-        <div id="plug-submenu" class="body-container  hidden">
-            <button id="plug-on" class="button-default on-off-cancel-button">ON</button>
-            <button id="plug-off" class="button-default on-off-cancel-button">OFF</button>
-            <button id="plug-cancel" class="button-default on-off-cancel-button">BACK</button>
+        <div id="battery">
+
         </div>
     </div>
-    
 
+    <div id="plug-select" class="menu-wrapper">
+        <button class="menu-button" state="off" plug-label="all" onclick="openPlugSubmenu('all')">
+            All Plugs
+        </button>
+        <button class="menu-button" state="off" plug-label="1" onclick="openPlugSubmenu('1')">
+            Plug 1
+        </button>
+        <button class="menu-button" state="off" plug-label="2" onclick="openPlugSubmenu('2')">
+            Plug 2
+        </button>
+        <button class="menu-button" state="off" plug-label="3" onclick="openPlugSubmenu('3')">
+            Plug 3
+        </button>
+        <button class="menu-button" state="off" plug-label="4" onclick="openPlugSubmenu('4')">
+            Plug 4
+        </button>
+        <button class="menu-button" state="off" plug-label="5" onclick="openPlugSubmenu('5')">
+            Plug 5
+        </button>
+    </div>
 
-
-    <!-- <div id="main-window" class="body-container"></div> -->
-<script>
-let submenu = document.getElementById('plug-submenu')
-let on = document.getElementById('plug-on')
-let off = document.getElementById('plug-off')
-let pcan = document.getElementById('plug-cancel')
-
-
-const BGColors = {
-    'p1-emu':'red',
-    'p2-emu':'purple',
-    'p3-emu':'orange',
-    'p4-emu':'green'
-}
-
-
-const setOnOff = (gridID) => {
-    const ele = document.getElementById(gridID)
-    on.onclick =  () => {
-        ele.style.backgroundColor = BGColors[gridID]
-        eel.ToggleOn(gridID)
-    }
-
-    off.onclick = () => {
-        ele.style.backgroundColor = 'black'
-        eel.ToggleOff(gridID)
-    }
-    pcan.onclick = () => submenu.classList.add('hidden')
-    submenu.classList.remove('hidden')
-}
-</script>
+    <div id="plug-submenu" class="menu-wrapper" plug-label="">
+        <h2 id="plug-submenu-title"></h2>
+        <button class="menu-button" onclick="togglePlug('On')" style="background-color: #A8C78D;">
+            On
+        </button>
+        <button class="menu-button" onclick="togglePlug('Off')" style="background-color: #E6B4C5;">
+            Off
+        </button>
+        <button class="menu-button" onclick="closeSubmenu('plug-select','plug-submenu')">
+            Cancel
+        </button>
+    </div>
 </body>
+
 </html>
