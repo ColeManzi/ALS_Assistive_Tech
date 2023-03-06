@@ -24,7 +24,7 @@ class RFController():
         self.rfdevice.tx_code(
             self.action[code]
         )
-        self.rfdevice.cleanup()
+        self.rfdevice.disable_tx()
 
 
 if __name__ == "__main__":
