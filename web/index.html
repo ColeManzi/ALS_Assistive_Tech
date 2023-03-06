@@ -10,7 +10,8 @@
 </head>
 
 <body onload="init()">
-    <script src="script.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <div id="top-bar">
         <div id="time">
             <h2>00:00 PM</h2>
@@ -43,10 +44,10 @@
 
     <div id="plug-submenu" class="menu-wrapper" plug-label="">
         <h2 id="plug-submenu-title"></h2>
-        <button class="menu-button" onclick="togglePlug('On')" style="background-color: #A8C78D;">
+        <button class="menu-button" onclick="togglePlug('on'); closeSubmenu('plug-select','plug-submenu')" style="background-color: #A8C78D;">
             On
         </button>
-        <button class="menu-button" onclick="togglePlug('Off')" style="background-color: #E6B4C5;">
+        <button class="menu-button" onclick="togglePlug('off'); closeSubmenu('plug-select','plug-submenu')" style="background-color: #E6B4C5;">
             Off
         </button>
         <button class="menu-button" onclick="closeSubmenu('plug-select','plug-submenu')">
@@ -54,5 +55,19 @@
         </button>
     </div>
 </body>
+
+<script>
+    function togglePlug(state){
+        let plugId = document.getElementById('plug-submenu').getAttribute('plug-label')
+        eel.togglePlug(plugId + state)
+        let statusEl = document.getElementById("status-" + plugId)
+        if (state == 'on'){
+            // Toggle Power Indicator On
+        }
+        else{
+            // Toggle Power Indicator Off
+        }
+    }
+</script>
 
 </html>

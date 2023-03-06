@@ -2,12 +2,8 @@ import eel
 
 
 @eel.expose
-def ToggleOn(gridId):
-    print(f"{gridId} - On")
-
-@eel.expose
-def ToggleOff(gridId):
-    print(f"{gridId} - Off")
+def togglePlug(command):
+    print(command)
 
 if __name__ == "__main__":
     eel.init('web')
