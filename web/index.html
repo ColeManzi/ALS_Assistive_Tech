@@ -22,37 +22,37 @@
     </div>
 
     <div id="plug-select" class="menu-wrapper">
-        <button class="menu-button" state="off" id="plug-all" onclick="openPlugSubmenu('all')">
+        <button class="menu-button" state="off" id="plug-all" onclick="openPlugSubmenu(event, 'all')">
             All Plugs
         </button>
-        <button class="menu-button" state="off" id="plug-1" onclick="openPlugSubmenu('1')">
+        <button class="menu-button" state="off" id="plug-1" onclick="openPlugSubmenu(event, '1')">
             Plug 1
         </button>
-        <button class="menu-button" state="off" id="plug-2" onclick="openPlugSubmenu('2')">
+        <button class="menu-button" state="off" id="plug-2" onclick="openPlugSubmenu(event, '2')">
             Plug 2
         </button>
-        <button class="menu-button" state="off" id="plug-3" onclick="openPlugSubmenu('3')">
+        <button class="menu-button" state="off" id="plug-3" onclick="openPlugSubmenu(event, '3')">
             Plug 3
         </button>
-        <button class="menu-button" state="off" id="plug-4" onclick="openPlugSubmenu('4')">
+        <button class="menu-button" state="off" id="plug-4" onclick="openPlugSubmenu(event, '4')">
             Plug 4
         </button>
-        <button class="menu-button" state="off" id="plug-5" onclick="openPlugSubmenu('5')">
+        <button class="menu-button" state="off" id="plug-5" onclick="openPlugSubmenu(event, '5')">
             Plug 5
         </button>
     </div>
 
     <div id="plug-submenu" class="menu-wrapper" plug-label="">
         <h2 id="plug-submenu-title"></h2>
-        <button id="plug-submenu-on" class="menu-button" onclick="togglePlug('on'); closeSubmenu('plug-select','plug-submenu')"
+        <button id="plug-submenu-on" class="menu-button" onclick="togglePlug('on'); closeSubmenu(event, 'plug-select','plug-submenu')"
             style="background-color: #A8C78D;">
             On
         </button>
-        <button id="plug-submenu-off" class="menu-button" onclick="togglePlug('off'); closeSubmenu('plug-select','plug-submenu')"
+        <button id="plug-submenu-off" class="menu-button" onclick="togglePlug('off'); closeSubmenu(event, 'plug-select','plug-submenu')"
             style="background-color: #E6B4C5;">
             Off
         </button>
-        <button id="plug-submenu-cancel" class="menu-button" onclick="closeSubmenu('plug-select','plug-submenu')">
+        <button id="plug-submenu-cancel" class="menu-button" onclick="closeSubmenu(event, 'plug-select','plug-submenu')">
             Cancel
         </button>
     </div>

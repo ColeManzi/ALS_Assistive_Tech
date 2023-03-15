@@ -66,7 +66,8 @@ Menu Control Functions
 ----------------------------------------------
 */
 
-function openSubmenu(supermenuId, submenuId) {
+function openSubmenu(event, supermenuId, submenuId) {
+    event.stopPropagation();
     let supermenu = document.getElementById(supermenuId)
     let submenu = document.getElementById(submenuId)
     selectedIndex = -1
@@ -77,7 +78,8 @@ function openSubmenu(supermenuId, submenuId) {
     submenu.style.visibility = 'visible'
 }
 
-function closeSubmenu(supermenuId, submenuId) {
+function closeSubmenu(event, supermenuId, submenuId) {
+    event.stopPropagation();
     let supermenu = document.getElementById(supermenuId)
     let submenu = document.getElementById(submenuId)
     selectedIndex = -1
@@ -88,13 +90,13 @@ function closeSubmenu(supermenuId, submenuId) {
     supermenu.style.visibility = 'visible'
 }
 
-function openPlugSubmenu(plugLabel) {
-    
+function openPlugSubmenu(event, plugLabel) {
     let titleElement = document.getElementById('plug-submenu-title')
     titleElement.innerHTML = plugLabel == 'all' ? 'All Plugs' : 'Plug ' + plugLabel
     titleElement.parentElement.setAttribute('plug-label', plugLabel)
 
-    openSubmenu('plug-select', 'plug-submenu')
+    openSubmenu(event, 'plug-select', 'plug-submenu')
+    
 }
 
 /*
@@ -106,7 +108,6 @@ Single Input Mode Functions
 function accessibilityMouseClick() {
     document.body.onclick = e => {}
     selectedElement = document.getElementById(selectedMenuOrder[selectedIndex])
-    console.log(selectedElement)
     selectedElement.click();
     document.body.onclick = e => accessibilityMouseClick()
 }
