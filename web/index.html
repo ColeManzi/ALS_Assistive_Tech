@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
-<body onload="init()">
+<body onload="init()" onclick="accessibilityMouseClick()">
     <script type="text/javascript" src="/eel.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <div id="top-bar">
@@ -22,52 +22,40 @@
     </div>
 
     <div id="plug-select" class="menu-wrapper">
-        <button class="menu-button" state="off" plug-label="all" onclick="openPlugSubmenu('all')">
+        <button class="menu-button" state="off" id="plug-all" onclick="openPlugSubmenu('all')">
             All Plugs
         </button>
-        <button class="menu-button" state="off" plug-label="1" onclick="openPlugSubmenu('1')">
+        <button class="menu-button" state="off" id="plug-1" onclick="openPlugSubmenu('1')">
             Plug 1
         </button>
-        <button class="menu-button" state="off" plug-label="2" onclick="openPlugSubmenu('2')">
+        <button class="menu-button" state="off" id="plug-2" onclick="openPlugSubmenu('2')">
             Plug 2
         </button>
-        <button class="menu-button" state="off" plug-label="3" onclick="openPlugSubmenu('3')">
+        <button class="menu-button" state="off" id="plug-3" onclick="openPlugSubmenu('3')">
             Plug 3
         </button>
-        <button class="menu-button" state="off" plug-label="4" onclick="openPlugSubmenu('4')">
+        <button class="menu-button" state="off" id="plug-4" onclick="openPlugSubmenu('4')">
             Plug 4
         </button>
-        <button class="menu-button" state="off" plug-label="5" onclick="openPlugSubmenu('5')">
+        <button class="menu-button" state="off" id="plug-5" onclick="openPlugSubmenu('5')">
             Plug 5
         </button>
     </div>
 
     <div id="plug-submenu" class="menu-wrapper" plug-label="">
         <h2 id="plug-submenu-title"></h2>
-        <button class="menu-button" onclick="togglePlug('on'); closeSubmenu('plug-select','plug-submenu')" style="background-color: #A8C78D;">
+        <button id="plug-submenu-on" class="menu-button" onclick="togglePlug('on'); closeSubmenu('plug-select','plug-submenu')"
+            style="background-color: #A8C78D;">
             On
         </button>
-        <button class="menu-button" onclick="togglePlug('off'); closeSubmenu('plug-select','plug-submenu')" style="background-color: #E6B4C5;">
+        <button id="plug-submenu-off" class="menu-button" onclick="togglePlug('off'); closeSubmenu('plug-select','plug-submenu')"
+            style="background-color: #E6B4C5;">
             Off
         </button>
-        <button class="menu-button" onclick="closeSubmenu('plug-select','plug-submenu')">
+        <button id="plug-submenu-cancel" class="menu-button" onclick="closeSubmenu('plug-select','plug-submenu')">
             Cancel
         </button>
     </div>
 </body>
-
-<script>
-    function togglePlug(state){
-        let plugId = document.getElementById('plug-submenu').getAttribute('plug-label')
-        eel.togglePlug(plugId + state)
-        let statusEl = document.getElementById("status-" + plugId)
-        if (state == 'on'){
-            // Toggle Power Indicator On
-        }
-        else{
-            // Toggle Power Indicator Off
-        }
-    }
-</script>
 
 </html>
