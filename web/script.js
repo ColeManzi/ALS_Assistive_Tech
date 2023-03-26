@@ -21,15 +21,22 @@ const plugSubmenuOrder = [
 ]
 
 const mainMenuOrder = [
-    "settings"
-    ,"plugs"
+    "plugs"
     ,"keyboard"
+    ,"settings"
+]
+
+const settingsMenuOrder = [
+    "single-input"
+    ,"touch-mouse"
+    ,"settings-back"
 ]
 
 const menuIdMapping = {
     "plug-select" : plugSelectOrder,
     "plug-submenu": plugSubmenuOrder
     ,"main-menu": mainMenuOrder
+    ,"settings-menu": settingsMenuOrder
 }
 /*
 ---------------------------------------
@@ -185,7 +192,10 @@ function togglePlug(e, state) {
 
 /*
 --------------------------------------------------
-Panel Navigation Functions
+Keyboard Stuff
 --------------------------------------------------
 */
+let topRow = ""
+let middleRow = ""
+let editRow = ""
 

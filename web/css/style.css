@@ -5,6 +5,12 @@ body {
    margin: 0;
    padding: 0;
    background-color: #869CD4;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 
 div#top-bar {
@@ -58,4 +64,44 @@ div#plug-select {
    visibility: visible;
    position: absolute;
    z-index: 4;
+}
+
+#settings-menu {
+   visibility: hidden;
+   position: absolute;
+   z-index: 5;
+}
+
+#keyboard-menu {
+   visibility: hidden;
+   position: absolute;
+   z-index: 6;
+}
+
+/* Keyboard CSS stuff */
+.keyboard-row {
+   width: 90%;
+   height: 9%;
+   display: flex;
+   justify-content: center;
+   background-color: #B1BEE5;
+}
+
+.keyboard-button {
+   width: 25%;
+   height: 100%;
+   background-color: inherit;
+   border: 1px solid grey;
+   /* border-radius: .5rem; */
+   text-align: center;
+   padding: .5rem;
+   font-size: 3em;
+   font-family: 'Times New Roman', Times, serif;
+   font-weight: bold;
+}
+.keyboard-text {
+   font-size: 2em;
+   font-family: 'Times New Roman', Times, serif;
+   font-weight: bold;
+   justify-content: left;
 }
