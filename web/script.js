@@ -11,6 +11,7 @@ const plugSelectOrder = [
     "plug-3",
     "plug-4",
     "plug-5"
+    ,"main-menu-btn"
 ]
 
 const plugSubmenuOrder = [
@@ -19,26 +20,37 @@ const plugSubmenuOrder = [
     "plug-submenu-cancel"
 ]
 
+const mainMenuOrder = [
+    "settings"
+    ,"plugs"
+    ,"keyboard"
+]
+
 const menuIdMapping = {
     "plug-select" : plugSelectOrder,
     "plug-submenu": plugSubmenuOrder
+    ,"main-menu": mainMenuOrder
 }
 /*
 ---------------------------------------
 Global Vars
 ---------------------------------------
 */
-
+let singleInputMode = false
 var selectedIndex = -1
 var selectedMenuOrder
 var previousElement
 var previousColor
 var cycleTimeout
+var cycleTime =  1000  //2000
 
 function init() {
     setTime();
-    selectedMenuOrder = plugSelectOrder;
-    cycleSelection();
+    if (singleInputMode) {
+        document.body.onclick = e => accessibilityMouseClick()
+        selectedMenuOrder = mainMenuOrder;
+        resetCycle('main-menu')
+    }
 }
 
 function setTime() {
@@ -66,14 +78,25 @@ Menu Control Functions
 ----------------------------------------------
 */
 
+const changeMenu = (e, newMenuID) => {
+    e.stopPropagation()
+    let currentMenu = document.getElementById(e.currentTarget.id)
+                              .parentElement
+    let newMenu = document.getElementById(newMenuID)
+
+    if (singleInputMode) resetCycle(newMenuID)
+
+    currentMenu.style.visibility = 'hidden'
+    newMenu.style.visibility = 'visible'
+}
+
 function openSubmenu(event, supermenuId, submenuId) {
     event.stopPropagation();
     let supermenu = document.getElementById(supermenuId)
     let submenu = document.getElementById(submenuId)
-    selectedIndex = -1
-    selectedMenuOrder = menuIdMapping[submenuId]
-    clearTimeout(cycleTimeout)
-    cycleSelection()
+
+    if (singleInputMode) resetCycle(submenuId)
+
     supermenu.style.visibility = 'hidden'
     submenu.style.visibility = 'visible'
 }
@@ -82,10 +105,9 @@ function closeSubmenu(event, supermenuId, submenuId) {
     event.stopPropagation();
     let supermenu = document.getElementById(supermenuId)
     let submenu = document.getElementById(submenuId)
-    selectedIndex = -1
-    selectedMenuOrder = menuIdMapping[supermenuId]
-    clearTimeout(cycleTimeout)
-    cycleSelection()
+    
+    if (singleInputMode) resetCycle(supermenuId)
+    
     submenu.style.visibility = 'hidden'
     supermenu.style.visibility = 'visible'
 }
@@ -105,11 +127,35 @@ Single Input Mode Functions
 --------------------------------------------------
 */
 
+const toggleInputMode = (e, mode) => {
+    if (mode == 'on') {
+        singleInputMode = true
+        document.body.onclick = accessibilityMouseClick
+    } else {
+        singleInputMode = false
+        if (cycleTimeout != null) previousElement.style.backgroundColor = previousColor
+        document.body.onclick = null
+        clearTimeout(cycleTimeout)
+    }
+    changeMenu(e, 'main-menu')
+}
+
+
+const resetCycle = (menuId) => {
+    selectedIndex = -1
+    selectedMenuOrder = menuIdMapping[menuId]
+    clearTimeout(cycleTimeout)
+    cycleSelection()
+}
+
+
 function accessibilityMouseClick() {
-    document.body.onclick = e => {}
-    selectedElement = document.getElementById(selectedMenuOrder[selectedIndex])
-    selectedElement.click();
-    document.body.onclick = e => accessibilityMouseClick()
+    if (singleInputMode) {  // Something keeps reseting body.click to accessibilityMouseClick, check to fix error
+        document.body.onclick = e => {}
+        selectedElement = document.getElementById(selectedMenuOrder[selectedIndex])
+        selectedElement.click();
+        document.body.onclick = e => accessibilityMouseClick()
+    }
 }
 
 function cycleSelection() {
@@ -121,10 +167,10 @@ function cycleSelection() {
     hoveredElement.style.backgroundColor = "orange";
     // Handle Hover Element Highlighting
     // console.log(selectedMenuOrder[selectedIndex])
-    cycleTimeout = setTimeout(cycleSelection, 2000)
+    cycleTimeout = setTimeout(cycleSelection, cycleTime)
 }
 
-function togglePlug(state) {
+function togglePlug(e, state) {
     let plugId = document.getElementById('plug-submenu').getAttribute('plug-label')
     eel.togglePlug(plugId + state)
     let statusEl = document.getElementById("status-" + plugId)
@@ -134,4 +180,12 @@ function togglePlug(state) {
     else {
         // Toggle Power Indicator Off
     }
+    changeMenu(e, 'plug-select')
 }
+
+/*
+--------------------------------------------------
+Panel Navigation Functions
+--------------------------------------------------
+*/
+

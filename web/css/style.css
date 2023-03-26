@@ -42,14 +42,20 @@ button.menu-button {
    font-weight: bold;
 }
 
-div#plug-select {
-   visibility: visible;
-   position: absolute;
-   z-index: 3;
-}
-
 div#plug-submenu {
    visibility: hidden;
    position: absolute;
    z-index: 2;
+}
+
+div#plug-select {
+   visibility: hidden;
+   position: absolute;
+   z-index: 3;
+}
+
+#main-menu {
+   visibility: visible;
+   position: absolute;
+   z-index: 4;
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
-<body onload="init()" onclick="accessibilityMouseClick()">
+<body onload="init()">
     <script type="text/javascript" src="/eel.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <div id="top-bar">
@@ -19,6 +19,12 @@
         <div id="battery">
 
         </div>
+    </div>
+
+    <div id="main-menu" class="menu-wrapper">
+        <button class="menu-button" id="settings" onclick="toggleInputMode(event, 'on')">Settings</button>
+        <button class="menu-button" id="plugs" onclick="changeMenu(event, 'plug-select')">Plugs</button>
+        <button class="menu-button" id="keyboard" onclick="toggleInputMode(event, 'off')">Keyboard</button>
     </div>
 
     <div id="plug-select" class="menu-wrapper">
@@ -40,19 +46,20 @@
         <button class="menu-button" state="off" id="plug-5" onclick="openPlugSubmenu(event, '5')">
             Plug 5
         </button>
+        <button class="menu-button" id="main-menu-btn" onclick="changeMenu(event, 'main-menu')">MAIN MENU</button>
     </div>
 
     <div id="plug-submenu" class="menu-wrapper" plug-label="">
         <h2 id="plug-submenu-title"></h2>
-        <button id="plug-submenu-on" class="menu-button" onclick="togglePlug('on'); closeSubmenu(event, 'plug-select','plug-submenu')"
+        <button id="plug-submenu-on" class="menu-button" onclick="togglePlug(event, 'on')"
             style="background-color: #A8C78D;">
             On
         </button>
-        <button id="plug-submenu-off" class="menu-button" onclick="togglePlug('off'); closeSubmenu(event, 'plug-select','plug-submenu')"
+        <button id="plug-submenu-off" class="menu-button" onclick="togglePlug(event, 'off')"
             style="background-color: #E6B4C5;">
             Off
         </button>
-        <button id="plug-submenu-cancel" class="menu-button" onclick="closeSubmenu(event, 'plug-select','plug-submenu')">
+        <button id="plug-submenu-cancel" class="menu-button" onclick="changeMenu(event, 'plug-select')">
             Cancel
         </button>
     </div>
