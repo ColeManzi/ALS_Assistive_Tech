@@ -13,6 +13,8 @@ body {
    user-select: none;
 }
 
+
+
 div#top-bar {
    display: flex;
    flex-direction: row;
@@ -78,13 +80,42 @@ div#plug-select {
    z-index: 6;
 }
 
+
 /* Keyboard CSS stuff */
+
+:root {
+   --keyboard-text-height: 10%;
+}
+
+.keyboard-text {
+   width: 90%;
+   height: var(--keyboard-text-height);
+}
+
+
+.attach-point {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 100%;
+   height: calc(100%-calc(var(--keyboard-text-height)*3));
+}
+
+
 .keyboard-row {
    width: 90%;
-   height: 9%;
    display: flex;
    justify-content: center;
    background-color: #B1BEE5;
+}
+
+.alpha-keyboard-row {
+   height: calc(100%/8);
+}
+
+.num-keyboard-row {
+   height: calc(100%/4);
 }
 
 .keyboard-button {
@@ -92,13 +123,15 @@ div#plug-select {
    height: 100%;
    background-color: inherit;
    border: 1px solid grey;
-   /* border-radius: .5rem; */
    text-align: center;
    padding: .5rem;
    font-size: 3em;
    font-family: 'Times New Roman', Times, serif;
    font-weight: bold;
 }
+
+
+
 .keyboard-text {
    font-size: 2em;
    font-family: 'Times New Roman', Times, serif;
