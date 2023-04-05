@@ -221,7 +221,7 @@ let alphaKeyboardInnerHTML = `
 <div id="keyboard-row-1" class="keyboard-row alpha-keyboard-row">
     <button id="done-key"       class="keyboard-button alpha-keyboard" onclick="endNewMessage(event)">DONE</button>    
     <button id="space-key"      class="keyboard-button alpha-keyboard" value=" " onclick="updateEditString(event, this.value)">SPACE</button>    
-    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onclick="updateEditString(event, this.value)">DEL</button>
+    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onclick="updateEditString(event, this.value)">BKSP</button>
     <button id="num-alpha-key"  class="keyboard-button alpha-keyboard" value="num" onclick="changeAlphanumericMode(event, this.value)">NUM</button>
 </div>
 <div id="keyboard-row-2" class="keyboard-row alpha-keyboard-row">
@@ -272,7 +272,7 @@ let numericKeyboardInnerHTML = `
 <div id="keyboard-row-1" class="keyboard-row num-keyboard-row">
     <button id="done-key"       class="keyboard-button alpha-keyboard" onclick="endNewMessage(event)">DONE</button>    
     <button id="space-key"      class="keyboard-button alpha-keyboard" value=" " onclick="updateEditString(event, this.value)">SPACE</button>    
-    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onclick="updateEditString(event, this.value)">DEL</button>
+    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onclick="updateEditString(event, this.value)">BKSP</button>
     <button id="num-alpha-key"  class="keyboard-button alpha-keyboard" value="alpha" onclick="changeAlphanumericMode(event, this.value)">ALPHA</button>
 </div>
 <div id="keyboard-row-2" class="keyboard-row num-keyboard-row">
@@ -293,6 +293,12 @@ let numericKeyboardInnerHTML = `
     <button id=".-key" class="keyboard-button alpha-key" value="." onclick="updateEditString(event, this.value)">.</button>
     <button id="$-key" class="keyboard-button alpha-key" value="$" onclick="updateEditString(event, this.value)">$</button>
 </div>
+<div id="keyboard-row-5" class="keyboard-row num-keyboard-row">
+<button id="comma-key" class="keyboard-button alpha-key" value="," onclick="updateEditString(event, this.value)">,</button>
+<button id="colon-key" class="keyboard-button alpha-key" value=":" onclick="updateEditString(event, this.value)">:</button>
+    <button id="AM-key" class="keyboard-button alpha-key" value="AM" onclick="updateEditString(event, this.value)">AM</button>
+    <button id="PM-key" class="keyboard-button alpha-key" value="PM" onclick="updateEditString(event, this.value)">PM</button>
+</div> 
 `
 
 let keyboardSuperMenuInnerHTML =`
@@ -302,23 +308,31 @@ let keyboardSuperMenuInnerHTML =`
 
 let kbAttachPoint = document.getElementById('keyboard-attach-point')
 let editString = ""
+const positionIndicator = "|"
 
 /*
 --------------------------------------------------
 Keyboard Functions
 --------------------------------------------------
 */
+
+const updateEditRowDisplay = () => {
+    msgElements["editRow"].innerText  =  editString + positionIndicator
+}
+
 const startNewMessage = () => {
     // Update the message history and clear row that will be edited.
     msgElements["topRow"].innerText    = msgElements["middleRow"].innerText
     msgElements["middleRow"].innerText = msgElements["editRow"].innerText
-    msgElements["editRow"].innerText   = "|"
-    editString = "" // Update the string that will be modified by keypresses
+    
+    editString = "" // Clear the string that will be modified by keypresses
+    updateEditRowDisplay()
  
     // Show keyboard
     kbAttachPoint.innerHTML = alphaKeyboardInnerHTML
     setKeyboardRowCycle()
 }
+
 
 const endNewMessage = (e) => {
     e.stopPropagation()
@@ -326,7 +340,10 @@ const endNewMessage = (e) => {
     // Update the message strings in memory and call eel function to save messge history.
     msgHistory["topRow"]    = msgElements["topRow"].innerText
     msgHistory["middleRow"] = msgElements["middleRow"].innerText
-    msgHistory["editRow"]   = msgElements["editRow"].innerText
+    msgHistory["editRow"]   = editString
+
+    // Remove the position indicator
+    msgElements["editRow"].innerText  =  editString
 
     // Call eel update function when available
 
@@ -342,7 +359,7 @@ const updateEditString = (e,char) => {
         if (editString.length > 0) editString = editString.slice(0, -1)
     }
  
-    msgElements["editRow"].innerText = editString
+    updateEditRowDisplay()
     setKeyboardRowCycle()
 }
 

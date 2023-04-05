@@ -1,12 +1,12 @@
 import eel
-# import rfcontroller
+import rfcontroller
 
-# controller = rfcontroller.RFController() 
+controller = rfcontroller.RFController() 
 
 @eel.expose
 def togglePlug(command):
-    print(command)
-    # controller.sendcode(command)
+    # print(command)
+    controller.sendcode(command)
 
 if __name__ == "__main__":
     eel.init('web', allowed_extensions=[".js",".html"])

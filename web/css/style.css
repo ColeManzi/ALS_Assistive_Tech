@@ -83,24 +83,33 @@ div#plug-select {
 
 /* Keyboard CSS stuff */
 
+#keyboard-menu.menu-wrapper {
+   justify-content: flex-start;
+}
+
+
 :root {
-   --keyboard-text-height: 10%;
+   --keyboard-text-element-height: 10%;
+   --keyboard-text-element-font-size: 0;
+   --keyboard-button-font-size: 2em;
+   --keyboard-top-row-font-size: 1.7em;
 }
-
-.keyboard-text {
-   width: 90%;
-   height: var(--keyboard-text-height);
-}
-
 
 .attach-point {
    display: flex;
    flex-direction: column;
-   justify-content: space-evenly;
    align-items: center;
    width: 100%;
-   height: calc(100%-calc(var(--keyboard-text-height)*3));
+   height: calc(100%-calc(var(--keyboard-text-element-height)*3));
+   min-height: calc(100%-calc(var(--keyboard-text-element-height)*3));
 }
+
+.keyboard-text {
+   width: 90%;
+   height: var(--keyboard-text-element-height);
+}
+
+
 
 
 .keyboard-row {
@@ -115,17 +124,16 @@ div#plug-select {
 }
 
 .num-keyboard-row {
-   height: calc(100%/4);
+   height: calc(100%/5);
 }
 
 .keyboard-button {
    width: 25%;
-   height: 100%;
    background-color: inherit;
    border: 1px solid grey;
    text-align: center;
-   padding: .5rem;
-   font-size: 3em;
+   padding: 0.5rem;
+   font-size: var(--keyboard-button-font-size);
    font-family: 'Times New Roman', Times, serif;
    font-weight: bold;
 }
@@ -137,4 +145,8 @@ div#plug-select {
    font-family: 'Times New Roman', Times, serif;
    font-weight: bold;
    justify-content: left;
+}
+
+#keyboard-row-1 > button {
+   font-size: var(--keyboard-top-row-font-size);
 }
