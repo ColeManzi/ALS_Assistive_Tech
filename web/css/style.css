@@ -5,7 +5,15 @@ body {
    margin: 0;
    padding: 0;
    background-color: #869CD4;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
+
+
 
 div#top-bar {
    display: flex;
@@ -42,14 +50,91 @@ button.menu-button {
    font-weight: bold;
 }
 
-div#plug-select {
-   visibility: visible;
-   position: absolute;
-   z-index: 3;
-}
-
 div#plug-submenu {
    visibility: hidden;
    position: absolute;
    z-index: 2;
+}
+
+div#plug-select {
+   visibility: hidden;
+   position: absolute;
+   z-index: 3;
+}
+
+#main-menu {
+   visibility: visible;
+   position: absolute;
+   z-index: 4;
+}
+
+#settings-menu {
+   visibility: hidden;
+   position: absolute;
+   z-index: 5;
+}
+
+#keyboard-menu {
+   visibility: hidden;
+   position: absolute;
+   z-index: 6;
+}
+
+
+/* Keyboard CSS stuff */
+
+:root {
+   --keyboard-text-height: 10%;
+}
+
+.keyboard-text {
+   width: 90%;
+   height: var(--keyboard-text-height);
+}
+
+
+.attach-point {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 100%;
+   height: calc(100%-calc(var(--keyboard-text-height)*3));
+}
+
+
+.keyboard-row {
+   width: 90%;
+   display: flex;
+   justify-content: center;
+   background-color: #B1BEE5;
+}
+
+.alpha-keyboard-row {
+   height: calc(100%/8);
+}
+
+.num-keyboard-row {
+   height: calc(100%/4);
+}
+
+.keyboard-button {
+   width: 25%;
+   height: 100%;
+   background-color: inherit;
+   border: 1px solid grey;
+   text-align: center;
+   padding: .5rem;
+   font-size: 3em;
+   font-family: 'Times New Roman', Times, serif;
+   font-weight: bold;
+}
+
+
+
+.keyboard-text {
+   font-size: 2em;
+   font-family: 'Times New Roman', Times, serif;
+   font-weight: bold;
+   justify-content: left;
 }

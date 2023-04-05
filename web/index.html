@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
-<body onload="init()" onclick="accessibilityMouseClick()">
-    <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+<body onload="init()">
     <div id="top-bar">
         <div id="time">
             <h2>00:00 PM</h2>
@@ -20,6 +18,19 @@
 
         </div>
     </div>
+
+    <div id="main-menu" class="menu-wrapper">
+        <button class="menu-button" id="plugs" onclick="changeMenu(event, 'plug-select')">Plugs</button>
+        <button class="menu-button" id="keyboard" onclick="changeMenu(event, 'keyboard-menu')">Keyboard</button>
+        <button class="menu-button" id="settings" onclick="changeMenu(event, 'settings-menu')">Settings</button>
+    </div>
+    
+    <div id="settings-menu" class="menu-wrapper">
+        <button class="menu-button" id="single-input" onclick="toggleInputMode(event, 'on')">Grid Select</button>
+        <button class="menu-button" id="touch-mouse" onclick="toggleInputMode(event, 'off')">Touch/Mouse</button>
+        <button class="menu-button" id="settings-back" onclick="changeMenu(event, 'main-menu')">Back</button>
+    </div>
+
 
     <div id="plug-select" class="menu-wrapper">
         <button class="menu-button" state="off" id="plug-all" onclick="openPlugSubmenu(event, 'all')">
@@ -40,22 +51,33 @@
         <button class="menu-button" state="off" id="plug-5" onclick="openPlugSubmenu(event, '5')">
             Plug 5
         </button>
+        <button class="menu-button" id="main-menu-btn" onclick="changeMenu(event, 'main-menu')">MAIN MENU</button>
     </div>
 
     <div id="plug-submenu" class="menu-wrapper" plug-label="">
         <h2 id="plug-submenu-title"></h2>
-        <button id="plug-submenu-on" class="menu-button" onclick="togglePlug('on'); closeSubmenu(event, 'plug-select','plug-submenu')"
-            style="background-color: #A8C78D;">
+        <button id="plug-submenu-on" class="menu-button" onclick="togglePlug(event, 'on')">
             On
         </button>
-        <button id="plug-submenu-off" class="menu-button" onclick="togglePlug('off'); closeSubmenu(event, 'plug-select','plug-submenu')"
-            style="background-color: #E6B4C5;">
+        <button id="plug-submenu-off" class="menu-button" onclick="togglePlug(event, 'off')">
             Off
         </button>
-        <button id="plug-submenu-cancel" class="menu-button" onclick="closeSubmenu(event, 'plug-select','plug-submenu')">
+        <button id="plug-submenu-cancel" class="menu-button" onclick="changeMenu(event, 'plug-select')">
             Cancel
         </button>
     </div>
+
+    <div id="keyboard-menu" class="menu-wrapper">
+        <label class="keyboard-text" id="text-string-top">LOL... I'm a label1!</label>
+        <label class="keyboard-text" id="text-string-middle">LOL... I'm a label2!</label>
+        <label class="keyboard-text" id="text-string-bottom">LOL... I'm a label3!</label>
+        <div id="keyboard-attach-point" class="attach-point">
+            <button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage()">NEW</button>
+            <button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu')">MENU</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>
