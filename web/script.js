@@ -48,6 +48,14 @@ let menuIdMapping = {
     ,"dynamic-kb": dynamicKeyboardOrder
 }
 
+let plugLabels = {
+    "1" : "Plug 1",
+    "2" : "PLug 2",
+    "3" : "Plug 3",
+    "4" : "Plug 4",
+    "5" : "Plug 5"
+}
+
 /*
 ---------------------------------------
 Global Vars
@@ -131,7 +139,7 @@ function closeSubmenu(event, supermenuId, submenuId) {
 
 function openPlugSubmenu(event, plugLabel) {
     let titleElement = document.getElementById('plug-submenu-title')
-    titleElement.innerHTML = plugLabel == 'all' ? 'All Plugs' : 'Plug ' + plugLabel
+    titleElement.innerHTML = plugLabel == 'all' ? 'All Plugs' : plugLabels[plugLabel]
     titleElement.parentElement.setAttribute('plug-label', plugLabel)
 
     openSubmenu(event, 'plug-select', 'plug-submenu')
@@ -402,4 +410,30 @@ const setKeyboardButtonCycle = (ele) => {
     }
     menuIdMapping["dynamic-kb"] = dynamicKeyboardOrder
     resetCycle("dynamic-kb")
+}
+
+/*
+--------------------------------------------------
+Config
+--------------------------------------------------
+*/
+
+function storeConfig(setting, value){
+    eel.storeConfig(setting, value)
+}
+
+eel.expose(loadConfig)
+function loadConfig(config){
+
+    cycleTime = config.cycleTime
+    charLimit = config.charLimit
+    plugLabels = config.plugLabels
+
+    updateLabels()
+}
+
+function updateLabels(){
+    for (var label in plugLabels){
+        document.getElementById("plug-" + label).innerHTML = plugLabels[label]
+    }
 }
