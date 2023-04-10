@@ -11,10 +11,12 @@ def togglePlug(command):
 
 @eel.expose
 def storeConfig(setting, value):
-    with open('config.json', 'rw') as openfile:
+    config = {}
+    with open('config.json', 'r') as openfile:
         config  = json.load(openfile)
+    with open('config.json', 'w') as writefile:
         config[setting] = value
-        json.dump(config, openfile)
+        json.dump(config, writefile)
 
 @eel.expose
 def loadConfig():
