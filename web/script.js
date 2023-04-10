@@ -71,6 +71,7 @@ var cycleTime =  1000  //2000
 
 function init() {
     setTime();
+    eel.loadConfig()
     if (singleInputMode) {
         document.body.onclick = e => accessibilityMouseClick()
         selectedMenuOrder = mainMenuOrder;
