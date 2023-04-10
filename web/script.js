@@ -308,6 +308,7 @@ let keyboardSuperMenuInnerHTML =`
 
 let kbAttachPoint = document.getElementById('keyboard-attach-point')
 let editString = ""
+let charLimit = 30
 const positionIndicator = "|"
 
 /*
@@ -355,6 +356,14 @@ const updateEditString = (e,char) => {
     e.stopPropagation()
     if (char != 'del') {
         editString += char
+        if (editString.length >= charLimit){
+            var splitter = editString.indexOf(' ') >=0 ? editString.lastIndexOf(' '): 44
+            var spillover = editString.substring(splitter)
+            editString = editString.substring(0, splitter)
+            endNewMessage(e)
+            startNewMessage()
+            editString = spillover
+        }
     } else {
         if (editString.length > 0) editString = editString.slice(0, -1)
     }
