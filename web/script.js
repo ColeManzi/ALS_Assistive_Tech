@@ -29,7 +29,17 @@ const mainMenuOrder = [
 const settingsMenuOrder = [
     "single-input"
     ,"touch-mouse"
+    ,"configure-speed"
     ,"settings-back"
+]
+
+const speedMenuOrder = [
+    "speed-500"
+    ,"speed-1000"
+    ,"speed-1500"
+    ,"speed-2000"
+    ,"speed-back"
+
 ]
 
 const keyboardMenuOrder = [
@@ -46,6 +56,7 @@ let menuIdMapping = {
     ,"settings-menu": settingsMenuOrder
     ,"keyboard-menu": keyboardMenuOrder
     ,"dynamic-kb": dynamicKeyboardOrder
+    ,"configure-speed-menu": speedMenuOrder
 }
 
 let plugLabels = {
@@ -437,4 +448,11 @@ function updateLabels(){
     for (var label in plugLabels){
         document.getElementById("plug-" + label).innerHTML = plugLabels[label]
     }
+    document.getElementById("speed-label").innerHTML = "Current Speed: " + cycleTime
+}
+
+function setCycleTime(time){
+    storeConfig('cycleTime', 500)
+    cycleTime = 500
+    document.getElementById("speed-label").innerHTML = "Current Speed: " + cycleTime
 }

@@ -80,7 +80,7 @@ div#plug-select {
    z-index: 6;
 }
 
-#configure-menu {
+#configure-speed-menu {
    visibility: hidden;
    position: absolute;
    z-index: 7;
