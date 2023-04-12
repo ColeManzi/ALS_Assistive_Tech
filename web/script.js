@@ -452,7 +452,7 @@ function updateLabels(){
 }
 
 function setCycleTime(time){
-    storeConfig('cycleTime', 500)
-    cycleTime = 500
+    storeConfig('cycleTime', time)
+    cycleTime = time
     document.getElementById("speed-label").innerHTML = "Current Speed: " + cycleTime
 }
