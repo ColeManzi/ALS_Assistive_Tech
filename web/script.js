@@ -114,7 +114,7 @@ function setTime() {
 
 function resetMouse(event){
     event.stopPropagation()
-    eel.resetMouse
+    eel.resetMouse()
 }
 
 /*
