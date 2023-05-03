@@ -1,6 +1,8 @@
 import eel
 import rfcontroller
 import json
+import pyautogui
+import threading
 
 controller = rfcontroller.RFController() 
 
@@ -25,6 +27,11 @@ def loadConfig():
         eel.loadConfig(config)
 
 
+def resetMouse():
+    pyautogui.moveTo(0,0)
+    threading.Timer(5, resetMouse).start()
+
 if __name__ == "__main__":
     eel.init('web', allowed_extensions=[".js",".html"])
     eel.start('index.html', cmdline_args=['--start-fullscreen'])
+    resetMouse()
