@@ -35,10 +35,10 @@
 
     <div id="configure-speed-menu" class="menu-wrapper">
          <h2 id="speed-label"></h2>
-         <button class="menu-button" id="speed-500" onclick="setCycleTime(500)">&frac12; Second</button>
-         <button class="menu-button" id="speed-1000" onclick="setCycleTime(1000)">1 Second</button>
-         <button class="menu-button" id="speed-1500" onclick="setCycleTime(1500)">1 &frac12; Seconds</button>
-         <button class="menu-button" id="speed-2000" onclick="setCycleTime(2000)">2 Seconds</button>
+         <button class="menu-button" id="speed-500" onclick="setCycleTime(event, 500)">&frac12; Second</button>
+         <button class="menu-button" id="speed-1000" onclick="setCycleTime(event, 1000)">1 Second</button>
+         <button class="menu-button" id="speed-1500" onclick="setCycleTime(event, 1500)">1 &frac12; Seconds</button>
+         <button class="menu-button" id="speed-2000" onclick="setCycleTime(event, 2000)">2 Seconds</button>
          <button class="menu-button" id="speed-back" onclick="changeMenu(event, 'main-menu')">Back</button>
     </div>
 

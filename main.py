@@ -28,10 +28,9 @@ def loadConfig():
         config = json.load(openfile)
         eel.loadConfig(config)
 
-
+@eel.expose
 def resetMouse():
     pyautogui.moveTo(0, screenHeight)
-    threading.Timer(5, resetMouse).start()
 
 if __name__ == "__main__":
     eel.init('web', allowed_extensions=[".js",".html"])

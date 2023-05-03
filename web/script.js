@@ -83,6 +83,9 @@ var cycleTime =  1000  //2000
 function init() {
     setTime();
     eel.loadConfig()
+    for( button in document.getElementsByTagName("button")){
+        button.addEventListener('click', resetMouse())
+    }
     if (singleInputMode) {
         document.body.onclick = e => accessibilityMouseClick()
         selectedMenuOrder = mainMenuOrder;
@@ -107,6 +110,11 @@ function setTime() {
     }
     document.getElementById("time").innerHTML = "<h2>" + hr + ":" + min + " " + amPm + "</h2>";
     setTimeout(setTime, 1000);
+}
+
+function resetMouse(event){
+    event.stopPropagation()
+    eel.resetMouse
 }
 
 /*
@@ -458,7 +466,8 @@ function updateLabels(){
     document.getElementById("speed-label").innerHTML = "Current Speed: " + timeToSeconds[cycleTime]
 }
 
-function setCycleTime(time){
+function setCycleTime(event, time){
+    event.stopPropagation()
     storeConfig('cycleTime', time)
     cycleTime = time
     updateLabels()
