@@ -83,9 +83,7 @@ var cycleTime =  1000  //2000
 function init() {
     setTime();
     eel.loadConfig()
-    let buttons = document.getElementsByTagName('button')
-    for(i in buttons){
-        let button = buttons[i]
+    for(button of document.getElementsByTagName('button')){
         button.addEventListener('click', resetMouse)
     }
     if (singleInputMode) {
