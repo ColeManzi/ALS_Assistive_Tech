@@ -444,11 +444,18 @@ function loadConfig(config){
     updateLabels()
 }
 
+var timeToSeconds = {
+    "500" : "&frac12; Second",
+    "1000": "1 Second",
+    "1500": "1 &frac12; Seconds",
+    "2000": "2 Seconds"
+}
+
 function updateLabels(){
     for (var label in plugLabels){
         document.getElementById("plug-" + label).innerHTML = plugLabels[label]
     }
-    document.getElementById("speed-label").innerHTML = "Current Speed: " + cycleTime
+    document.getElementById("speed-label").innerHTML = "Current Speed: " + timeToSeconds[cycleTime]
 }
 
 function setCycleTime(time){
