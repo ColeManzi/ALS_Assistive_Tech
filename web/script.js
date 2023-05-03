@@ -84,7 +84,7 @@ function init() {
     setTime();
     eel.loadConfig()
     for( button in document.getElementsByTagName("button")){
-        button.addEventListener('click', resetMouse())
+        button.addEventListener('click', resetMouse)
     }
     if (singleInputMode) {
         document.body.onclick = e => accessibilityMouseClick()
