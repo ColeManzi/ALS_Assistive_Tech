@@ -4,7 +4,9 @@ import json
 import pyautogui
 import threading
 
-controller = rfcontroller.RFController() 
+controller = rfcontroller.RFController()
+screenWidth, screenHeight = pyautogui.size()
+pyautogui.FAILSAFE = False
 
 @eel.expose
 def togglePlug(command):
@@ -28,7 +30,7 @@ def loadConfig():
 
 
 def resetMouse():
-    pyautogui.moveTo(0,0)
+    pyautogui.moveTo(0, screenHeight)
     threading.Timer(5, resetMouse).start()
 
 if __name__ == "__main__":
