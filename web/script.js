@@ -378,6 +378,7 @@ const endNewMessage = (e) => {
 
     kbAttachPoint.innerHTML = keyboardSuperMenuInnerHTML
     resetCycle("keyboard-menu")
+    resetMouse()
 }
 
 const updateEditString = (e,char) => {
@@ -398,6 +399,7 @@ const updateEditString = (e,char) => {
  
     updateEditRowDisplay()
     setKeyboardRowCycle()
+    resetMouse()
 }
 
 const changeAlphanumericMode = (e, mode) => {
@@ -408,6 +410,7 @@ const changeAlphanumericMode = (e, mode) => {
         kbAttachPoint.innerHTML = alphaKeyboardInnerHTML
     }
     setKeyboardRowCycle()
+    resetMouse()
 }
 
 const setKeyboardRowCycle = () => {
