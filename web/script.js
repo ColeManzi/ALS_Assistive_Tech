@@ -350,7 +350,6 @@ const updateEditRowDisplay = () => {
 }
 
 const startNewMessage = (event) => {
-    event.stopPropagation()
     resetMouse(event)
     // Update the message history and clear row that will be edited.
     msgElements["topRow"].innerText    = msgElements["middleRow"].innerText
