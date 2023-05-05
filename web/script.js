@@ -330,8 +330,8 @@ let numericKeyboardInnerHTML = `
 `
 
 let keyboardSuperMenuInnerHTML =`
-<button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage(event);">NEW</button>
-<button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu');">MENU</button>
+<button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage(event)">NEW</button>
+<button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu')">MENU</button>
 `
 
 let kbAttachPoint = document.getElementById('keyboard-attach-point')
@@ -349,8 +349,8 @@ const updateEditRowDisplay = () => {
     msgElements["editRow"].innerText  =  editString + positionIndicator
 }
 
-const startNewMessage = (event) => {
-    resetMouse(event)
+const startNewMessage = (e) => {
+    resetMouse(e)
     // Update the message history and clear row that will be edited.
     msgElements["topRow"].innerText    = msgElements["middleRow"].innerText
     msgElements["middleRow"].innerText = msgElements["editRow"].innerText
