@@ -330,8 +330,8 @@ let numericKeyboardInnerHTML = `
 `
 
 let keyboardSuperMenuInnerHTML =`
-<button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage()">NEW</button>
-<button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu')">MENU</button>
+<button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage(); resetMouse()">NEW</button>
+<button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu'); resetMouse()">MENU</button>
 `
 
 let kbAttachPoint = document.getElementById('keyboard-attach-point')
