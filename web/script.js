@@ -330,8 +330,8 @@ let numericKeyboardInnerHTML = `
 `
 
 let keyboardSuperMenuInnerHTML =`
-<button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage(); resetMouse()">NEW</button>
-<button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu'); resetMouse()">MENU</button>
+<button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage(event);">NEW</button>
+<button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu');">MENU</button>
 `
 
 let kbAttachPoint = document.getElementById('keyboard-attach-point')
@@ -349,7 +349,9 @@ const updateEditRowDisplay = () => {
     msgElements["editRow"].innerText  =  editString + positionIndicator
 }
 
-const startNewMessage = () => {
+const startNewMessage = (event) => {
+    event.stopPropagation()
+    resetMouse(event)
     // Update the message history and clear row that will be edited.
     msgElements["topRow"].innerText    = msgElements["middleRow"].innerText
     msgElements["middleRow"].innerText = msgElements["editRow"].innerText
@@ -365,6 +367,7 @@ const startNewMessage = () => {
 
 const endNewMessage = (e) => {
     e.stopPropagation()
+    resetMouse(e)
 
     // Update the message strings in memory and call eel function to save messge history.
     msgHistory["topRow"]    = msgElements["topRow"].innerText
@@ -378,11 +381,11 @@ const endNewMessage = (e) => {
 
     kbAttachPoint.innerHTML = keyboardSuperMenuInnerHTML
     resetCycle("keyboard-menu")
-    resetMouse()
 }
 
 const updateEditString = (e,char) => {
     e.stopPropagation()
+    resetMouse(e)
     if (char != 'del') {
         editString += char
         if (editString.length >= charLimit){
@@ -399,18 +402,17 @@ const updateEditString = (e,char) => {
  
     updateEditRowDisplay()
     setKeyboardRowCycle()
-    resetMouse()
 }
 
 const changeAlphanumericMode = (e, mode) => {
     e.stopPropagation()
+    resetMouse(e)
     if (mode == 'num') {
         kbAttachPoint.innerHTML = numericKeyboardInnerHTML
     } else if (mode == 'alpha') {
         kbAttachPoint.innerHTML = alphaKeyboardInnerHTML
     }
     setKeyboardRowCycle()
-    resetMouse()
 }
 
 const setKeyboardRowCycle = () => {
