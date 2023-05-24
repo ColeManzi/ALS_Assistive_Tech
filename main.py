@@ -19,17 +19,17 @@ def togglePlug(command):
 def storeConfig(setting, value):
     config = {}
     # with open('config.json', 'r') as openfile:
-    with open('/home/pi/450-mock-up/config.json', 'r') as openfile:
+    with open('/home/pi/ALS-Assistive-Tech/config.json', 'r') as openfile:
         config  = json.load(openfile)
     # with open('config.json', 'w') as openfile:
-    with open('/home/pi/450-mock-up/config.json', 'w') as writefile:
+    with open('/home/pi/ALS-Assistive-Techp/config.json', 'w') as writefile:
         config[setting] = value
         json.dump(config, writefile)
 
 @eel.expose
 def loadConfig():
     # with open('config.json', 'r') as openfile:
-    with open('/home/pi/450-mock-up/config.json', 'r') as openfile:
+    with open('/home/pi/ALS-Assistive-Tech/config.json', 'r') as openfile:
         config = json.load(openfile)
         eel.loadConfig(config)
 
@@ -39,7 +39,7 @@ def resetMouse():
 
 if __name__ == "__main__":
     # eel.init('web', allowed_extensions=[".js",".html"])
-    eel.init('/home/pi/450-mock-up/web', allowed_extensions=[".js",".html"])
+    eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
     resetMouse()
     eel.start('index.html', cmdline_args=['--start-fullscreen'])
     
