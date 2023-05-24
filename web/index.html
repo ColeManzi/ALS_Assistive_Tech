@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
-<body onload="init()" oncontextmenu="return false;">
+<body onload="init()">
     <div id="top-bar">
         <div id="time">
             <h2>00:00 PM</h2>
@@ -20,9 +20,9 @@
     </div>
 
     <div id="main-menu" class="menu-wrapper">
-        <button class="menu-button" id="plugs" onclick="changeMenu(event, 'plug-select')" oncontextmenu="changeMenu(event, 'plug-select')">Plugs</button>
-        <button class="menu-button" id="keyboard" onclick="changeMenu(event, 'keyboard-menu')" oncontextmenu="changeMenu(event, 'keyboard-menu')">Keyboard</button>
-        <button class="menu-button" id="settings" onclick="changeMenu(event, 'configure-speed-menu')" oncontextmenu="changeMenu(event, 'configure-speed-menu')">Settings</button>
+        <button class="menu-button" id="plugs" onclick="changeMenu(event, 'plug-select')" oncontextmenu="changeMenu(event, 'plug-select'); return false;">Plugs</button>
+        <button class="menu-button" id="keyboard" onclick="changeMenu(event, 'keyboard-menu')" oncontextmenu="changeMenu(event, 'keyboard-menu'); return false;">Keyboard</button>
+        <button class="menu-button" id="settings" onclick="changeMenu(event, 'configure-speed-menu')" oncontextmenu="changeMenu(event, 'configure-speed-menu'); return false;">Settings</button>
     </div>
     
     <div id="settings-menu" class="menu-wrapper">
