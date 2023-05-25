@@ -87,7 +87,8 @@ function init() {
         button.addEventListener('click', resetMouse)
     }
     if (singleInputMode) {
-        document.body.onclick = e => accessibilityMouseClick()
+        // document.body.onclick = e => accessibilityMouseClick() // Chnged to mousedown event for Jane
+        document.body.onmousedown = e => accessibilityMouseClick()
         selectedMenuOrder = mainMenuOrder;
         resetCycle('main-menu')
     }
@@ -175,7 +176,8 @@ Single Input Mode Functions
 const toggleInputMode = (e, mode) => {
     if (mode == 'on') {
         singleInputMode = true
-        document.body.onclick = accessibilityMouseClick
+        // document.body.onclick = accessibilityMouseClick // Changed to on mouse down for Jane
+        document.body.onmousedown = accessibilityMouseClick
     } else {
         singleInputMode = false
         if (cycleTimeout != null) previousElement.style.backgroundColor = previousColor
@@ -196,10 +198,12 @@ const resetCycle = (menuId) => {
 
 function accessibilityMouseClick() {
     if (singleInputMode) {  // Something keeps reseting body.click to accessibilityMouseClick, check to fix error
-        document.body.onclick = e => {}
+        // document.body.onclick = e => {} // Changed to onmousedown event for Jane
+        document.body.onmousedown = e => {}
         selectedElement = document.getElementById(selectedMenuOrder[selectedIndex])
         selectedElement.click();
-        document.body.onclick = e => accessibilityMouseClick()
+        // document.body.onclick = e => accessibilityMouseClick() // Changed to onmousedown event for jane
+        document.body.onmousedown = e => accessibilityMouseClick()
     }
 }
 
@@ -360,7 +364,8 @@ const startNewMessage = (e) => {
  
     // Show keyboard
     kbAttachPoint.innerHTML = alphaKeyboardInnerHTML
-    setKeyboardRowCycle()
+    // setKeyboardRowCycle() // Used with grid select keyboard
+    janesKeyboardSelection()
 }
 
 
@@ -400,7 +405,8 @@ const updateEditString = (e,char) => {
     }
  
     updateEditRowDisplay()
-    setKeyboardRowCycle()
+    resetCycle('dynamic-kb')
+    // setKeyboardRowCycle() // Used with grid select keyboard
 }
 
 const changeAlphanumericMode = (e, mode) => {
@@ -411,9 +417,28 @@ const changeAlphanumericMode = (e, mode) => {
     } else if (mode == 'alpha') {
         kbAttachPoint.innerHTML = alphaKeyboardInnerHTML
     }
-    setKeyboardRowCycle()
+    // setKeyboardRowCycle() // Use with grid select keyboard
+    janesKeyboardSelection()
 }
 
+// janesKeyboardSelection is custom to a request by Jane and her caretakers. This goes through all
+// keys one at a time to select the button needed.
+const janesKeyboardSelection = () => {
+    if (singleInputMode) {
+        const newArr = document.getElementsByClassName('keyboard-button')
+        dynamicKeyboardOrder = []
+        for (let ele of newArr) {
+            dynamicKeyboardOrder.push(ele.id)
+        }
+        menuIdMapping['dynamic-kb'] = dynamicKeyboardOrder
+        resetCycle('dynamic-kb')
+    }
+}
+
+
+// The following two functions (setKeyboardRowCycle and setKeyboardButtonCycle) allow the device
+// to select first the keyboard row and second the keyboard button. It is a faster way of going
+// through the keyboard.
 const setKeyboardRowCycle = () => {
     if (singleInputMode) {
         let newArr = document.getElementsByClassName('keyboard-row')
