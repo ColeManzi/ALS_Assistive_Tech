@@ -81,14 +81,15 @@ var cycleTimeout
 var cycleTime =  1000  //2000
 
 function init() {
-    setTime();
+    // setTime();
     eel.loadConfig()
     for(button of document.getElementsByTagName('button')){
-        button.addEventListener('click', resetMouse)
+        // button.addEventListener('click', resetMouse) // Changed to pointerdown event for change
+        button.addEventListener('pointerdown', resetMouse)
     }
     if (singleInputMode) {
-        // document.body.onclick = e => accessibilityMouseClick() // Chnged to mousedown event for Jane
-        document.body.onmousedown = e => accessibilityMouseClick()
+        // document.body.onclick = e => accessibilityMouseClick() // Chnged to pointerdown event for Jane
+        document.body.onpointerdown = e => accessibilityMouseClick(e)
         selectedMenuOrder = mainMenuOrder;
         resetCycle('main-menu')
     }
@@ -114,7 +115,7 @@ function setTime() {
 }
 
 function resetMouse(event){
-    event.stopPropagation()
+    if (event != undefined) event.stopPropagation()
     eel.resetMouse()
 }
 
@@ -125,7 +126,7 @@ Menu Control Functions
 */
 
 const changeMenu = (e, newMenuID) => {
-    e.stopPropagation()
+    if (e != undefined) e.stopPropagation()
     let currentMenu = document.getElementById(e.currentTarget.id)
                               .parentElement
     let newMenu = document.getElementById(newMenuID)
@@ -137,7 +138,7 @@ const changeMenu = (e, newMenuID) => {
 }
 
 function openSubmenu(event, supermenuId, submenuId) {
-    event.stopPropagation();
+    if (event != undefined) event.stopPropagation();
     let supermenu = document.getElementById(supermenuId)
     let submenu = document.getElementById(submenuId)
 
@@ -148,7 +149,7 @@ function openSubmenu(event, supermenuId, submenuId) {
 }
 
 function closeSubmenu(event, supermenuId, submenuId) {
-    event.stopPropagation();
+    if (event != undefined) event.stopPropagation();
     let supermenu = document.getElementById(supermenuId)
     let submenu = document.getElementById(submenuId)
     
@@ -177,11 +178,12 @@ const toggleInputMode = (e, mode) => {
     if (mode == 'on') {
         singleInputMode = true
         // document.body.onclick = accessibilityMouseClick // Changed to on mouse down for Jane
-        document.body.onmousedown = accessibilityMouseClick
+        document.body.onpointerdown = accessibilityMouseClick
     } else {
         singleInputMode = false
         if (cycleTimeout != null) previousElement.style.backgroundColor = previousColor
-        document.body.onclick = null
+        // document.body.onclick = null
+        document.body.pointerdown = null
         clearTimeout(cycleTimeout)
     }
     changeMenu(e, 'main-menu')
@@ -196,14 +198,16 @@ const resetCycle = (menuId) => {
 }
 
 
-function accessibilityMouseClick() {
+function accessibilityMouseClick(e) {
+    if (e != undefined) e.stopPropagation()
     if (singleInputMode) {  // Something keeps reseting body.click to accessibilityMouseClick, check to fix error
-        // document.body.onclick = e => {} // Changed to onmousedown event for Jane
-        document.body.onmousedown = e => {}
+        // document.body.onclick = e => {} // Changed to onpointerdown event for Jane
+        document.body.onpointerdown = e => {}
         selectedElement = document.getElementById(selectedMenuOrder[selectedIndex])
-        selectedElement.click();
-        // document.body.onclick = e => accessibilityMouseClick() // Changed to onmousedown event for jane
-        document.body.onmousedown = e => accessibilityMouseClick()
+        // selectedElement.click(); // Changed to pointerdown for Jane
+        selectedElement.onpointerdown()
+        // document.body.onclick = e => accessibilityMouseClick() // Changed to onpointerdown event for jane
+        document.body.onpointerdown = e => accessibilityMouseClick()
     }
 }
 
@@ -229,7 +233,7 @@ function togglePlug(e, state) {
     else {
         // Toggle Power Indicator Off
     }
-    changeMenu(e, 'plug-select')
+    closeSubmenu(e, 'plug-select', 'plug-submenu')
 }
 
 /*
@@ -251,91 +255,91 @@ const msgElements = {
 
 let alphaKeyboardInnerHTML = `
 <div id="keyboard-row-1" class="keyboard-row alpha-keyboard-row">
-    <button id="done-key"       class="keyboard-button alpha-keyboard" onclick="endNewMessage(event)">DONE</button>    
-    <button id="space-key"      class="keyboard-button alpha-keyboard" value=" " onclick="updateEditString(event, this.value)">SPACE</button>    
-    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onclick="updateEditString(event, this.value)">BKSP</button>
-    <button id="num-alpha-key"  class="keyboard-button alpha-keyboard" value="num" onclick="changeAlphanumericMode(event, this.value)">NUM</button>
+    <button id="done-key"       class="keyboard-button alpha-keyboard" onpointerdown="endNewMessage(event)">DONE</button>    
+    <button id="space-key"      class="keyboard-button alpha-keyboard" value=" " onpointerdown="updateEditString(event, this.value)">SPACE</button>    
+    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onpointerdown="updateEditString(event, this.value)">BKSP</button>
+    <button id="num-alpha-key"  class="keyboard-button alpha-keyboard" value="num" onpointerdown="changeAlphanumericMode(event, this.value)">NUM</button>
 </div>
 <div id="keyboard-row-2" class="keyboard-row alpha-keyboard-row">
-    <button id="A-key" class="keyboard-button alpha-key" value="A" onclick="updateEditString(event, this.value)">A</button>
-    <button id="B-key" class="keyboard-button alpha-key" value="B" onclick="updateEditString(event, this.value)">B</button>
-    <button id="C-key" class="keyboard-button alpha-key" value="C" onclick="updateEditString(event, this.value)">C</button>
-    <button id="D-key" class="keyboard-button alpha-key" value="D" onclick="updateEditString(event, this.value)">D</button>
+    <button id="A-key" class="keyboard-button alpha-key" value="A" onpointerdown="updateEditString(event, this.value)">A</button>
+    <button id="B-key" class="keyboard-button alpha-key" value="B" onpointerdown="updateEditString(event, this.value)">B</button>
+    <button id="C-key" class="keyboard-button alpha-key" value="C" onpointerdown="updateEditString(event, this.value)">C</button>
+    <button id="D-key" class="keyboard-button alpha-key" value="D" onpointerdown="updateEditString(event, this.value)">D</button>
 </div>
 <div id="keyboard-row-3" class="keyboard-row alpha-keyboard-row">
-    <button id="E-key" class="keyboard-button alpha-key" value="E" onclick="updateEditString(event, this.value)">E</button>
-    <button id="F-key" class="keyboard-button alpha-key" value="F" onclick="updateEditString(event, this.value)">F</button>
-    <button id="G-key" class="keyboard-button alpha-key" value="G" onclick="updateEditString(event, this.value)">G</button>
-    <button id="H-key" class="keyboard-button alpha-key" value="H" onclick="updateEditString(event, this.value)">H</button>
+    <button id="E-key" class="keyboard-button alpha-key" value="E" onpointerdown="updateEditString(event, this.value)">E</button>
+    <button id="F-key" class="keyboard-button alpha-key" value="F" onpointerdown="updateEditString(event, this.value)">F</button>
+    <button id="G-key" class="keyboard-button alpha-key" value="G" onpointerdown="updateEditString(event, this.value)">G</button>
+    <button id="H-key" class="keyboard-button alpha-key" value="H" onpointerdown="updateEditString(event, this.value)">H</button>
 </div>
 <div id="keyboard-row-4" class="keyboard-row alpha-keyboard-row">
-    <button id="I-key" class="keyboard-button alpha-key" value="I" onclick="updateEditString(event, this.value)">I</button>
-    <button id="J-key" class="keyboard-button alpha-key" value="J" onclick="updateEditString(event, this.value)">J</button>
-    <button id="K-key" class="keyboard-button alpha-key" value="K" onclick="updateEditString(event, this.value)">K</button>
-    <button id="L-key" class="keyboard-button alpha-key" value="L" onclick="updateEditString(event, this.value)">L</button>
+    <button id="I-key" class="keyboard-button alpha-key" value="I" onpointerdown="updateEditString(event, this.value)">I</button>
+    <button id="J-key" class="keyboard-button alpha-key" value="J" onpointerdown="updateEditString(event, this.value)">J</button>
+    <button id="K-key" class="keyboard-button alpha-key" value="K" onpointerdown="updateEditString(event, this.value)">K</button>
+    <button id="L-key" class="keyboard-button alpha-key" value="L" onpointerdown="updateEditString(event, this.value)">L</button>
 </div>
 <div id="keyboard-row-5" class="keyboard-row alpha-keyboard-row">
-    <button id="M-key" class="keyboard-button alpha-key" value="M" onclick="updateEditString(event, this.value)">M</button>
-    <button id="N-key" class="keyboard-button alpha-key" value="N" onclick="updateEditString(event, this.value)">N</button>
-    <button id="O-key" class="keyboard-button alpha-key" value="O" onclick="updateEditString(event, this.value)">O</button>
-    <button id="P-key" class="keyboard-button alpha-key" value="P" onclick="updateEditString(event, this.value)">P</button>
+    <button id="M-key" class="keyboard-button alpha-key" value="M" onpointerdown="updateEditString(event, this.value)">M</button>
+    <button id="N-key" class="keyboard-button alpha-key" value="N" onpointerdown="updateEditString(event, this.value)">N</button>
+    <button id="O-key" class="keyboard-button alpha-key" value="O" onpointerdown="updateEditString(event, this.value)">O</button>
+    <button id="P-key" class="keyboard-button alpha-key" value="P" onpointerdown="updateEditString(event, this.value)">P</button>
 </div>
 <div id="keyboard-row-6" class="keyboard-row alpha-keyboard-row">
-    <button id="Q-key" class="keyboard-button alpha-key" value="Q" onclick="updateEditString(event, this.value)">Q</button>
-    <button id="R-key" class="keyboard-button alpha-key" value="R" onclick="updateEditString(event, this.value)">R</button>
-    <button id="S-key" class="keyboard-button alpha-key" value="S" onclick="updateEditString(event, this.value)">S</button>
-    <button id="T-key" class="keyboard-button alpha-key" value="T" onclick="updateEditString(event, this.value)">T</button>
+    <button id="Q-key" class="keyboard-button alpha-key" value="Q" onpointerdown="updateEditString(event, this.value)">Q</button>
+    <button id="R-key" class="keyboard-button alpha-key" value="R" onpointerdown="updateEditString(event, this.value)">R</button>
+    <button id="S-key" class="keyboard-button alpha-key" value="S" onpointerdown="updateEditString(event, this.value)">S</button>
+    <button id="T-key" class="keyboard-button alpha-key" value="T" onpointerdown="updateEditString(event, this.value)">T</button>
 </div>
 <div id="keyboard-row-7" class="keyboard-row alpha-keyboard-row">
-    <button id="U-key" class="keyboard-button alpha-key" value="U" onclick="updateEditString(event, this.value)">U</button>
-    <button id="V-key" class="keyboard-button alpha-key" value="V" onclick="updateEditString(event, this.value)">V</button>
-    <button id="W-key" class="keyboard-button alpha-key" value="W" onclick="updateEditString(event, this.value)">W</button>
-    <button id="X-key" class="keyboard-button alpha-key" value="X" onclick="updateEditString(event, this.value)">X</button>
+    <button id="U-key" class="keyboard-button alpha-key" value="U" onpointerdown="updateEditString(event, this.value)">U</button>
+    <button id="V-key" class="keyboard-button alpha-key" value="V" onpointerdown="updateEditString(event, this.value)">V</button>
+    <button id="W-key" class="keyboard-button alpha-key" value="W" onpointerdown="updateEditString(event, this.value)">W</button>
+    <button id="X-key" class="keyboard-button alpha-key" value="X" onpointerdown="updateEditString(event, this.value)">X</button>
 </div>
 <div id="keyboard-row-8" class="keyboard-row alpha-keyboard-row">
-    <button id="Y-key" class="keyboard-button alpha-key" value="Y" onclick="updateEditString(event, this.value)">Y</button>
-    <button id="Z-key" class="keyboard-button alpha-key" value="Z" onclick="updateEditString(event, this.value)">Z</button>
-    <button id="period-key"      class="keyboard-button" value="." onclick="updateEditString(event, this.value)">.</button>
-    <button id="question-mark-key"  class="keyboard-button" value="?" onclick="updateEditString(event, this.value)">?</button>
+    <button id="Y-key" class="keyboard-button alpha-key" value="Y" onpointerdown="updateEditString(event, this.value)">Y</button>
+    <button id="Z-key" class="keyboard-button alpha-key" value="Z" onpointerdown="updateEditString(event, this.value)">Z</button>
+    <button id="period-key"      class="keyboard-button" value="." onpointerdown="updateEditString(event, this.value)">.</button>
+    <button id="question-mark-key"  class="keyboard-button" value="?" onpointerdown="updateEditString(event, this.value)">?</button>
 </div>
 `
 
 let numericKeyboardInnerHTML = `
 <div id="keyboard-row-1" class="keyboard-row num-keyboard-row">
-    <button id="done-key"       class="keyboard-button alpha-keyboard" onclick="endNewMessage(event)">DONE</button>    
-    <button id="space-key"      class="keyboard-button alpha-keyboard" value=" " onclick="updateEditString(event, this.value)">SPACE</button>    
-    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onclick="updateEditString(event, this.value)">BKSP</button>
-    <button id="num-alpha-key"  class="keyboard-button alpha-keyboard" value="alpha" onclick="changeAlphanumericMode(event, this.value)">ALPHA</button>
+    <button id="done-key"       class="keyboard-button alpha-keyboard" onpointerdown="endNewMessage(event)">DONE</button>    
+    <button id="space-key"      class="keyboard-button alpha-keyboard" value=" " onpointerdown="updateEditString(event, this.value)">SPACE</button>    
+    <button id="delete-key"     class="keyboard-button alpha-keyboard" value="del" onpointerdown="updateEditString(event, this.value)">BKSP</button>
+    <button id="num-alpha-key"  class="keyboard-button alpha-keyboard" value="alpha" onpointerdown="changeAlphanumericMode(event, this.value)">ALPHA</button>
 </div>
 <div id="keyboard-row-2" class="keyboard-row num-keyboard-row">
-    <button id="1-key" class="keyboard-button alpha-key" value="1" onclick="updateEditString(event, this.value)">1</button>
-    <button id="2-key" class="keyboard-button alpha-key" value="2" onclick="updateEditString(event, this.value)">2</button>
-    <button id="3-key" class="keyboard-button alpha-key" value="3" onclick="updateEditString(event, this.value)">3</button>
-    <button id="4-key" class="keyboard-button alpha-key" value="4" onclick="updateEditString(event, this.value)">4</button>
+    <button id="1-key" class="keyboard-button alpha-key" value="1" onpointerdown="updateEditString(event, this.value)">1</button>
+    <button id="2-key" class="keyboard-button alpha-key" value="2" onpointerdown="updateEditString(event, this.value)">2</button>
+    <button id="3-key" class="keyboard-button alpha-key" value="3" onpointerdown="updateEditString(event, this.value)">3</button>
+    <button id="4-key" class="keyboard-button alpha-key" value="4" onpointerdown="updateEditString(event, this.value)">4</button>
 </div>
 <div id="keyboard-row-3" class="keyboard-row num-keyboard-row">
-    <button id="5-key" class="keyboard-button alpha-key" value="5" onclick="updateEditString(event, this.value)">5</button>
-    <button id="6-key" class="keyboard-button alpha-key" value="6" onclick="updateEditString(event, this.value)">6</button>
-    <button id="7-key" class="keyboard-button alpha-key" value="7" onclick="updateEditString(event, this.value)">7</button>
-    <button id="8-key" class="keyboard-button alpha-key" value="8" onclick="updateEditString(event, this.value)">8</button>
+    <button id="5-key" class="keyboard-button alpha-key" value="5" onpointerdown="updateEditString(event, this.value)">5</button>
+    <button id="6-key" class="keyboard-button alpha-key" value="6" onpointerdown="updateEditString(event, this.value)">6</button>
+    <button id="7-key" class="keyboard-button alpha-key" value="7" onpointerdown="updateEditString(event, this.value)">7</button>
+    <button id="8-key" class="keyboard-button alpha-key" value="8" onpointerdown="updateEditString(event, this.value)">8</button>
 </div>
 <div id="keyboard-row-4" class="keyboard-row num-keyboard-row">
-    <button id="9-key" class="keyboard-button alpha-key" value="9" onclick="updateEditString(event, this.value)">9</button>
-    <button id="0-key" class="keyboard-button alpha-key" value="0" onclick="updateEditString(event, this.value)">0</button>
-    <button id=".-key" class="keyboard-button alpha-key" value="." onclick="updateEditString(event, this.value)">.</button>
-    <button id="$-key" class="keyboard-button alpha-key" value="$" onclick="updateEditString(event, this.value)">$</button>
+    <button id="9-key" class="keyboard-button alpha-key" value="9" onpointerdown="updateEditString(event, this.value)">9</button>
+    <button id="0-key" class="keyboard-button alpha-key" value="0" onpointerdown="updateEditString(event, this.value)">0</button>
+    <button id=".-key" class="keyboard-button alpha-key" value="." onpointerdown="updateEditString(event, this.value)">.</button>
+    <button id="$-key" class="keyboard-button alpha-key" value="$" onpointerdown="updateEditString(event, this.value)">$</button>
 </div>
 <div id="keyboard-row-5" class="keyboard-row num-keyboard-row">
-<button id="comma-key" class="keyboard-button alpha-key" value="," onclick="updateEditString(event, this.value)">,</button>
-<button id="colon-key" class="keyboard-button alpha-key" value=":" onclick="updateEditString(event, this.value)">:</button>
-    <button id="AM-key" class="keyboard-button alpha-key" value="AM" onclick="updateEditString(event, this.value)">AM</button>
-    <button id="PM-key" class="keyboard-button alpha-key" value="PM" onclick="updateEditString(event, this.value)">PM</button>
+<button id="comma-key" class="keyboard-button alpha-key" value="," onpointerdown="updateEditString(event, this.value)">,</button>
+<button id="colon-key" class="keyboard-button alpha-key" value=":" onpointerdown="updateEditString(event, this.value)">:</button>
+    <button id="AM-key" class="keyboard-button alpha-key" value="AM" onpointerdown="updateEditString(event, this.value)">AM</button>
+    <button id="PM-key" class="keyboard-button alpha-key" value="PM" onpointerdown="updateEditString(event, this.value)">PM</button>
 </div> 
 `
 
 let keyboardSuperMenuInnerHTML =`
-<button id="keyboard-new-btn"  class="menu-button" onclick="startNewMessage(event)">NEW</button>
-<button id="keyboard-menu-btn" class="menu-button" onclick="closeSubmenu(event, 'main-menu', 'keyboard-menu')">MENU</button>
+<button id="keyboard-new-btn"  class="menu-button" onpointerdown="startNewMessage(event)">NEW</button>
+<button id="keyboard-menu-btn" class="menu-button" onpointerdown="closeSubmenu(event, 'main-menu', 'keyboard-menu')">MENU</button>
 `
 
 let kbAttachPoint = document.getElementById('keyboard-attach-point')
@@ -370,7 +374,7 @@ const startNewMessage = (e) => {
 
 
 const endNewMessage = (e) => {
-    e.stopPropagation()
+    if (e != undefined) e.stopPropagation()
     resetMouse(e)
 
     // Update the message strings in memory and call eel function to save messge history.
@@ -388,7 +392,7 @@ const endNewMessage = (e) => {
 }
 
 const updateEditString = (e,char) => {
-    e.stopPropagation()
+    if (e != undefined) e.stopPropagation()
     resetMouse(e)
     if (char != 'del') {
         editString += char
@@ -410,7 +414,7 @@ const updateEditString = (e,char) => {
 }
 
 const changeAlphanumericMode = (e, mode) => {
-    e.stopPropagation()
+    if (e != undefined) e.stopPropagation()
     resetMouse(e)
     if (mode == 'num') {
         kbAttachPoint.innerHTML = numericKeyboardInnerHTML
@@ -496,7 +500,7 @@ function updateLabels(){
 }
 
 function setCycleTime(event, time){
-    event.stopPropagation()
+    if (event != undefined) event.stopPropagation()
     storeConfig('cycleTime', time)
     cycleTime = time
     updateLabels()
