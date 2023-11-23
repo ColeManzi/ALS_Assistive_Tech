@@ -59,27 +59,28 @@
                     <div class="text-wrapper-2">Text-2-speech</div>
                 </div>
             </div>
-        </button>
+          </button>
         
-          <button class="button-TV-controls">
+          <button class="button-TV-controls"
+              onclick="openSubmenu(event,'main-menu', 'tv-control-menu')">
             <div class="group">
               <div class="overlap-group"><div class="text-wrapper-2">Tv Controls</div></div>
             </div>
           </button>
 
-          <button class="button-music">
+          <button class="button-music" onclick="openSubmenu(event,'main-menu','music-menu')">
             <div class="group">
               <div class="overlap-group"><div class="text-wrapper-2">Music</div></div>
             </div>
           </button>
 
-          <button class="button-outlet">
+          <button class="button-outlet" onclick="openSubmenu(event,'main-menu','outlet-menu')">
             <div class="group">
               <div class="overlap-group"><div class="text-wrapper-2">Outlet Controls</div></div>
             </div>
           </button>
 
-          <button class="button-settings">
+          <button class="button-settings" onclick="openSubmenu(event,'main-menu','settings-page')">
             <div class="group">
               <div class="overlap-group"><div class="text-wrapper-2">Settings</div></div>
             </div>
@@ -391,6 +392,296 @@
           </div>
         </div>
       </div>
+
+      <!-- TV CONTROLS -->
+
+      <div class="desktop-TV-controls" id = "tv-control-menu">
+        <div class="div">
+          <div class="button-main-menu">
+            <div class="group">
+              <button class="overlap-group" onclick="openSubmenu(event,'tv-control-menu','main-menu')"><div class="text">Main Menu</div></button>
+            </div>
+          </div>
+          <div class="button-settings">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Settings</div></div>
+            </div>
+          </div>
+          <div class="button-outlet">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Outlet Controls</div></div>
+            </div>
+          </div>
+          <div class="button-music">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Music</div></div>
+            </div>
+          </div>
+          <div class="button-text-speech">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Text-2-speech</div></div>
+            </div>
+          </div>
+          <div class="button-mute-ON-OFF">
+            <div class="overlap-group-wrapper">
+              <div class="div-wrapper"><div class="text-wrapper">Mute On/off</div></div>
+            </div>
+          </div>
+          <div class="button-volume-DOWN">
+            <div class="overlap-group-wrapper">
+              <div class="div-wrapper"><div class="text-wrapper">Volume Down</div></div>
+            </div>
+          </div>
+          <div class="button-volume-UP">
+            <div class="overlap-group-wrapper">
+              <div class="div-wrapper"><div class="text-wrapper">Volume Up</div></div>
+            </div>
+          </div>
+          <div class="button-channel-DOWN">
+            <div class="overlap-group-wrapper">
+              <div class="div-wrapper"><div class="text-wrapper">Channel Down</div></div>
+            </div>
+          </div>
+          <div class="button-channel-UP">
+            <div class="overlap-group-wrapper">
+              <div class="div-wrapper"><div class="text-wrapper">Channel Up</div></div>
+            </div>
+          </div>
+          <div class="button-power-ON-OFF">
+            <div class="overlap-group-wrapper">
+              <div class="div-wrapper"><div class="text-wrapper">Power On/off</div></div>
+            </div>
+          </div>
+          <div class="page-title"><div class="TV-controls">Tv Controls</div></div>
+        </div>
+      </div>
+
+      <!-- MUSIC CONTROLS-->
+
+      <div class="desktop-music-menu" id="music-menu">
+        <div class="div">
+          <div class="button-main-menu">
+            <div class="group">
+              <button class="overlap-group" onclick="openSubmenu(event,'music-menu','main-menu')"><div class="text">Main Menu</div></button>
+            </div>
+          </div>
+          <div class="button-settings">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Settings</div></div>
+            </div>
+          </div>
+          <div class="button-outlet">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Outlet Controls</div></div>
+            </div>
+          </div>
+          <div class="button-TV-controls">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Tv Controls</div></div>
+            </div>
+          </div>
+          <div class="button-text-speech">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Text-2-speech</div></div>
+            </div>
+          </div>
+          <div class="button-skip-song">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Skip Song</div></div>
+            </div>
+          </div>
+          <div class="button-PAUSE-PLAY">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Pause/play</div></div>
+            </div>
+          </div>
+          <div class="button-previous-song">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Previous Song</div></div>
+            </div>
+          </div>
+          <div class="button-classical">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Classical</div></div>
+            </div>
+          </div>
+          <div class="button-play-ALL">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Play All</div></div>
+            </div>
+          </div>
+          <div class="button-christian">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Christian</div></div>
+            </div>
+          </div>
+          <div class="display">
+            <div class="song-playing"></div>
+            <div class="genre"></div>
+          </div>
+          <div class="page-title"><div class="text-wrapper">Music</div></div>
+        </div>
+      </div>
+
+      <!-- OUTLET CONTROLS-->
+
+      <div class="desktop-outlet" id="outlet-menu">
+        <div class="div">
+          <div class="button-main-menu">
+            <div class="group">
+              <button class="overlap-group" onclick="openSubmenu(event,'outlet-menu','main-menu')"><div class="text">Main Menu</div></button>
+            </div>
+          </div>
+          <div class="button-settings">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Settings</div></div>
+            </div>
+          </div>
+          <div class="button-TV-controls">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Tv Controls</div></div>
+            </div>
+          </div>
+          <div class="button-music">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Music</div></div>
+            </div>
+          </div>
+          <div class="button-text-speech">
+            <div class="group">
+              <div class="overlap-group"><div class="text">Text-2-speech</div></div>
+            </div>
+          </div>
+          <div class="button-plug-ON-OFF">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Plug 5 On/off</div></div>
+            </div>
+          </div>
+          <div class="group-wrapper">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Plug 4 On/off</div></div>
+            </div>
+          </div>
+          <div class="div-wrapper">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Plug 3 On/off</div></div>
+            </div>
+          </div>
+          <div class="button-plug-ON-OFF-2">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Plug 2 On/off</div></div>
+            </div>
+          </div>
+          <div class="button-plug-ON-OFF-3">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">Plug 1 On/off</div></div>
+            </div>
+          </div>
+          <div class="button-all-plugs-ON">
+            <div class="overlap-group-wrapper">
+              <div class="quick-phrases-wrapper"><div class="quick-phrases">All Plugs On/off</div></div>
+            </div>
+          </div>
+          <div class="page-title"><div class="text-wrapper">Outlet Controls</div></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS PAGE-->
+
+      <div class="desktop-settings" id="settings-page">
+        <div class="div">
+          <div class="button-go-back">
+            <div class="group">
+              <button class="overlap-group" onclick="openSubmenu(event,'settings-page','main-menu')"><div class="quick-phrases">Go Back</div></button>
+            </div>
+          </div>
+          <div class="keyboard-selection">
+            <div class="switch-key-THAEL">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Key: Thael</div>
+            </div>
+            <div class="div-2">
+              <div class="group-2">
+                <div class="group-3">
+                  <div class="div-wrapper"><div class="text-wrapper">On</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Key: Qwerty</div>
+            </div>
+          </div>
+          <div class="speed-selection">
+            <div class="switch-speed-sec">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 3.5 Sec</div>
+            </div>
+            <div class="switch-speed-sec-2">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 3 Sec</div>
+            </div>
+            <div class="switch-speed-sec-3">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 2.5 Sec</div>
+            </div>
+            <div class="switch-speed-sec-4">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 2 Sec</div>
+            </div>
+            <div class="switch-speed-sec-5">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 3.5 Sec</div>
+            </div>
+            <div class="switch-speed-sec-6">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 3 Sec</div>
+            </div>
+            <div class="switch-speed-sec-7">
+              <div class="group-wrapper">
+                <div class="overlap-group-wrapper">
+                  <div class="div-wrapper"><div class="text-wrapper">Off</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 2.5 Sec</div>
+            </div>
+            <div class="div-2">
+              <div class="group-2">
+                <div class="group-3">
+                  <div class="div-wrapper"><div class="text-wrapper">On</div></div>
+                </div>
+              </div>
+              <div class="outer-text">Speed: 2 Sec</div>
+            </div>
+          </div>
+          <div class="page-title"><div class="text-wrapper-2">Settings</div></div>
+        </div>
+      </div>
     <!-- Unused, decided that the only setting that should be changed is the speed of the selector -->
     <!-- <div id="settings-menu" class="menu-wrapper">
         <button class="menu-button" id="single-input"    
@@ -419,6 +710,7 @@
         </button>
     </div> -->
 
+<!-- PLUG FUNCTIONALITY ADD BACK LATER
 
     <div id="configure-speed-menu" class="menu-wrapper">
         <h2 id="speed-label"></h2>
@@ -537,6 +829,7 @@
             </button>
         </div>
     </div>
+  -->
     <script type="text/javascript" src="/eel.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
