@@ -159,14 +159,17 @@ function closeSubmenu(event, supermenuId, submenuId) {
     supermenu.style.visibility = 'visible'
 }
 
-function openPlugSubmenu(event, plugLabel) {
-    let titleElement = document.getElementById('plug-submenu-title')
-    titleElement.innerHTML = plugLabel == 'all' ? 'All Plugs' : plugLabels[plugLabel]
-    titleElement.parentElement.setAttribute('plug-label', plugLabel)
+function openSubmenu(event, supermenuId, submenuId) {
+    if (event != undefined) event.stopPropagation();
+    let supermenu = document.getElementById(supermenuId);
+    let submenu = document.getElementById(submenuId);
 
-    openSubmenu(event, 'plug-select', 'plug-submenu')
-    
+    if (supermenu && submenu) {
+        supermenu.style.display = 'none'; // Hide the supermenu
+        submenu.style.display = 'block'; // Show the submenu
+    }
 }
+
 
 /*
 --------------------------------------------------
