@@ -351,26 +351,27 @@
             </div>
             <div class="button-settings">
               <div class="group-7">
-                <button class="overlap-group-6"><div class="text">Settings</div></button>
+                <button class="overlap-group-6" onclick="openSubmenu(event,'text-2-speech','settings-page')"><div class="text">Settings</div></button>
               </div>
             </div>
             <div class="button-outlet">
               <div class="group-7">
-                <button class="overlap-group-6"><div class="text">Outlet Controls</div></button>
+                <button class="overlap-group-6" onclick="openSubmenu(event,'text-2-speech','outlet-menu')"><div class="text">Outlet Controls</div></button>
               </div>
             </div>
             <div class="button-music">
               <div class="group-7">
-                <button class="overlap-group-6"><div class="text">Music</div></button>
+                <button class="overlap-group-6" onclick="openSubmenu(event,'text-2-speech','music-menu')"><div class="text">Music</div></button>
               </div>
             </div>
             <div class="button-TV-controls">
               <div class="group-7">
-                <button class="overlap-group-6"><div class="text">Tv Controls</div></button>
+                <button class="overlap-group-6" onclick="openSubmenu(event,'text-2-speech','tv-control-menu')"><div class="text">Tv Controls</div></button>
               </div>
             </div>
             <div class="button-ask-something">
               <div class="group-7">
+                <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY OUT LOUD-->
                 <button class="overlap-group-6"><p class="text">I’d Like To Ask You Something</p></button>
               </div>
             </div>
@@ -381,11 +382,13 @@
             </div>
             <div class="button-no">
               <div class="group-7">
+                <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY NO OUT LOUD-->
                 <button class="overlap-group-6"><div class="text">No</div></button>
               </div>
             </div>
             <div class="button-yes">
               <div class="group-7">
+                <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY YES OUT LOUD-->
                 <button class="overlap-group-6"><div class="text">Yes</div></button>
               </div>
             </div>
@@ -404,52 +407,58 @@
           </div>
           <div class="button-settings">
             <div class="group">
-              <div class="overlap-group"><div class="text">Settings</div></div>
+              <button class="overlap-group" onclick="openSubmenu(event,'tv-control-menu','settings-page')"><div class="text">Settings</div></button>
             </div>
           </div>
           <div class="button-outlet">
             <div class="group">
-              <div class="overlap-group"><div class="text">Outlet Controls</div></div>
+              <button class="overlap-group" onclick="openSubmenu(event,'tv-control-menu','outlet-menu')"><div class="text">Outlet Controls</div></button>
             </div>
           </div>
           <div class="button-music">
             <div class="group">
-              <div class="overlap-group"><div class="text">Music</div></div>
+              <button class="overlap-group" onclick="openSubmenu(event,'tv-control-menu','music-menu')"><div class="text">Music</div></button>
             </div>
           </div>
           <div class="button-text-speech">
             <div class="group">
-              <div class="overlap-group"><div class="text">Text-2-speech</div></div>
+              <button class="overlap-group" onclick="openSubmenu(event,'tv-control-menu','text-2-speech')"><div class="text">Text-2-speech</div></button>
             </div>
           </div>
           <div class="button-mute-ON-OFF">
             <div class="overlap-group-wrapper">
-              <div class="div-wrapper"><div class="text-wrapper">Mute On/off</div></div>
+              <!--ADD MUTE/UNMUTE FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS -->
+              <button class="div-wrapper"><div class="text-wrapper">Mute On/off</div></button>
             </div>
           </div>
           <div class="button-volume-DOWN">
             <div class="overlap-group-wrapper">
-              <div class="div-wrapper"><div class="text-wrapper">Volume Down</div></div>
+              <!--ADD VOLUME DOWN FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
+              <button class="div-wrapper"><div class="text-wrapper">Volume Down</div></button>
             </div>
           </div>
           <div class="button-volume-UP">
             <div class="overlap-group-wrapper">
-              <div class="div-wrapper"><div class="text-wrapper">Volume Up</div></div>
+              <!--ADD VOLUME UP FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
+              <button class="div-wrapper"><div class="text-wrapper">Volume Up</div></button>
             </div>
           </div>
           <div class="button-channel-DOWN">
             <div class="overlap-group-wrapper">
-              <div class="div-wrapper"><div class="text-wrapper">Channel Down</div></div>
+              <!--ADD CHANNEL DOWN FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
+              <button class="div-wrapper"><div class="text-wrapper">Channel Down</div></button>
             </div>
           </div>
           <div class="button-channel-UP">
             <div class="overlap-group-wrapper">
-              <div class="div-wrapper"><div class="text-wrapper">Channel Up</div></div>
+              <!--ADD CHANNEL UP FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
+              <button class="div-wrapper"><div class="text-wrapper">Channel Up</div></button>
             </div>
           </div>
           <div class="button-power-ON-OFF">
             <div class="overlap-group-wrapper">
-              <div class="div-wrapper"><div class="text-wrapper">Power On/off</div></div>
+              <!--ADD POWER ON/OFF FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
+              <button class="div-wrapper"><div class="text-wrapper">Power On/off</div></button>
             </div>
           </div>
           <div class="page-title"><div class="TV-controls">Tv Controls</div></div>
@@ -467,12 +476,12 @@
           </div>
           <div class="button-settings">
             <div class="group">
-              <div class="overlap-group"><div class="text">Settings</div></div>
+              <button class="overlap-group" onclick="openSubmenu(event,'music-menu','settings-page')"><div class="text">Settings</div></button>
             </div>
           </div>
           <div class="button-outlet">
             <div class="group">
-              <div class="overlap-group"><div class="text">Outlet Controls</div></div>
+              <button class="overlap-group"><div class="text">Outlet Controls</div></button>
             </div>
           </div>
           <div class="button-TV-controls">
