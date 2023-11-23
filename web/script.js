@@ -244,6 +244,10 @@ function togglePlug(e, state) {
 Keyboard Globals
 --------------------------------------------------
 */
+function addToPhrase(char) {
+    var textBox = document.getElementById("phrase-text-box");
+    textBox.innerText += char;
+}
 let msgHistory = {
     "topRow": ""
     ,"middleRow": ""
