@@ -14,6 +14,9 @@
 #outlet-menu{
   display: none;
 }
+#settings-page{
+  display: none;
+}
 .desktop-main-menu {
     background-color: #cffcff;
     display: flex;
