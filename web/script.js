@@ -259,7 +259,7 @@ const msgElements = {
     ,"middleRow": document.getElementById("text-string-middle")
     ,"editRow": document.getElementById("text-string-bottom")
 }
-
+/*
 let alphaKeyboardInnerHTML = `
 <div id="keyboard-row-1" class="keyboard-row alpha-keyboard-row">
     <button id="done-key"       class="keyboard-button alpha-keyboard" onpointerdown="endNewMessage(event)">DONE</button>    
@@ -353,7 +353,7 @@ let kbAttachPoint = document.getElementById('keyboard-attach-point')
 let editString = ""
 let charLimit = 30
 const positionIndicator = "|"
-
+*/
 /*
 --------------------------------------------------
 Keyboard Functions
