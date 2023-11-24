@@ -3,11 +3,17 @@ import rfcontroller # This import should be commented out when testing on a PC
 import json
 import pyautogui
 import threading
+import vlc
+import os
 
 controller = rfcontroller.RFController() # Comment this out when developing on desktop
 screenWidth, screenHeight = pyautogui.size()
 pyautogui.FAILSAFE = False
 
+# Assuming you have a directory with music files
+music_dir = 'Music'
+songs = os.listdir(music_dir)
+current_song_index = 0
 
 @eel.expose
 def togglePlug(command):
@@ -37,6 +43,35 @@ def loadConfig():
 @eel.expose
 def resetMouse():
     pyautogui.moveTo(0, screenHeight)
+
+# Initialize VLC
+player = vlc.MediaPlayer()
+
+@eel.expose
+def play_song(file_path):
+    media = vlc.Media(file_path)
+    player.set_media(media)
+    player.play()
+
+@eel.expose
+def pause_song():
+    player.pause()
+
+@eel.expose
+def stop_song():
+    player.stop()
+
+@eel.expose
+def next_song():
+    global current_song_index
+    current_song_index = (current_song_index + 1) % len(songs)
+    play_song(os.path.join(music_dir, songs[current_song_index]))
+
+@eel.expose
+def previous_song():
+    global current_song_index
+    current_song_index = (current_song_index - 1) % len(songs)
+    play_song(os.path.join(music_dir, songs[current_song_index]))
 
 if __name__ == "__main__":
     # eel.init('web', allowed_extensions=[".js",".html"])

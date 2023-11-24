@@ -473,6 +473,29 @@ const setKeyboardButtonCycle = (ele) => {
 }
 
 /*
+MUSIC PLAYER CONTROL FUNCTIONS
+
+*/
+function playSong(filePath) {
+    eel.play_song(filePath); // filePath is the path to the song file
+}
+
+function pauseSong() {
+    eel.pause_song();
+}
+
+function stopSong() {
+    eel.stop_song();
+}
+
+function nextSong() {
+    eel.next_song(); // Function to play the next song
+}
+
+function previousSong() {
+    eel.previous_song(); // Function to play the previous song
+}
+/*
 --------------------------------------------------
 Config
 --------------------------------------------------

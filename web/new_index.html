@@ -508,25 +508,25 @@
           <div class="button-skip-song">
             <div class="group">
               <!--ADD SKIP SONG FUNCTIONALITY HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-              <button class="overlap-group"><div class="text">Skip Song</div></button>
+              <button class="overlap-group" onclick="nextSong()"><div class="text">Skip Song</div></button>
             </div>
           </div>
           <div class="button-PAUSE-PLAY">
             <div class="group">
               <!--ADD PLAY/PAUSE SONG FUNCTIONALITY HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-              <button class="overlap-group"><div class="text">Pause/play</div></button>
+              <button class="overlap-group" onclick="pauseSong()"><div class="text">Pause/play</div></button>
             </div>
           </div>
           <div class="button-previous-song">
             <div class="group">
               <!--ADD PREV SONG FUNCTIONALITY HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-              <button class="overlap-group"><div class="text">Previous Song</div></button>
+              <button class="overlap-group" onclick="previousSong()"><div class="text">Previous Song</div></button>
             </div>
           </div>
           <div class="button-classical">
             <div class="overlap-group-wrapper">
               <!--ADD FUNCTIONALITY TO PLAY THE CLASSICAL MUSIC HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-              <button class="quick-phrases-wrapper"><div class="quick-phrases">Classical</div></button>
+              <button class="quick-phrases-wrapper" onclick="playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Classical')"><div class="quick-phrases">Classical</div></button>
             </div>
           </div>
           <div class="button-play-ALL">
@@ -538,7 +538,7 @@
           <div class="button-christian">
             <div class="overlap-group-wrapper">
               <!--ADD FUNCTIONALITY TO PLAY THE CHRISTIAN MUSIC HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-              <button class="quick-phrases-wrapper"><div class="quick-phrases">Christian</div></button>
+              <button class="quick-phrases-wrapper" onclick="playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Sample Christian 2')"><div class="quick-phrases">Christian</div></button>
             </div>
           </div>
           <!--ADD FUNCTIONALITY TO DISPLAY THE SONG INFO HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
