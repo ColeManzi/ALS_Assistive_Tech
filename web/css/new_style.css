@@ -1,7 +1,6 @@
 #main-menu {
   display: block; /* Initially visible */
 }
-
 #text-2-speech {
   display: none; /* Initially hidden */
 }
@@ -54,7 +53,7 @@
     letter-spacing: 0;
     line-height: normal;
   }
-  button.button-text-speech {
+  div.button-text-speech {
     position: absolute;
     width: 432px;
     height: 212px;
@@ -62,7 +61,7 @@
     left: 191px;
   }
   
-  button.button-TV-controls {
+  div.button-TV-controls {
     position: absolute;
     width: 432px;
     height: 212px;
@@ -70,7 +69,7 @@
     left: 771px;
   }
   
-  button.button-music {
+  div.button-music {
     top: 295px;
     left: 1340px;
     position: absolute;
@@ -78,15 +77,14 @@
     height: 212px;
   }
   
-  button.button-outlet {
+  div.button-outlet {
     position: absolute;
     width: 432px;
     height: 212px;
     top: 613px;
     left: 478px;
   }
-  
-  button.button-settings {
+  div.button-settings {
     top: 613px;
     left: 1059px;
     position: absolute;
@@ -121,6 +119,7 @@
     text-align: center;
     letter-spacing: 0;
     line-height: normal;
+    margin: auto;
   }
   .desktop-text {
     background-color: #cffcff;
@@ -135,7 +134,7 @@
     width: 1920px;
     height: 1080px;
   }
-  
+
   .desktop-text .overlap {
     position: relative;
     width: 1807px;

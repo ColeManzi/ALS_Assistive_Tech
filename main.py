@@ -6,6 +6,9 @@ import threading
 import vlc
 import os
 
+from gtts import gTTS
+import sys 
+
 #controller = rfcontroller.RFController() # Comment this out when developing on desktop
 screenWidth, screenHeight = pyautogui.size()
 pyautogui.FAILSAFE = False
