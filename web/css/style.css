@@ -86,6 +86,17 @@ div#plug-select {
    z-index: 7;
 }
 
+div#tv-remote-menu {
+   visibility: hidden;
+   position: absolute;
+   z-index: 8;
+}
+
+/* Does nothing but when removed, user TV Remote 
+buttons click doesn't register to the Arduino */
+#init-remtoe-btn {
+   display: none;
+}
 
 /* Keyboard CSS stuff */
 
