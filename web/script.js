@@ -14,6 +14,16 @@ const plugSelectOrder = [
     ,"main-menu-btn"
 ]
 
+const tvRemoteSelectOrder = [
+    "tv-power",
+    "tv-mute",
+    "tv-channel-up",
+    "tv-channel-down",
+    "tv-volume-up",
+    "tv-volume-down",
+    "main-menu-btn"
+];
+
 const plugSubmenuOrder = [
     "plug-submenu-on",
     "plug-submenu-off",
@@ -21,10 +31,11 @@ const plugSubmenuOrder = [
 ]
 
 const mainMenuOrder = [
-    "plugs"
-    ,"keyboard"
-    ,"settings"
-]
+    "plugs",
+    "keyboard",
+    "tv-remote",
+    "settings"
+];
 
 const settingsMenuOrder = [
     "single-input"
@@ -51,13 +62,14 @@ let dynamicKeyboardOrder = [] // Used for single input mode
 
 let menuIdMapping = {
     "plug-select" : plugSelectOrder,
-    "plug-submenu": plugSubmenuOrder
-    ,"main-menu": mainMenuOrder
-    ,"settings-menu": settingsMenuOrder
-    ,"keyboard-menu": keyboardMenuOrder
-    ,"dynamic-kb": dynamicKeyboardOrder
-    ,"configure-speed-menu": speedMenuOrder
-}
+    "plug-submenu": plugSubmenuOrder,
+    "main-menu": mainMenuOrder,
+    "settings-menu": settingsMenuOrder,
+    "keyboard-menu": keyboardMenuOrder,
+    "dynamic-kb": dynamicKeyboardOrder,
+    "configure-speed-menu": speedMenuOrder,
+    "tv-remote-menu": tvRemoteSelectOrder
+};
 
 let plugLabels = {
     "1" : "Plug 1",
@@ -66,6 +78,15 @@ let plugLabels = {
     "4" : "Plug 4",
     "5" : "Plug 5"
 }
+
+const tvRemoteLabels = {
+    "tv-power": "Power",
+    "tv-mute": "Mute",
+    "tv-channel-up": "Channel Up",
+    "tv-channel-down": "Channel Down",
+    "tv-volume-up": "Volume Up",
+    "tv-volume-down": "Volume Down"
+};
 
 /*
 ---------------------------------------
@@ -167,6 +188,75 @@ function openPlugSubmenu(event, plugLabel) {
     openSubmenu(event, 'plug-select', 'plug-submenu')
     
 }
+
+
+/*
+--------------------------------------------------
+TV Control Functions
+--------------------------------------------------
+*/
+/*
+--------------------------------------------------
+*/
+/* Does nothing but when removed, user TV Remote 
+buttons click doesn't register to the Arduino */
+function powerOn() { 
+    //eel.powerOn() 
+   }
+const button = document.getElementById("init-remtoe-btn");
+button.addEventListener("click", powerOn);
+/*
+--------------------------------------------------
+*/
+
+// Function to send power on/off command
+function powerOnOff() {
+    eel.powerOnOff();
+}
+// Attach powerOnOff function to button
+const powerButton = document.getElementById("tv-power");
+powerButton.addEventListener("click", powerOnOff);
+
+// Function to send mute command
+function muteUnmute() {
+    eel.muteUnmute();
+}
+// Attach muteUnmute function to button
+const muteButton = document.getElementById("tv-mute");
+muteButton.addEventListener("click", muteUnmute);
+
+// Function to send volume up command
+function volumeUp() {
+    eel.volumeUp();
+}
+// Attach volumeUp function to button
+const volumeUpButton = document.getElementById("tv-volume-up");
+volumeUpButton.addEventListener("click", volumeUp);
+
+// Function to send volume down command
+function volumeDown() {
+    eel.volumeDown();
+}
+// Attach volumeDown function to button
+const volumeDownButton = document.getElementById("tv-volume-down");
+volumeDownButton.addEventListener("click", volumeDown);
+
+// Function to send channel up command
+function channelUp() {
+    eel.channelUp();
+}
+// Attach channelUp function to button
+const channelUpButton = document.getElementById("tv-channel-up");
+channelUpButton.addEventListener("click", channelUp);
+
+// Function to send channel down command
+function channelDown() {
+    eel.channelDown();
+}
+// Attach channelDown function to button
+const channelDownButton = document.getElementById("tv-channel-down");
+channelDownButton.addEventListener("click", channelDown);
+
 
 /*
 --------------------------------------------------
