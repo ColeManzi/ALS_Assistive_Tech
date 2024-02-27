@@ -14,44 +14,16 @@
 </head>
 
 <body onload="init()" oncontextmenu="return false;">
-    <!-- <div id="top-bar">
-        <div id="time">
-            <h2>00:00 PM</h2>
-        </div>
-        <div id="battery">
-
-        </div>
-    </div> -->
-
-    <!--<div id="main-menu" class="menu-wrapper">
-       
-        <button class="menu-button" id="plugs"    
-            onpointerdown="openSubmenu(event, 'main-menu', 'plug-select')"
-            oncontextmenu="openSubmenu(event, 'main-menu', 'plug-select'); return false;"
-            >
-                Plugs
-        </button>
-        <button class="menu-button" id="keyboard"
-            onpointerdown="openSubmenu(event, 'main-menu', 'keyboard-menu')" 
-            oncontextmenu="openSubmenu(event, 'main-menu', 'keyboard-menu'); return false;"
-            >
-                Keyboard
-        </button>
-        <button class="menu-button" id="settings" 
-            onpointerdown="openSubmenu(event, 'main-menu', 'configure-speed-menu')"
-            oncontextmenu="openSubmenu(event, 'main-menu', 'configure-speed-menu'); return false;"
-            >
-                Settings
-        </button>
-    </div>-->
-
-    <div class = "desktop-main-menu" id ="main-menu" >
+  <!--MAIN MENU BUTTONS-->
+    <div class = "desktop-main-menu" id ="main-menu">
         <div class="div">
+          <!--PAGE TITLE-->
           <div class="page-title">
             <div class="text-wrapper">
             Main Menu
             </div>
         </div >
+        <!--TEXT-2-SPEECH MAIN MENU BUTTON-->
         <div class="button-text-speech" 
             onclick="openSubmenu(event, 'main-menu', 'text-2-speech')">
             <div class="group">
@@ -60,26 +32,26 @@
                 </div>
             </div>
           </div>
-        
+          <!--TV CONTROLS MAIN MENU BUTTON-->
           <div class="button-TV-controls"
               onclick="openSubmenu(event,'main-menu', 'tv-control-menu')">
             <div class="group">
               <div class="overlap-group"><div class="text-wrapper-2">Tv Controls</div></div>
             </div>
           </div>
-
+          <!--MUSIC CONTROL MAIN MENU BUTTON-->
           <div class="button-music" onclick="openSubmenu(event,'main-menu','music-menu')">
             <div class="group">
               <div class="overlap-group"><div class="text-wrapper-2">Music</div></div>
             </div>
           </div>
-
+          <!--OUTLET MAIN MENU BUTTON -->
           <div class="button-outlet" onclick="openSubmenu(event,'main-menu','outlet-menu')">
             <div class="group">
               <div class="overlap-group"><div class="text-wrapper-2">Outlet Controls</div></div>
             </div>
           </div>
-
+          <!--SETTINGS MAIN MENU BUTTON-->
           <div class="button-settings" onclick="openSubmenu(event,'main-menu','settings-page')">
             <div class="group">
               <div class="overlap-group" >
@@ -91,7 +63,7 @@
         </div>
       </div>
       
-      <!--Text-2-speech page -->
+      <!--TEXT-2-SPEECH MENU-->
       <div class="desktop-text" id = "text-2-speech">
         <div class="overlap-wrapper">
           <div class="overlap">
@@ -317,7 +289,7 @@
                     <div class="key-speak-it">
                       <div class="group-3">
                         <!--ADD FUNCTIONALITY TO COLLECT STRING FROM TEXT PHRASE BOX AND PASS TO TEXT TO SPEECH-->
-                        <button class="speak-it-wrapper"><div class="speak-it">Speak It</div></button>
+                        <button onclick="speakPhrase()" class="speak-it-wrapper"><div class="speak-it">Speak It</div></button>
                       </div>
                     </div>
                     <div class="key-space">
@@ -386,21 +358,21 @@
             <div class="button-ask-something">
               <div class="group-7">
                 <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY OUT LOUD-->
-                <button class="overlap-group-6"><p class="text">I’d Like To Ask You Something</p></button>
+                <button onclick="speakCanIAsk()" class="overlap-group-6"><p class="text">I’d Like To Ask You Something</p></button>
               </div>
             </div>
-            <div class="button-starts-with">
+            <div onclick="speakItStarts()" class="button-starts-with">
               <div class="group-7">
                 <button class="overlap-group-6"><div class="text">It Starts With ...</div></button>
               </div>
             </div>
-            <div class="button-no">
+            <div onclick="speakNo()" class="button-no">
               <div class="group-7">
                 <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY NO OUT LOUD-->
                 <button class="overlap-group-6"><div class="text">No</div></button>
               </div>
             </div>
-            <div class="button-yes">
+            <div onclick="speakYes()" class="button-yes">
               <div class="group-7">
                 <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY YES OUT LOUD-->
                 <button class="overlap-group-6"><div class="text">Yes</div></button>

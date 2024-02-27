@@ -95,34 +95,10 @@ function init() {
     }
 }
 /*
-function setTime() {
-    const currTime = new Date();
-    let hr = currTime.getHours();
-    let min = currTime.getMinutes();
-    let amPm = "AM"
-    if (min < 10) {
-        min = "0" + min;
-    }
-    if (hr >= 12) {
-        hr = hr % 12;
-        amPm = "PM";
-    }
-    if (hr == 0) {
-        hr = 12;
-    }
-    document.getElementById("time").innerHTML = "<h2>" + hr + ":" + min + " " + amPm + "</h2>";
-    setTimeout(setTime, 1000);
-}
-*/
 function resetMouse(event){
     if (event != undefined) event.stopPropagation()
     eel.resetMouse()
 }
-
-/*
-----------------------------------------------
-Menu Control Functions
-----------------------------------------------
 */
 
 const changeMenu = (e, newMenuID) => {
@@ -137,16 +113,6 @@ const changeMenu = (e, newMenuID) => {
     newMenu.style.visibility = 'visible'
 }
 
-function openSubmenu(event, supermenuId, submenuId) {
-    if (event != undefined) event.stopPropagation();
-    let supermenu = document.getElementById(supermenuId)
-    let submenu = document.getElementById(submenuId)
-
-    if (singleInputMode) resetCycle(submenuId)
-
-    supermenu.style.visibility = 'hidden'
-    submenu.style.visibility = 'visible'
-}
 
 function closeSubmenu(event, supermenuId, submenuId) {
     if (event != undefined) event.stopPropagation();
@@ -244,10 +210,7 @@ function togglePlug(e, state) {
 Keyboard Globals
 --------------------------------------------------
 */
-function addToPhrase(char) {
-    var textBox = document.getElementById("phrase-text-box");
-    textBox.innerText += char;
-}
+
 /*
 --------------------------------------------------
 Keyboard Functions
@@ -283,10 +246,39 @@ const setKeyboardButtonCycle = (ele) => {
     menuIdMapping["dynamic-kb"] = dynamicKeyboardOrder
     resetCycle("dynamic-kb")
 }
-
 /*
-MUSIC PLAYER CONTROL FUNCTIONS
+_________________________________________________________________________________________________
+TEXT-2-SPEECH FUNCTIONS
+_________________________________________________________________________________________________
+*/
+function addToPhrase(char) {
+    var textBox = document.getElementById("phrase-text-box");
+    textBox.innerText += char;
+}
+eel.expose(addToPhrase);
 
+function speakYes() {
+    eel.speak_yes();  // Call the Python function
+}
+function speakNo(){
+    eel.speak_no();
+}
+function speakItStarts(){
+    eel.speak_it_starts();
+}
+function speakCanIAsk(){
+    eel.speak_can_i_ask();
+}
+function speakPhrase() {
+    var textBox = document.getElementById("phrase-text-box");
+    var text = textBox.innerText; // Use .value for input box, .innerText or .textContent for div/span
+    eel.speak_text(text); // Call the Python function
+}
+eel.expose(speakPhrase);
+/*
+_________________________________________________________________________________________________
+MUSIC PLAYER CONTROL FUNCTIONS
+__________________________________________________________________________________________________
 */
 function playSong(filePath) {
     eel.play_song(filePath); // filePath is the path to the song file
