@@ -91,6 +91,7 @@ def speak_text(text):
         os.system(f"open {fp.name}.mp3") # For Windows use "start" instead of "open"
         # For Linux you might use os.system(f"mpg321 {fp.name}.mp3")
 
+
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 # Assuming you have a directory with music files
 music_dir = 'Music'

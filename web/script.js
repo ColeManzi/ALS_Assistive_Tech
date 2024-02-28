@@ -1,6 +1,6 @@
 /*
 -------------------------------------------
-Constants
+            Constants
 -------------------------------------------
 */
 
@@ -69,7 +69,7 @@ let plugLabels = {
 
 /*
 ---------------------------------------
-Global Vars
+            Global Vars
 ---------------------------------------
 */
 let singleInputMode = true
@@ -80,6 +80,12 @@ var previousColor
 var cycleTimeout
 var cycleTime =  1000  //2000
 
+
+/*
+--------------------------------------------------
+                INITIALIZATION
+--------------------------------------------------
+*/
 function init() {
     // setTime();
     eel.loadConfig()
@@ -101,6 +107,7 @@ function resetMouse(event){
 }
 */
 
+/*
 const changeMenu = (e, newMenuID) => {
     if (e != undefined) e.stopPropagation()
     let currentMenu = document.getElementById(e.currentTarget.id)
@@ -112,7 +119,7 @@ const changeMenu = (e, newMenuID) => {
     currentMenu.style.visibility = 'hidden'
     newMenu.style.visibility = 'visible'
 }
-
+*/
 
 function closeSubmenu(event, supermenuId, submenuId) {
     if (event != undefined) event.stopPropagation();
@@ -139,7 +146,7 @@ function openSubmenu(event, supermenuId, submenuId) {
 
 /*
 --------------------------------------------------
-Single Input Mode Functions
+        Single Input Mode Functions
 --------------------------------------------------
 */
 
@@ -191,6 +198,11 @@ function cycleSelection() {
     // console.log(selectedMenuOrder[selectedIndex])
     cycleTimeout = setTimeout(cycleSelection, cycleTime)
 }
+/*
+--------------------------------------------------
+            RF CONTROLLER CODE
+--------------------------------------------------
+*/
 
 function togglePlug(e, state) {
     let plugId = document.getElementById('plug-submenu').getAttribute('plug-label')
@@ -207,13 +219,7 @@ function togglePlug(e, state) {
 
 /*
 --------------------------------------------------
-Keyboard Globals
---------------------------------------------------
-*/
-
-/*
---------------------------------------------------
-Keyboard Functions
+            Keyboard Functions
 --------------------------------------------------
 */
 
@@ -248,14 +254,18 @@ const setKeyboardButtonCycle = (ele) => {
 }
 /*
 _________________________________________________________________________________________________
-TEXT-2-SPEECH FUNCTIONS
+                                TEXT-2-SPEECH FUNCTIONS
 _________________________________________________________________________________________________
 */
 function addToPhrase(char) {
     var textBox = document.getElementById("phrase-text-box");
-    textBox.innerText += char;
+    if (char === ' ') {
+        textBox.innerHTML += '&nbsp;'; // Add a non-breaking space for visible effect
+    } else {
+        textBox.innerText += char;
+    }
 }
-eel.expose(addToPhrase);
+eel.expose(addToPhrase);//expose to eel
 
 function speakYes() {
     eel.speak_yes();  // Call the Python function
@@ -273,11 +283,13 @@ function speakPhrase() {
     var textBox = document.getElementById("phrase-text-box");
     var text = textBox.innerText; // Use .value for input box, .innerText or .textContent for div/span
     eel.speak_text(text); // Call the Python function
+    
+    textBox.innerText = '';
 }
-eel.expose(speakPhrase);
+    eel.expose(speakPhrase);
 /*
 _________________________________________________________________________________________________
-MUSIC PLAYER CONTROL FUNCTIONS
+                                MUSIC PLAYER CONTROL FUNCTIONS
 __________________________________________________________________________________________________
 */
 function playSong(filePath) {
@@ -301,7 +313,7 @@ function previousSong() {
 }
 /*
 --------------------------------------------------
-Config
+                Config
 --------------------------------------------------
 */
 

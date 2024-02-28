@@ -1026,6 +1026,8 @@
     height: 212px;
     top: 31px;
     left: 212px;
+    font-size: 80px; /* Adjust font size as needed */
+    font-weight: bold; /* Make the text bold */
   }
   
   .desktop-text .phrase {
@@ -1537,7 +1539,7 @@
     width: 225px;
     height: 150px;
     top: 623px;
-    left: 1154px;
+    left: 1187px;
     overflow: hidden;
   }
   
@@ -1546,7 +1548,7 @@
     width: 225px;
     height: 150px;
     top: 623px;
-    left: 847px;
+    left: 45%;
     overflow: hidden;
   }
   
@@ -1564,7 +1566,7 @@
     width: 432px;
     height: 212px;
     top: 358px;
-    left: 1245px;
+    left: 55%;
   }
   
   .desktop-music-menu .overlap-group-wrapper {
@@ -1609,7 +1611,7 @@
     width: 432px;
     height: 212px;
     top: 358px;
-    left: 243px;
+    left: 25%;
   }
   
   .desktop-music-menu .display {

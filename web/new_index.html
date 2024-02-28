@@ -297,7 +297,7 @@
                         <div class="overlap-group-3">
                           <button onclick="addToPhrase(' ')" class="rectangle"></button>
                           <!--ADD FUNCTIONALITY FOR SPACE KEY-->
-                          <div class="text-wrapper-19">Space / New Word</div>
+                          <div onclick="addToPhrase(' ')" class="text-wrapper-19">Space / New Word</div>
                         </div>
                       </div>
                     </div>
@@ -313,7 +313,7 @@
                   </div>
                   <div class="phrase-text">
                     <!--THIS IS WHERE THE TEXT BOX IS, CHANGE CSS TO MAKE THE TEXT LOOK BETTER IN THE TEXT BOX LATER-->
-                    <div class="phrase" id="phrase-text-box"></div>
+                    <div class="phrase" id="phrase-text-box" contenteditable="true"></div>
                   </div>
                   <!--THIS IS WHERE PREDICTIVE TEXT FUNCTIONALITY WILL GO, THIS WILL NEED TO BE DONE IN JAVASCRIPT, *MAY BE VERY INVOLVED*-->
                   <div class="predictive-text">

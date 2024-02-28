@@ -1,5 +1,5 @@
 eel
-rpi_rf
 pyautogui
 serial
 gTTS
+vlc
