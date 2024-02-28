@@ -93,19 +93,33 @@ def speak_text(text):
 
 
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
-# Assuming you have a directory with music files
-music_dir = 'Music'
-songs = os.listdir(music_dir)
+
+classical_music_dir = '/Users/ianschaefer/ALS-Assistive-Tech/Music/Classical'
+christian_music_dir = '/Users/ianschaefer/ALS-Assistive-Tech/Music/Sample Christian 2'
 current_song_index = 0
+current_genre = ""  # Define the current genre variable
 
 # Initialize VLC
 player = vlc.MediaPlayer()
 
 @eel.expose
-def play_song(file_path):
+def set_music_directory(directory):
+    global current_music_dir, current_songs, current_genre
+    if directory == 'classical':
+        current_music_dir = classical_music_dir
+        current_genre = "Classical"  # Update the current genre
+    elif directory == 'christian':
+        current_music_dir = christian_music_dir
+        current_genre = "Christian"  # Update the current genre
+    current_songs = os.listdir(current_music_dir)
+
+@eel.expose
+def play_song(file_name, genre):
+    file_path = os.path.join(current_music_dir, file_name)
     media = vlc.Media(file_path)
     player.set_media(media)
     player.play()
+    eel.updateSongInformation(os.path.basename(file_path), genre)  # Update song information
 
 @eel.expose
 def pause_song():
@@ -118,14 +132,17 @@ def stop_song():
 @eel.expose
 def next_song():
     global current_song_index
-    current_song_index = (current_song_index + 1) % len(songs)
-    play_song(os.path.join(music_dir, songs[current_song_index]))
+    current_song_index = (current_song_index + 1) % len(current_songs)
+    file_path = os.path.join(current_music_dir, current_songs[current_song_index])
+    play_song(current_songs[current_song_index], current_genre)  # Pass current_genre to play_song()
 
 @eel.expose
 def previous_song():
     global current_song_index
-    current_song_index = (current_song_index - 1) % len(songs)
-    play_song(os.path.join(music_dir, songs[current_song_index]))
+    current_song_index = (current_song_index - 1) % len(current_songs)
+    file_path = os.path.join(current_music_dir, current_songs[current_song_index])
+    play_song(current_songs[current_song_index], current_genre)  # Pass current_genre to play_song()
+
 
 ######################################  TV CONTROL FUNCTIONS    #######################################
 

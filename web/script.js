@@ -292,8 +292,21 @@ ________________________________________________________________________________
                                 MUSIC PLAYER CONTROL FUNCTIONS
 __________________________________________________________________________________________________
 */
-function playSong(filePath) {
-    eel.play_song(filePath); // filePath is the path to the song file
+function setMusicDirectory(directory){
+    eel.set_music_directory(directory);
+}
+function playClassicalMusic() {
+    setMusicDirectory('classical'); // Set music directory to classical
+    playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Classical/[SPOTIFY-DOWNLOADER.COM] Ave Maria (after J.S. Bach).mp3', 'classical'); // Play the first song (replace with actual song name)
+}
+
+function playChristianMusic() {
+    setMusicDirectory('christian'); // Set music directory to christian
+    playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Sample Christian 2/[SPOTIFY-DOWNLOADER.COM] Amazing Grace.mp3', 'christian'); // Play the first song (replace with actual song name)
+}
+
+function playSong(filePath, genre) {
+    eel.play_song(filePath, genre); // filePath is the path to the song file
 }
 
 function pauseSong() {
@@ -311,6 +324,13 @@ function nextSong() {
 function previousSong() {
     eel.previous_song(); // Function to play the previous song
 }
+// Update the song information displayed in the div boxes
+function updateSongInformation(songName, genre) {
+    document.getElementById("song-playing").innerText = "Now Playing: " + songName;
+    document.getElementById("genre").innerText = "Genre: " + genre;
+}
+eel.expose(updateSongInformation); // Expose the function to Eel
+
 /*
 --------------------------------------------------
                 Config

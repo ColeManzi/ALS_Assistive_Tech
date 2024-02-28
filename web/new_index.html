@@ -501,19 +501,19 @@
           <div class="button-classical">
             <div class="overlap-group-wrapper">
               <!--ADD FUNCTIONALITY TO PLAY THE CLASSICAL MUSIC HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-              <button class="quick-phrases-wrapper" onclick="playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Classical/[SPOTIFY-DOWNLOADER.COM] Ave Maria (after J.S. Bach).mp3')"><div class="quick-phrases">Classical</div></button>
+              <button class="quick-phrases-wrapper" onclick="playClassicalMusic()"><div class="quick-phrases">Classical</div></button>
             </div>
           </div>
           <div class="button-christian">
             <div class="overlap-group-wrapper">
               <!--ADD FUNCTIONALITY TO PLAY THE CHRISTIAN MUSIC HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-              <button class="quick-phrases-wrapper" onclick="playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Sample Christian 2/[SPOTIFY-DOWNLOADER.COM] Amazing Grace.mp3')"><div class="quick-phrases">Christian</div></button>
+              <button class="quick-phrases-wrapper" onclick="playChristianMusic()"><div class="quick-phrases">Christian</div></button>
             </div>
           </div>
           <!--ADD FUNCTIONALITY TO DISPLAY THE SONG INFO HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
           <div class="display">
-            <div class="song-playing"></div>
-            <div class="genre"></div>
+            <div id="song-playing" class="song-playing"></div>
+            <div id="genre" class="genre"></div>
           </div>
           <div class="page-title"><div class="text-wrapper">Music</div></div>
         </div>
