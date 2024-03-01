@@ -16,6 +16,11 @@
 #settings-page{
   display: none;
 }
+.overlap-group.highlighted {
+  background-color: #ffe135; /* Bright yellow for visibility */
+  border: 2px solid #000; /* Solid black border */
+  box-shadow: 0 0 10px #000; /* Black shadow for a glowing effect */
+}
 .desktop-main-menu {
     background-color: #cffcff;
     display: flex;

@@ -187,17 +187,49 @@ function accessibilityMouseClick(e) {
     }
 }
 
-function cycleSelection() {
-    if (previousElement != null) previousElement.style.backgroundColor = previousColor;
-    selectedIndex = (selectedIndex + 1) % selectedMenuOrder.length
-    var hoveredElement = document.getElementById(selectedMenuOrder[selectedIndex])
-    previousElement = hoveredElement
-    previousColor = previousElement.style.backgroundColor;
-    hoveredElement.style.backgroundColor = "orange";
-    // Handle Hover Element Highlighting
-    // console.log(selectedMenuOrder[selectedIndex])
-    cycleTimeout = setTimeout(cycleSelection, cycleTime)
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const menuContainer = document.getElementById('main-menu');
+    let cycleTimeout;
+    let currentIndex = 0;
+    const menuItems = menuContainer.querySelectorAll('.button-text-speech, .button-TV-controls, .button-music, .button-outlet, .button-settings');
+    let cycling = false;
+
+    const highlightItem = (index) => {
+        // First, remove highlight from all items
+        menuItems.forEach(item => {
+            const overlapGroup = item.querySelector('.overlap-group');
+            if (overlapGroup) {
+                overlapGroup.classList.remove('highlighted');
+            }
+        });
+        // Then, add highlight to the current item
+        const currentOverlapGroup = menuItems[index].querySelector('.overlap-group');
+        if (currentOverlapGroup) {
+            currentOverlapGroup.classList.add('highlighted');
+        }
+    };
+
+    const cycleItems = () => {
+        if (!cycling) return;
+        highlightItem(currentIndex);
+        currentIndex = (currentIndex + 1) % menuItems.length; // Move increment here
+        cycleTimeout = setTimeout(cycleItems, 1000); // Adjust time as needed
+    };
+
+    menuContainer.addEventListener('pointerdown', function() {
+        cycling = true;
+        cycleItems();
+    });
+
+    document.addEventListener('pointerup', function() {
+        if (!cycling) return;
+        clearTimeout(cycleTimeout);
+        cycling = false;
+        const selectedItemIndex = (currentIndex === 0 ? menuItems.length : currentIndex) - 1; // Adjust for the increment in cycleItems
+        menuItems[selectedItemIndex].click(); // Click the highlighted item
+    });
+});
+
 /*
 --------------------------------------------------
             RF CONTROLLER CODE
