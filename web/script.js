@@ -66,6 +66,26 @@ let plugLabels = {
     "4" : "Plug 4",
     "5" : "Plug 5"
 }
+/*
+_____________________________________________________________________________________________________
+                                            MAIN MENU CONSTANTS
+_____________________________________________________________________________________________________
+*/
+const menuContainer = document.getElementById('main-menu');
+const menuItems = menuContainer.querySelectorAll('.button-text-speech, .button-TV-controls, .button-music, .button-outlet, .button-settings');
+
+/*
+_____________________________________________________________________________________________________
+                                            T2S/KEYBOARD CONSTANTS
+_____________________________________________________________________________________________________
+*/
+const t2sContainer = document.getElementById('text-2-speech');
+const t2sItems = t2sContainer.querySelectorAll('.button-yes, .button-no, .button-starts-with, .button-ask-something, .button-large, .keyboard, .button-TV-controls, .button-music, .button-outlet, .button-settings, .button-main-menu')
+
+const keyboardContainer = document.getElementById('keyboard');
+const keyboardItems = keyboardContainer.querySelectorAll('.key-q, .key-w, .key-e, .key-r, .key-t, .key-y, .key-u, .key-i, .key-o, .key-p, .key-a, .key-s, .key-d, .key-f, .key-g, .key-h, .key-j, .key-k, .key-l, .key-z, .key-x, .key-c, .key-v, .key-b, .key-n, .key-m');
+
+/*
 
 /*
 ---------------------------------------
@@ -132,6 +152,10 @@ function closeSubmenu(event, supermenuId, submenuId) {
     supermenu.style.visibility = 'visible'
 }
 
+//default to main menu container and items
+let currentContainer = menuContainer;
+let currentItems = menuItems;
+
 function openSubmenu(event, supermenuId, submenuId) {
     if (event != undefined) event.stopPropagation();
     let supermenu = document.getElementById(supermenuId);
@@ -140,6 +164,15 @@ function openSubmenu(event, supermenuId, submenuId) {
     if (supermenu && submenu) {
         supermenu.style.display = 'none'; // Hide the supermenu
         submenu.style.display = 'block'; // Show the submenu
+
+        if(submenuId === 'main-menu'){
+            currentContainer = menuContainer;
+            currentItems = menuItems;
+        }
+        if(submenuId === 'text-2-speech'){
+            currentContainer = t2sContainer;
+            currentItems = t2sItems;
+        }
     }
 }
 
@@ -188,48 +221,52 @@ function accessibilityMouseClick(e) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const menuContainer = document.getElementById('main-menu');
     let cycleTimeout;
     let currentIndex = 0;
-    const menuItems = menuContainer.querySelectorAll('.button-text-speech, .button-TV-controls, .button-music, .button-outlet, .button-settings');
     let cycling = false;
 
-    const highlightItem = (index) => {
-        // First, remove highlight from all items
-        menuItems.forEach(item => {
-            const overlapGroup = item.querySelector('.overlap-group');
-            if (overlapGroup) {
-                overlapGroup.classList.remove('highlighted');
-            }
+    const keyboardButton = document.querySelector('.keyboard'); // If there's only one keyboard button
+    if (keyboardButton) {
+        keyboardButton.addEventListener('click', function() {
+            currentContainer = keyboardContainer;
+            currentItems = keyboardItems;
         });
-        // Then, add highlight to the current item
-        const currentOverlapGroup = menuItems[index].querySelector('.overlap-group');
-        if (currentOverlapGroup) {
-            currentOverlapGroup.classList.add('highlighted');
+    }
+    const highlightItem = (index) => {
+        // First, remove the yellow glow from all current items
+        currentItems.forEach(item => {
+            item.style.boxShadow = ''; // Remove any existing glow effect
+        });
+        // Then, apply a yellow glow to the current item
+        const currentItem = currentItems[index];
+        if (currentItem) {
+            currentItem.style.boxShadow = '0 0 10px yellow'; // Apply a yellow glow effect
         }
     };
 
     const cycleItems = () => {
         if (!cycling) return;
         highlightItem(currentIndex);
-        currentIndex = (currentIndex + 1) % menuItems.length; // Move increment here
-        cycleTimeout = setTimeout(cycleItems, 1000); // Adjust time as needed
+        currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+        cycleTimeout = setTimeout(cycleItems, 1000);
     };
 
-    menuContainer.addEventListener('pointerdown', function() {
-        cycling = true;
-        cycleItems();
+    // Use a more generic event listener that checks if the currentContainer contains the event target
+    document.addEventListener('pointerdown', function(event) {
+        if (currentContainer.contains(event.target)) {
+            cycling = true;
+            cycleItems();
+        }
     });
 
     document.addEventListener('pointerup', function() {
         if (!cycling) return;
         clearTimeout(cycleTimeout);
         cycling = false;
-        const selectedItemIndex = (currentIndex === 0 ? menuItems.length : currentIndex) - 1; // Adjust for the increment in cycleItems
-        menuItems[selectedItemIndex].click(); // Click the highlighted item
+        const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+        currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
     });
 });
-
 /*
 --------------------------------------------------
             RF CONTROLLER CODE
