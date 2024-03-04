@@ -45,7 +45,7 @@ def loadConfig():
 
 #@eel.expose
 #def resetMouse():
-#    pyautogui.moveTo(0, screenHeight)
+    #pyautogui.moveTo(0, screenHeight)
 
 ######################################  TEXT-2-SPEECH ############################################################
 
