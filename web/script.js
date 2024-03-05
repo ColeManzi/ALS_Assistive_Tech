@@ -11,7 +11,7 @@ const plugSelectOrder = [
     "plug-3",
     "plug-4",
     "plug-5"
-    ,"main-menu-btn"
+    , "main-menu-btn"
 ]
 
 const plugSubmenuOrder = [
@@ -22,75 +22,96 @@ const plugSubmenuOrder = [
 
 const mainMenuOrder = [
     "plugs"
-    ,"keyboard"
-    ,"settings"
+    , "keyboard"
+    , "settings"
 ]
 
 const settingsMenuOrder = [
     "single-input"
-    ,"touch-mouse"
-    ,"configure-speed"
-    ,"settings-back"
+    , "touch-mouse"
+    , "configure-speed"
+    , "settings-back"
 ]
 
 const speedMenuOrder = [
     "speed-500"
-    ,"speed-1000"
-    ,"speed-1500"
-    ,"speed-2000"
-    ,"speed-back"
+    , "speed-1000"
+    , "speed-1500"
+    , "speed-2000"
+    , "speed-back"
 
 ]
 
 const keyboardMenuOrder = [
     "keyboard-new-btn"
-    ,"keyboard-menu-btn"
+    , "keyboard-menu-btn"
 ]
 
 let dynamicKeyboardOrder = [] // Used for single input mode
 
 let menuIdMapping = {
-    "plug-select" : plugSelectOrder,
+    "plug-select": plugSelectOrder,
     "plug-submenu": plugSubmenuOrder
-    ,"main-menu": mainMenuOrder
-    ,"settings-menu": settingsMenuOrder
-    ,"keyboard-menu": keyboardMenuOrder
-    ,"dynamic-kb": dynamicKeyboardOrder
-    ,"configure-speed-menu": speedMenuOrder
+    , "main-menu": mainMenuOrder
+    , "settings-menu": settingsMenuOrder
+    , "keyboard-menu": keyboardMenuOrder
+    , "dynamic-kb": dynamicKeyboardOrder
+    , "configure-speed-menu": speedMenuOrder
 }
 
 let plugLabels = {
-    "1" : "Plug 1",
-    "2" : "PLug 2",
-    "3" : "Plug 3",
-    "4" : "Plug 4",
-    "5" : "Plug 5"
+    "1": "Plug 1",
+    "2": "PLug 2",
+    "3": "Plug 3",
+    "4": "Plug 4",
+    "5": "Plug 5"
 }
+
 /*
 _____________________________________________________________________________________________________
                                             MAIN MENU CONSTANTS
 _____________________________________________________________________________________________________
 */
 const menuContainer = document.getElementById('main-menu');
-const menuItems = menuContainer.querySelectorAll('.button-text-speech, .button-TV-controls, .button-music, .button-outlet, .button-settings');
-
+const menuItems = menuContainer.querySelectorAll('.button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings');
 /*
 _____________________________________________________________________________________________________
                                             T2S/KEYBOARD CONSTANTS
 _____________________________________________________________________________________________________
 */
 const t2sContainer = document.getElementById('text-2-speech');
-const t2sItems = t2sContainer.querySelectorAll('.button-yes, .button-no, .button-starts-with, .button-ask-something, .button-large, .keyboard, .button-TV-controls, .button-music, .button-outlet, .button-settings, .button-main-menu')
+const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.keyboard,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu');
 
 const keyboardContainer = document.getElementById('keyboard');
-const keyboardItems = keyboardContainer.querySelectorAll('.key-q, .key-w, .key-e, .key-r, .key-t, .key-y, .key-u, .key-i, .key-o, .key-p, .key-a, .key-s, .key-d, .key-f, .key-g, .key-h, .key-j, .key-k, .key-l, .key-z, .key-x, .key-c, .key-v, .key-b, .key-n, .key-m');
+const keyboardItems = keyboardContainer.querySelectorAll('.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.group-wrapper-2,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-space,.key-new-phrase,.key-go-back');
 
+/**
+___________________________________________________________________________________________________
+                                        TV CONTROL CONSTANTS
+___________________________________________________________________________________________________
+ */
+const tvContainer = document.getElementById('tv-control-menu');
+const tvItems = tvContainer.querySelectorAll('.button-main-menu,.button-settings,.button-outlet,.button-music,.button-text-speech,.button-mute-ON-OFF,.button-volume-DOWN,.button-volume-UP,.button-channel-DOWN,.button-channel-UP,.button-power-ON-OFF');
 /*
-
 /*
----------------------------------------
+___________________________________________________________________________________________________
+                                        MUSIC CONTROL CONSTANTS
+___________________________________________________________________________________________________
+*/
+const musicContainer = document.getElementById('music-menu');
+const musicItems = musicContainer.querySelectorAll('.button-main-menu,.button-settings,.button-outlet,.button-TV-controls,.button-text-speech,.button-skip-song,.button-PAUSE-PLAY,.button-previous-song,.button-classical,.button-christian');
+/*
+/*
+____________________________________________________________________________________________________________________
+                                        OUTLET CONTROL CONSTANTS
+____________________________________________________________________________________________________________________
+*/
+const outletContainer = document.getElementById('outlet-menu');
+const outletItems = outletContainer.querySelectorAll('.button-main-menu,.button-settings,.button-TV-controls,.button-music,.button-text-speech,');
+/*
+____________________________________________________________________________________________________________________
             Global Vars
----------------------------------------
+____________________________________________________________________________________________________________________
 */
 let singleInputMode = true
 var selectedIndex = -1
@@ -98,8 +119,7 @@ var selectedMenuOrder
 var previousElement
 var previousColor
 var cycleTimeout
-var cycleTime =  1000  //2000
-
+var cycleTime = 1000  //2000
 
 /*
 --------------------------------------------------
@@ -109,7 +129,7 @@ var cycleTime =  1000  //2000
 function init() {
     // setTime();
     eel.loadConfig()
-    for(button of document.getElementsByTagName('button')){
+    for (button of document.getElementsByTagName('button')) {
         // button.addEventListener('click', resetMouse) // Changed to pointerdown event for change
         button.addEventListener('pointerdown', resetMouse)
     }
@@ -145,9 +165,9 @@ function closeSubmenu(event, supermenuId, submenuId) {
     if (event != undefined) event.stopPropagation();
     let supermenu = document.getElementById(supermenuId)
     let submenu = document.getElementById(submenuId)
-    
+
     if (singleInputMode) resetCycle(supermenuId)
-    
+
     submenu.style.visibility = 'hidden'
     supermenu.style.visibility = 'visible'
 }
@@ -165,13 +185,21 @@ function openSubmenu(event, supermenuId, submenuId) {
         supermenu.style.display = 'none'; // Hide the supermenu
         submenu.style.display = 'block'; // Show the submenu
 
-        if(submenuId === 'main-menu'){
+        if (submenuId === 'main-menu') {
             currentContainer = menuContainer;
             currentItems = menuItems;
         }
-        if(submenuId === 'text-2-speech'){
+        if (submenuId === 'text-2-speech') {
             currentContainer = t2sContainer;
             currentItems = t2sItems;
+        }
+        if (submenuId === 'tv-control-menu') {
+            currentContainer = tvContainer;
+            currentItems = tvItems;
+        }
+        if (submenuId === 'music-menu') {
+            currentContainer = musicContainer;
+            currentItems = musicItems;
         }
     }
 }
@@ -211,7 +239,7 @@ function accessibilityMouseClick(e) {
     if (e != undefined) e.stopPropagation()
     if (singleInputMode) {  // Something keeps reseting body.click to accessibilityMouseClick, check to fix error
         // document.body.onclick = e => {} // Changed to onpointerdown event for Jane
-        document.body.onpointerdown = e => {}
+        document.body.onpointerdown = e => { }
         selectedElement = document.getElementById(selectedMenuOrder[selectedIndex])
         // selectedElement.click(); // Changed to pointerdown for Jane
         selectedElement.onpointerdown()
@@ -220,14 +248,14 @@ function accessibilityMouseClick(e) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let cycleTimeout;
     let currentIndex = 0;
     let cycling = false;
 
     const keyboardButton = document.querySelector('.keyboard'); // If there's only one keyboard button
     if (keyboardButton) {
-        keyboardButton.addEventListener('click', function() {
+        keyboardButton.addEventListener('click', function () {
             currentContainer = keyboardContainer;
             currentItems = keyboardItems;
         });
@@ -240,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Then, apply a yellow glow to the current item
         const currentItem = currentItems[index];
         if (currentItem) {
-            currentItem.style.boxShadow = '0 0 10px yellow'; // Apply a yellow glow effect
+            currentItem.style.boxShadow = '0 0 20px yellow'; // Apply a yellow glow effect
         }
     };
 
@@ -252,14 +280,14 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Use a more generic event listener that checks if the currentContainer contains the event target
-    document.addEventListener('pointerdown', function(event) {
+    document.addEventListener('pointerdown', function (event) {
         if (currentContainer.contains(event.target)) {
             cycling = true;
             cycleItems();
         }
     });
 
-    document.addEventListener('pointerup', function() {
+    document.addEventListener('pointerup', function () {
         if (!cycling) return;
         clearTimeout(cycleTimeout);
         cycling = false;
@@ -336,32 +364,45 @@ function addToPhrase(char) {
 }
 eel.expose(addToPhrase);//expose to eel
 
+function deleteChar() {
+    var textBox = document.getElementById("phrase-text-box");
+    var currentText = textBox.innerText;
+    textBox.innerText = currentText.slice(0, -1); //removes last char
+}
+//eel.expose(deleteChar);
+
+function newPhrase() {
+    var textBox = document.getElementById("phrase-text-box");
+    textBox.innerText = ''; //clears the string;
+}
+//eel.expose(newPhrase);
+
 function speakYes() {
     eel.speak_yes();  // Call the Python function
 }
-function speakNo(){
+function speakNo() {
     eel.speak_no();
 }
-function speakItStarts(){
+function speakItStarts() {
     eel.speak_it_starts();
 }
-function speakCanIAsk(){
+function speakCanIAsk() {
     eel.speak_can_i_ask();
 }
 function speakPhrase() {
     var textBox = document.getElementById("phrase-text-box");
     var text = textBox.innerText; // Use .value for input box, .innerText or .textContent for div/span
     eel.speak_text(text); // Call the Python function
-    
+
     textBox.innerText = '';
 }
-    eel.expose(speakPhrase);
+eel.expose(speakPhrase);
 /*
 _________________________________________________________________________________________________
                                 MUSIC PLAYER CONTROL FUNCTIONS
 __________________________________________________________________________________________________
 */
-function setMusicDirectory(directory){
+function setMusicDirectory(directory) {
     eel.set_music_directory(directory);
 }
 function playClassicalMusic() {
@@ -406,12 +447,12 @@ eel.expose(updateSongInformation); // Expose the function to Eel
 --------------------------------------------------
 */
 
-function storeConfig(setting, value){
+function storeConfig(setting, value) {
     eel.storeConfig(setting, value)
 }
 
 eel.expose(loadConfig)
-function loadConfig(config){
+function loadConfig(config) {
 
     cycleTime = config.cycleTime
     charLimit = config.charLimit
@@ -421,20 +462,20 @@ function loadConfig(config){
 }
 
 var timeToSeconds = {
-    "500" : "&frac12; Second",
+    "500": "&frac12; Second",
     "1000": "1 Second",
     "1500": "1 &frac12; Seconds",
     "2000": "2 Seconds"
 }
 
-function updateLabels(){
-    for (var label in plugLabels){
+function updateLabels() {
+    for (var label in plugLabels) {
         document.getElementById("plug-" + label).innerHTML = plugLabels[label]
     }
     document.getElementById("speed-label").innerHTML = "Current Speed: " + timeToSeconds[cycleTime]
 }
 
-function setCycleTime(event, time){
+function setCycleTime(event, time) {
     if (event != undefined) event.stopPropagation()
     storeConfig('cycleTime', time)
     cycleTime = time
