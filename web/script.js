@@ -107,7 +107,7 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________
 */
 const outletContainer = document.getElementById('outlet-menu');
-const outletItems = outletContainer.querySelectorAll('.button-main-menu,.button-settings,.button-TV-controls,.button-music,.button-text-speech,');
+const outletItems = outletContainer.querySelectorAll('.button-main-menu,.button-settings,.button-TV-controls,.button-music,.button-text-speech');
 /*
 ____________________________________________________________________________________________________________________
             Global Vars
@@ -200,6 +200,10 @@ function openSubmenu(event, supermenuId, submenuId) {
         if (submenuId === 'music-menu') {
             currentContainer = musicContainer;
             currentItems = musicItems;
+        }
+        if(submenuId === 'outlet-menu'){
+            currentContainer = outletContainer;
+            currentItems = outletItems;
         }
     }
 }
