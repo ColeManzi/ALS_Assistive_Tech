@@ -177,7 +177,7 @@
   .desktop-text .overlap-2 {
     position: absolute;
     width: 1275px;
-    height: 206px;
+    height: 556px;
     top: 341px;
     left: 31px;
   }
@@ -209,6 +209,14 @@
   .desktop-text .div-wrapper {
     position: relative;
     width: 100px;
+    height: 84px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
+  }
+  .desktop-text .div-wrapper-delete {
+    position: relative;
+    width: 200px;
     height: 84px;
     background-color: #d9d9d9;
     border-radius: 10px;
@@ -608,7 +616,7 @@
     width: 1146px;
     height: 100px;
     top: 554px;
-    left: 118px;
+    left: 120px;
   }
   
   .desktop-text .group-wrapper-2 {
@@ -630,18 +638,10 @@
     box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
   }
   
-  .desktop-text .shift {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    top: 19px;
-    left: 24px;
-  }
-  
   .desktop-text .key-z {
     width: 100px;
     top: 0;
-    left: 115px;
+    left: 15px;
     position: absolute;
     height: 100px;
   }
@@ -649,7 +649,7 @@
   .desktop-text .key-x {
     width: 100px;
     top: 0;
-    left: 229px;
+    left: 129px;
     position: absolute;
     height: 100px;
   }
@@ -657,7 +657,7 @@
   .desktop-text .key-c {
     width: 100px;
     top: 0;
-    left: 343px;
+    left: 243px;
     position: absolute;
     height: 100px;
   }
@@ -665,7 +665,7 @@
   .desktop-text .key-v {
     width: 100px;
     top: 0;
-    left: 458px;
+    left: 358px;
     position: absolute;
     height: 100px;
   }
@@ -673,7 +673,7 @@
   .desktop-text .key-b {
     width: 100px;
     top: 0;
-    left: 572px;
+    left: 472px;
     position: absolute;
     height: 100px;
   }
@@ -681,7 +681,7 @@
   .desktop-text .key-n {
     width: 100px;
     top: 0;
-    left: 686px;
+    left: 586px;
     position: absolute;
     height: 100px;
   }
@@ -689,7 +689,7 @@
   .desktop-text .key-m {
     width: 100px;
     top: 0;
-    left: 799px;
+    left: 699px;
     position: absolute;
     height: 100px;
   }
@@ -712,7 +712,7 @@
   .desktop-text .key-backspace {
     width: 100px;
     top: 0;
-    left: 912px;
+    left: 812px;
     position: absolute;
     height: 100px;
   }
