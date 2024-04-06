@@ -161,17 +161,6 @@ const changeMenu = (e, newMenuID) => {
 }
 */
 
-function closeSubmenu(event, supermenuId, submenuId) {
-    if (event != undefined) event.stopPropagation();
-    let supermenu = document.getElementById(supermenuId)
-    let submenu = document.getElementById(submenuId)
-
-    if (singleInputMode) resetCycle(supermenuId)
-
-    submenu.style.visibility = 'hidden'
-    supermenu.style.visibility = 'visible'
-}
-
 //default to main menu container and items
 let currentContainer = menuContainer;
 let currentItems = menuItems;
@@ -265,7 +254,9 @@ document.addEventListener('DOMContentLoaded', function () {
             item.style.boxShadow = '';
         });
     }
-    //const 
+    /*const backButton = document.querySelector('');//for back button
+    if
+     */
     const highlightItem = (index) => {
         // First, remove the yellow glow from all current items
         currentItems.forEach(item => {
@@ -299,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cycling = false;
         const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
         currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+        currentIndex = 0;
     });
 });
 /*
