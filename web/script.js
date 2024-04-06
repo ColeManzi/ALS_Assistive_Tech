@@ -115,7 +115,7 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________
 */
 const settingsContainer = document.getElementById('settings-page');
-const settingsItems = settingsContainer.querySelectorAll('.switch-speed-sec,.switch-speed-sec-2,.switch-speed-sec-3,.switch-speed-sec-4,.switch-speed-sec-5,.switch-speed-sec-6,.switch-speed-sec-7,.switch-speed-sec-8')
+const settingsItems = settingsContainer.querySelectorAll('.switch-speed-sec,.switch-speed-sec-2,.switch-speed-sec-3,.switch-speed-sec-4,.switch-speed-sec-5,.switch-speed-sec-6,.switch-speed-sec-7,.switch-speed-sec-8,.button-go-back');
 /*
 ____________________________________________________________________________________________________________________
             Global Vars
