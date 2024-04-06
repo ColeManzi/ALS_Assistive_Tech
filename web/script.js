@@ -108,6 +108,14 @@ ________________________________________________________________________________
 */
 const outletContainer = document.getElementById('outlet-menu');
 const outletItems = outletContainer.querySelectorAll('.button-main-menu,.button-settings,.button-TV-controls,.button-music,.button-text-speech');
+
+/*
+_____________________________________________________________________________________________________________________
+                                        SETTINGS CONTROL CONSTANTS
+_____________________________________________________________________________________________________________________
+*/
+const settingsContainer = document.getElementById('settings-page');
+const settingsItems = settingsContainer.querySelectorAll('.switch-speed-sec,.switch-speed-sec-2,.switch-speed-sec-3,.switch-speed-sec-4,.switch-speed-sec-5,.switch-speed-sec-6,.switch-speed-sec-7,.switch-speed-sec-8')
 /*
 ____________________________________________________________________________________________________________________
             Global Vars
@@ -119,7 +127,7 @@ var selectedMenuOrder
 var previousElement
 var previousColor
 var cycleTimeout
-var cycleTime = 1000  //2000
+var cycleTime = 500  //2000
 
 /*
 --------------------------------------------------
@@ -193,6 +201,10 @@ function openSubmenu(event, supermenuId, submenuId) {
         if(submenuId === 'outlet-menu'){
             currentContainer = outletContainer;
             currentItems = outletItems;
+        }
+        if(submenuId === 'settings-page'){
+            currentContainer = settingsContainer;
+            currentItems = settingsItems;
         }
     }
     const keyboardButton = document.querySelector('.phrase-text'); // If there's only one keyboard button
@@ -279,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!cycling) return;
         highlightItem(currentIndex);
         currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
-        cycleTimeout = setTimeout(cycleItems, 1000);
+        cycleTimeout = setTimeout(cycleItems, cycleTime);
     };
 
     // Use a more generic event listener that checks if the currentContainer contains the event target
@@ -444,6 +456,36 @@ function updateSongInformation(songName, genre) {
     document.getElementById("genre").innerText = "Genre: " + genre;
 }
 eel.expose(updateSongInformation); // Expose the function to Eel
+
+/*
+______________________________________________________________________________________________________
+                                        SETTINGS PAGE CODE
+______________________________________________________________________________________________________
+*/
+function cycleTimeHalfSecond(){
+    cycleTime = 500;
+}
+function cycleTimeOneSecond(){
+    cycleTime = 1000;
+}
+function cycleTimeOneHalfSecond(){
+    cycleTime = 1500;
+}
+function cycleTimeTwoSecond(){
+    cycleTime = 2000;
+}
+function cycleTimeTwoHalfSecond(){
+    cycleTime = 2500;
+}
+function cycleTimeThreeSecond(){
+    cycleTime = 3000;
+}
+function cycleTimeThreeHalfSecond(){
+    cycleTime = 3500;
+}
+function cycleTimeFourSecond(){
+    cycleTime = 4000;
+}
 
 /*
 --------------------------------------------------

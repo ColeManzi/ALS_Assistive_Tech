@@ -114,17 +114,13 @@
   .desktop-main-menu .text-wrapper-2 {
     position: absolute;
     width: 432px;
-    height: 212px;
-    top: 0;
-    left: 0;
+    height: 112px;
+    top:80px;
     font-family: "Work Sans", Helvetica;
     font-weight: 600;
     color: #000000;
     font-size: 36px;
     text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-    margin: auto;
   }
   .desktop-text {
     background-color: #cffcff;
@@ -1210,6 +1206,7 @@
     letter-spacing: 0;
     line-height: normal;
   }
+
   
   .desktop-text .button-outlet {
     position: absolute;
@@ -1264,6 +1261,20 @@
     position: absolute;
     height: 150px;
   }
+  .desktop-text .text-no {
+    position: absolute;
+    width: 220px;
+    height: 35px;
+    top: 40px;
+    left: 0;
+    font-family: "Work Sans", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
   
   .desktop-text .button-yes {
     width: 225px;
@@ -1272,6 +1283,20 @@
     overflow: hidden;
     position: absolute;
     height: 150px;
+  }
+  .desktop-text .text-yes {
+    position: absolute;
+    width: 220px;
+    height: 35px;
+    top: 40px;
+    left: 0;
+    font-family: "Work Sans", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
   }
   .desktop-TV-controls {
     background-color: #cffcff;
@@ -2102,6 +2127,13 @@
     height: 206px;
     top: 0;
     left: 346px;
+  }
+  .desktop-settings .switch-speed-sec-8 {
+    position: absolute;
+    width: 324px;
+    height: 206px;
+    top: 0;
+    left: 0px;
   }
   
   .desktop-settings .page-title {
