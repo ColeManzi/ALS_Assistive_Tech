@@ -55,42 +55,45 @@ def appendCharacter(char):
     eel.addToPhrase(char)  # Call the exposed JavaScript function with the character
 
 @eel.expose
-def speak_yes():
-    tts = gTTS(text="Yes", lang='en')
-    tts.save("yes.mp3")  # Save the speech to an MP3 file
-    os.system("open yes.mp3")  # Play the MP3 file (use 'open' instead of 'start' on macOS)
-
-@eel.expose
-def speak_no():
-    tts = gTTS(text="No", lang='en')
-    tts.save("no.mp3")  # Save the speech to an MP3 file
-    os.system("open no.mp3")  # Play the MP3 file (use 'open' instead of 'start' on macOS)
-
-@eel.expose
-def speak_it_starts():
-    tts = gTTS(text="It starts with", lang='en')
-    tts.save("startswith.mp3")  # Save the speech to an MP3 file
-    os.system("open startswith.mp3")  # Play the MP3 file (use 'open' instead of 'start' on macOS)
-
-@eel.expose
-def speak_can_i_ask():
-    tts = gTTS(text="I'd like to ask you something", lang='en')
-    tts.save("caniask.mp3")  # Save the speech to an MP3 file
-    os.system("open caniask.mp3")  # Play the MP3 file (use 'open' instead of 'start' on macOS)
-
-@eel.expose
-def speak_text(text):
-    if not text:  # Check if text is empty or None
+def speak_text_with_vlc(text):
+    if not text:  # Check if the text is empty or None
         print("No text provided to speak.")
         return  # Exit the function
     tts = gTTS(text=text, lang='en')
-    # Using tempfile to avoid saving MP3 files directly
-    with tempfile.NamedTemporaryFile(delete=True) as fp:
-        tts.save(fp.name + '.mp3')
-        # Play the speech
-        os.system(f"open {fp.name}.mp3") # For Windows use "start" instead of "open"
-        # For Linux you might use os.system(f"mpg321 {fp.name}.mp3")
+    
+    # Using tempfile to create a temporary MP3 file
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as tmpfile:
+        tts.save(tmpfile.name)  # Save the speech to the temporary MP3 file
+        play_speech(tmpfile.name)  # Play the MP3 file using VLC
 
+def play_speech(file_path):
+    # Ensure the current music is paused or stopped if needed
+    player.pause()  # or player.stop() based on your application's needs
+    
+    # Load and play the speech file
+    media = vlc.Media(file_path)
+    player.set_media(media)
+    player.play()
+    
+    # Optional: Resume music playback after the speech is done
+    # You might need additional logic to wait for the speech to finish
+
+# Example usage of the function for the given commands
+@eel.expose
+def speak_yes():
+    speak_text_with_vlc("Yes")
+
+@eel.expose
+def speak_no():
+    speak_text_with_vlc("No")
+
+@eel.expose
+def speak_it_starts():
+    speak_text_with_vlc("It starts with")
+
+@eel.expose
+def speak_can_i_ask():
+    speak_text_with_vlc("I'd like to ask you something")
 
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 
