@@ -85,6 +85,7 @@ const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no,.button-s
 const keyboardContainer = document.getElementById('keyboard');
 const keyboardItems = keyboardContainer.querySelectorAll('.prediction,.prediction-2,.prediction-3,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-space,.key-new-phrase,.key-go-back');
 
+
 /**
 ___________________________________________________________________________________________________
                                         TV CONTROL CONSTANTS
@@ -135,37 +136,12 @@ var cycleTime = 500  //2000
 --------------------------------------------------
 */
 function init() {
-    // setTime();
     eel.loadConfig()
-    for (button of document.getElementsByTagName('button')) {
-        // button.addEventListener('click', resetMouse) // Changed to pointerdown event for change
-        button.addEventListener('pointerdown', resetMouse)
-    }
-    if (singleInputMode) {
-        // document.body.onclick = e => accessibilityMouseClick() // Chnged to pointerdown event for Jane
-        document.body.onpointerdown = e => accessibilityMouseClick(e)
-        selectedMenuOrder = mainMenuOrder;
-        resetCycle('main-menu')
-    }
 }
 /*
 function resetMouse(event){
     if (event != undefined) event.stopPropagation()
     eel.resetMouse()
-}
-*/
-
-/*
-const changeMenu = (e, newMenuID) => {
-    if (e != undefined) e.stopPropagation()
-    let currentMenu = document.getElementById(e.currentTarget.id)
-                              .parentElement
-    let newMenu = document.getElementById(newMenuID)
-
-    if (singleInputMode) resetCycle(newMenuID)
-
-    currentMenu.style.visibility = 'hidden'
-    newMenu.style.visibility = 'visible'
 }
 */
 
@@ -229,46 +205,9 @@ function openSubmenu(event, supermenuId, submenuId) {
 
 /*
 --------------------------------------------------
-        Single Input Mode Functions
+        Input Mode Functions
 --------------------------------------------------
 */
-
-const toggleInputMode = (e, mode) => {
-    if (mode == 'on') {
-        singleInputMode = true
-        // document.body.onclick = accessibilityMouseClick // Changed to on mouse down for Jane
-        document.body.onpointerdown = accessibilityMouseClick
-    } else {
-        singleInputMode = false
-        if (cycleTimeout != null) previousElement.style.backgroundColor = previousColor
-        // document.body.onclick = null
-        document.body.pointerdown = null
-        clearTimeout(cycleTimeout)
-    }
-    changeMenu(e, 'main-menu')
-}
-
-
-const resetCycle = (menuId) => {
-    selectedIndex = -1
-    selectedMenuOrder = menuIdMapping[menuId]
-    clearTimeout(cycleTimeout)
-    cycleSelection()
-}
-
-
-function accessibilityMouseClick(e) {
-    if (e != undefined) e.stopPropagation()
-    if (singleInputMode) {  // Something keeps reseting body.click to accessibilityMouseClick, check to fix error
-        // document.body.onclick = e => {} // Changed to onpointerdown event for Jane
-        document.body.onpointerdown = e => { }
-        selectedElement = document.getElementById(selectedMenuOrder[selectedIndex])
-        // selectedElement.click(); // Changed to pointerdown for Jane
-        selectedElement.onpointerdown()
-        // document.body.onclick = e => accessibilityMouseClick() // Changed to onpointerdown event for jane
-        document.body.onpointerdown = e => accessibilityMouseClick()
-    }
-}
 
 document.addEventListener('DOMContentLoaded', function () {
     let cycleTimeout;
@@ -543,7 +482,7 @@ function speakCanIAsk() {
 function speakPhrase() {
     var textBox = document.getElementById("phrase-text-box");
     var text = textBox.innerText; // Use .value for input box, .innerText or .textContent for div/span
-    eel.speak_text(text); // Call the Python function
+    eel.speak_text_with_vlc(text); // Call the Python function
 
     textBox.innerText = '';
 }
@@ -642,23 +581,9 @@ function loadConfig(config) {
     updateLabels()
 }
 
-var timeToSeconds = {
-    "500": "&frac12; Second",
-    "1000": "1 Second",
-    "1500": "1 &frac12; Seconds",
-    "2000": "2 Seconds"
-}
-
 function updateLabels() {
     for (var label in plugLabels) {
         document.getElementById("plug-" + label).innerHTML = plugLabels[label]
     }
     document.getElementById("speed-label").innerHTML = "Current Speed: " + timeToSeconds[cycleTime]
-}
-
-function setCycleTime(event, time) {
-    if (event != undefined) event.stopPropagation()
-    storeConfig('cycleTime', time)
-    cycleTime = time
-    updateLabels()
 }
