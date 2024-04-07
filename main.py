@@ -98,7 +98,7 @@ def speak_can_i_ask():
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 
 classical_music_dir = '/Users/ianschaefer/ALS-Assistive-Tech/Music/Classical'
-christian_music_dir = '/Users/ianschaefer/ALS-Assistive-Tech/Music/Sample Christian 2'
+christian_music_dir = '/Users/ianschaefer/ALS-Assistive-Tech/Music/Christian'
 current_song_index = 0
 current_genre = ""  # Define the current genre variable
 

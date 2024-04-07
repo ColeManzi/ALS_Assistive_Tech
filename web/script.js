@@ -423,12 +423,12 @@ function setMusicDirectory(directory) {
 }
 function playClassicalMusic() {
     setMusicDirectory('classical'); // Set music directory to classical
-    playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Classical/[SPOTIFY-DOWNLOADER.COM] Ave Maria (after J.S. Bach).mp3', 'classical'); // Play the first song (replace with actual song name)
+    playSong('Music/Classical/Ave Maria (after J.S. Bach).mp3', 'Classical'); // Play the first song (replace with actual song name)
 }
 
 function playChristianMusic() {
     setMusicDirectory('christian'); // Set music directory to christian
-    playSong('/Users/ianschaefer/ALS-Assistive-Tech/Music/Sample Christian 2/[SPOTIFY-DOWNLOADER.COM] Amazing Grace.mp3', 'christian'); // Play the first song (replace with actual song name)
+    playSong('Music/Christian/A Mighty Fortress Is Our God.mp3', 'Christian'); // Play the first song (replace with actual song name)
 }
 
 function playSong(filePath, genre) {
