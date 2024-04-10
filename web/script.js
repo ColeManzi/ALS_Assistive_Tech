@@ -82,7 +82,7 @@ ________________________________________________________________________________
 const t2sContainer = document.getElementById('text-2-speech');
 const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu');
 
-const keyboardContainer = document.getElementById('keyboard');
+const keyboardContainer = document.getElementById('text-2-speech');
 const keyboardItems = keyboardContainer.querySelectorAll('.prediction,.prediction-2,.prediction-3,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-space,.key-new-phrase,.key-go-back');
 
 
@@ -537,6 +537,7 @@ volumeDownButton.addEventListener("click", volumeDown);
 
 // Function to send channel up command
 function channelUp() {
+    console.log('js channel up')
     eel.channelUp();
 }
 // Attach channelUp function to button
