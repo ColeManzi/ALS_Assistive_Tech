@@ -5,7 +5,7 @@ import pyautogui
 import threading
 import vlc
 import os
-
+#import serial_com
 
 from gtts import gTTS
 import tempfile
@@ -125,8 +125,8 @@ def speak_can_i_ask():
 
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 
-classical_music_dir = '/Users/ianschaefer/ALS-Assistive-Tech/Music/Classical'
-christian_music_dir = '/Users/ianschaefer/ALS-Assistive-Tech/Music/Christian'
+classical_music_dir = '/home/pi/Desktop/Ian-ALS-Assistive-Tech/ALS-Assistive-Tech/Music/Christian'
+christian_music_dir = '/home/pi/Desktop/Ian-ALS-Assistive-Tech/ALS-Assistive-Tech/Music/Classical'
 current_song_index = 0
 current_genre = ""  # Define the current genre variable
 
