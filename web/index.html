@@ -542,7 +542,7 @@
         </div>
       </div>
       <!--MUTE/UNMUTE FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS -->
-      <div class="button-mute-ON-OFF"  state="off" id="tv-mute" onclick="sendTVCommand(event, 'MUTE');">
+      <div class="button-mute-ON-OFF"  state="off" id="tv-mute" onclick="muteUnmute();">
         <div class="overlap-group-wrapper">
           <button class="div-wrapper">
             <div class="text-wrapper">Mute On/off</div>
@@ -551,7 +551,7 @@
       </div>
       <!--VOLUME DOWN FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
       <div class="button-volume-DOWN"  state="off" id="tv-volume-down"
-      onclick="sendTVCommand(event, 'VOLUME_DOWN');">
+      onclick="volumeDown();">
         <div class="overlap-group-wrapper">
           <button class="div-wrapper">
             <div class="text-wrapper">Volume Down</div>
@@ -560,7 +560,7 @@
       </div>
       <!--VOLUME UP FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
       <div class="button-volume-UP" state="off" id="tv-volume-up"
-      onclick="sendTVCommand(event, 'VOLUME_UP');">
+      onclick="volumeUp();">
         <div class="overlap-group-wrapper">
           <button class="div-wrapper">
             <div class="text-wrapper">Volume Up</div>
@@ -569,7 +569,7 @@
       </div>
       <!--CHANNEL DOWN FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
       <div class="button-channel-DOWN" state="off" id="tv-channel-down"
-      onclick="sendTVCommand(event, 'CHANNEL_DOWN');">
+      onclick="channelDown();">
         <div class="overlap-group-wrapper">
           <button class="div-wrapper">
             <div class="text-wrapper">Channel Down</div>
@@ -578,7 +578,7 @@
       </div>
       <!--CHANNEL UP FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
       <div class="button-channel-UP" state="off" id="tv-channel-up"
-      onclick="sendTVCommand(event, 'CHANNEL_UP');">
+      onclick="channelUp();">
         <div class="overlap-group-wrapper">
           <button class="div-wrapper">
             <div class="text-wrapper">Channel Up</div>
@@ -586,7 +586,7 @@
         </div>
       </div>
       <!--POWER ON/OFF FUNCTIONALITY HERE AND CONNECT TO SCRIPT.JS FUNCTION-->
-      <div class="button-power-ON-OFF" state="off" id="tv-power" onclick="sendTVCommand(event, 'POWER');">
+      <div class="button-power-ON-OFF" state="off" id="tv-power" onclick="powerOnOff();">
         <div class="overlap-group-wrapper">
           <button class="div-wrapper">
             <div class="text-wrapper">Power On/off</div>
