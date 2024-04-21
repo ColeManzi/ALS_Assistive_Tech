@@ -83,7 +83,7 @@ const t2sContainer = document.getElementById('text-2-speech');
 const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu');
 
 const keyboardContainer = document.getElementById('text-2-speech');
-const keyboardItems = keyboardContainer.querySelectorAll('.prediction,.prediction-2,.prediction-3,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-space,.key-new-phrase,.key-go-back');
+const keyboardItems = keyboardContainer.querySelectorAll('.prediction,.prediction-2,.prediction-3,.key-space,.key-go-back,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase');
 
 
 /**
@@ -497,61 +497,44 @@ buttons click doesn't register to the Arduino */
 function powerOn() { 
     //eel.powerOn() 
    }
-const button = document.getElementById("init-remtoe-btn");
-button.addEventListener("click", powerOn);
 /*
 --------------------------------------------------
 */
 
 // Function to send power on/off command
 function powerOnOff() {
+    console.log("power")
     eel.powerOnOff();
 }
-// Attach powerOnOff function to button
-const powerButton = document.getElementById("tv-power");
-powerButton.addEventListener("click", powerOnOff);
-
 // Function to send mute command
 function muteUnmute() {
+    console.log("mute")
     eel.muteUnmute();
 }
-// Attach muteUnmute function to button
-const muteButton = document.getElementById("tv-mute");
-muteButton.addEventListener("click", muteUnmute);
 
 // Function to send volume up command
-function volumeUp() {
+function volumeUp(){
+    console.log("volume up")
     eel.volumeUp();
 }
-// Attach volumeUp function to button
-const volumeUpButton = document.getElementById("tv-volume-up");
-volumeUpButton.addEventListener("click", volumeUp);
 
 // Function to send volume down command
 function volumeDown() {
+    console.log("volume down")
     eel.volumeDown();
 }
-// Attach volumeDown function to button
-const volumeDownButton = document.getElementById("tv-volume-down");
-volumeDownButton.addEventListener("click", volumeDown);
 
 // Function to send channel up command
 function channelUp() {
-    console.log('js channel up')
+    console.log('channel up')
     eel.channelUp();
 }
-// Attach channelUp function to button
-const channelUpButton = document.getElementById("tv-channel-up");
-channelUpButton.addEventListener("click", channelUp);
 
 // Function to send channel down command
 function channelDown() {
+    console.log('channel down')
     eel.channelDown();
 }
-// Attach channelDown function to button
-const channelDownButton = document.getElementById("tv-channel-down");
-channelDownButton.addEventListener("click", channelDown);
-
 /*
 _________________________________________________________________________________________________
                                 MUSIC PLAYER CONTROL FUNCTIONS

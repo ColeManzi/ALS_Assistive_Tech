@@ -5,7 +5,8 @@ import pyautogui
 import threading
 import vlc
 import os
-#import serial_com
+import serial_com
+from serial_com import send_command, TVCommand
 
 from gtts import gTTS
 import tempfile
@@ -181,5 +182,5 @@ if __name__ == "__main__":
     eel.init('web', allowed_extensions=[".js",".html"])
     #eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
     #resetMouse()
-    eel.start('new_index.html', cmdline_args=['--start-fullscreen'])
+    eel.start('index.html', cmdline_args=['--start-fullscreen'])
     
