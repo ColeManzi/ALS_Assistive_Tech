@@ -138,12 +138,12 @@ var cycleTime = 500  //2000
 function init() {
     eel.loadConfig()
 }
-/*
+
 function resetMouse(event){
     if (event != undefined) event.stopPropagation()
     eel.resetMouse()
 }
-*/
+
 
 //default to main menu container and items
 let currentContainer = menuContainer;
