@@ -1135,6 +1135,13 @@ div.button-settings {
   text-align: center;
   /* Center text horizontally */
 }
+.desktop-text .key-space-small{
+  width: 120px;
+  top: 0;
+  left: 1155px;
+  position: absolute;
+  height: 0px;
+}
 
 .desktop-text .button-main-menu {
   position: absolute;
@@ -1858,7 +1865,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-outlet .button-plug-ON-OFF {
+.desktop-outlet .button-plug-ON-OFF-5 {
   position: absolute;
   width: 310px;
   height: 150px;
@@ -1898,7 +1905,7 @@ buttons click doesn't register to the Arduino */
   line-height: normal;
 }
 
-.desktop-outlet .group-wrapper {
+.desktop-outlet .button-plug-ON-OFF-4{
   position: absolute;
   width: 310px;
   height: 150px;
@@ -1906,7 +1913,7 @@ buttons click doesn't register to the Arduino */
   left: 804px;
 }
 
-.desktop-outlet .div-wrapper {
+.desktop-outlet .button-plug-ON-OFF-1{
   position: absolute;
   width: 310px;
   height: 150px;

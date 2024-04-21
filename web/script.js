@@ -108,7 +108,7 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________
 */
 const outletContainer = document.getElementById('outlet-menu');
-const outletItems = outletContainer.querySelectorAll('.button-main-menu,.button-settings,.button-TV-controls,.button-music,.button-text-speech');
+const outletItems = outletContainer.querySelectorAll('.button-main-menu,.button-settings,.button-TV-controls,.button-music,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON');
 
 /*
 _____________________________________________________________________________________________________________________
@@ -255,20 +255,80 @@ document.addEventListener('DOMContentLoaded', function () {
             RF CONTROLLER CODE
 --------------------------------------------------
 */
+let plugState = 0;
 
-function togglePlug(e, state) {
-    let plugId = document.getElementById('plug-submenu').getAttribute('plug-label')
-    eel.togglePlug(plugId + state)
-    let statusEl = document.getElementById("status-" + plugId)
-    if (state == 'on') {
-        // Toggle Power Indicator On
+function toggleAll(){
+    if(plugState === 0){
+        plugState = 1;
+        console.log("all on");
+        eel.togglePlug("allon");
     }
-    else {
-        // Toggle Power Indicator Off
+    else{
+        plugState = 0;
+        console.log("all off");
+        eel.togglePlug('alloff')
     }
-    closeSubmenu(e, 'plug-select', 'plug-submenu')
 }
-
+function togglePlug1(){
+    if(plugState === 0){
+        plugState = 1;
+        console.log("1 on");
+        eel.togglePlug("1on");
+    }
+    else{
+        plugState = 0;
+        console.log("1 off");
+        eel.togglePlug('1off')
+    }
+}
+function togglePlug2(){
+    if(plugState === 0){
+        plugState = 1;
+        console.log("2 on");
+        eel.togglePlug("2on");
+    }
+    else{
+        plugState = 0;
+        console.log("2 off");
+        eel.togglePlug('2off')
+    }
+}
+function togglePlug3(){
+    if(plugState === 0){
+        plugState = 1;
+        console.log("3 on");
+        eel.togglePlug("3on");
+    }
+    else{
+        plugState = 0;
+        console.log("3 off");
+        eel.togglePlug('3off')
+    }
+}
+function togglePlug4(){
+    if(plugState === 0){
+        plugState = 1;
+        console.log("on");
+        eel.togglePlug("4on");
+    }
+    else{
+        plugState = 0;
+        console.log("off");
+        eel.togglePlug('4off')
+    }
+}
+function togglePlug5(){
+    if(plugState === 0){
+        plugState = 1;
+        console.log("on");
+        eel.togglePlug("5on");
+    }
+    else{
+        plugState = 0;
+        console.log("off");
+        eel.togglePlug('5off')
+    }
+}
 /*
 --------------------------------------------------
             Keyboard Functions
