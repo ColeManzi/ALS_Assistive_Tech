@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Then, apply a yellow glow to the current item
         const currentItem = currentItems[index];
         if (currentItem) {
-            currentItem.style.boxShadow = '0 0 20px yellow'; // Apply a yellow glow effect
+            currentItem.style.boxShadow = '0 0 30px purple'; // Apply a yellow glow effect
         }
     };
 
