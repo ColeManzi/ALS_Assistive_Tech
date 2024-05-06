@@ -255,76 +255,81 @@ document.addEventListener('DOMContentLoaded', function () {
             RF CONTROLLER CODE
 --------------------------------------------------
 */
-let plugState = 0;
+let plugState1 = 0;
+let plugState2 = 0;
+let plugState3 = 0;
+let plugState4 = 0;
+let plugState5 = 0;
+let plugStateAll = 0;
 
 function toggleAll(){
-    if(plugState === 0){
-        plugState = 1;
+    if(plugStateAll === 0){
+        plugStateAll = 1;
         console.log("all on");
         eel.togglePlug("allon");
     }
     else{
-        plugState = 0;
+        plugStateAll = 0;
         console.log("all off");
         eel.togglePlug('alloff')
     }
 }
 function togglePlug1(){
-    if(plugState === 0){
-        plugState = 1;
+    if(plugState1 === 0){
+        plugState1 = 1;
         console.log("1 on");
         eel.togglePlug("1on");
     }
     else{
-        plugState = 0;
+        plugState1 = 0;
         console.log("1 off");
         eel.togglePlug('1off')
     }
 }
 function togglePlug2(){
-    if(plugState === 0){
-        plugState = 1;
+    if(plugState2 === 0){
+        plugState2 = 1;
         console.log("2 on");
         eel.togglePlug("2on");
     }
     else{
-        plugState = 0;
+        plugState2 = 0;
         console.log("2 off");
         eel.togglePlug('2off')
     }
 }
 function togglePlug3(){
-    if(plugState === 0){
-        plugState = 1;
+    if(plugState3 === 0){
+        plugState3 = 1;
         console.log("3 on");
         eel.togglePlug("3on");
     }
     else{
-        plugState = 0;
+        plugState3 = 0;
         console.log("3 off");
         eel.togglePlug('3off')
     }
 }
 function togglePlug4(){
-    if(plugState === 0){
-        plugState = 1;
+    if(plugState4 === 0){
+        plugState4 = 1;
         console.log("on");
         eel.togglePlug("4on");
     }
     else{
-        plugState = 0;
+        plugState4 = 0;
         console.log("off");
         eel.togglePlug('4off')
     }
 }
 function togglePlug5(){
-    if(plugState === 0){
-        plugState = 1;
+    if(plugState5 === 0){
+        plugState5 = 1;
         console.log("on");
         eel.togglePlug("5on");
     }
     else{
-        plugState = 0;
+        plugState5 = 0;
         console.log("off");
         eel.togglePlug('5off')
     }
@@ -619,12 +624,12 @@ function setMusicDirectory(directory) {
 }
 function playClassicalMusic() {
     setMusicDirectory('classical'); // Set music directory to classical
-    playSong('/home/pi/Desktop/Ian-ALS-Assistive-Tech/ALS-Assistive-Tech/Music/Classical/Ave Maria (after J.S. Bach).mp3', 'Classical'); // Play the first song (replace with actual song name)
+    playSong('/home/pi/ALS-Assistive-Tech/Music/Classical/Ave Maria (after J.S. Bach).mp3', 'Classical'); // Play the first song (replace with actual song name)
 }
 
 function playChristianMusic() {
     setMusicDirectory('christian'); // Set music directory to christian
-    playSong('/home/pi/Desktop/Ian-ALS-Assistive-Tech/ALS-Assistive-Tech/Music/Christian/A Mighty Fortress Is Our God.mp3', 'Christian'); // Play the first song (replace with actual song name)
+    playSong('/home/pi/ALS-Assistive-Tech/Music/Christian/A Mighty Fortress Is Our God.mp3', 'Christian'); // Play the first song (replace with actual song name)
 }
 
 function playSong(filePath, genre) {
