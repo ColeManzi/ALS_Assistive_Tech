@@ -1,5 +1,6 @@
 import eel
-import rfcontroller # This import should be commented out when testing on a PC
+import serial_com
+#import rfcontroller # This import should be commented out when testing on a PC
 import json
 import pyautogui
 import threading
@@ -15,7 +16,39 @@ import sys
 
 ############################################    GUI SETUP   #######################################################
 
-controller = rfcontroller.RFController() # Comment this out when developing on desktop
+# Function to send power on command
+@eel.expose 
+def powerOnOff():
+    serial_com.send_command(serial_com.TVCommand.TURN_ON_OFF.value)
+
+# Function to send mute command
+@eel.expose 
+def muteUnmute():
+    serial_com.send_command(serial_com.TVCommand.MUTE_UNMUTE.value)
+
+# Function to send volume up command
+@eel.expose 
+def volumeUp():
+    serial_com.send_command(serial_com.TVCommand.VOLUME_UP.value)
+
+# Function to send volume down command
+@eel.expose 
+def volumeDown():
+    serial_com.send_command(serial_com.TVCommand.VOLUME_DOWN.value)
+
+# Function to send channel up command
+@eel.expose 
+def channelUp():
+    serial_com.send_command(serial_com.TVCommand.CHANNEL_UP.value)
+
+# Function to send channel down command
+@eel.expose 
+def channelDown():
+    serial_com.send_command(serial_com.TVCommand.CHANNEL_DOWN.value)
+
+
+
+#controller = rfcontroller.RFController() # Comment this out when developing on desktop
 screenWidth, screenHeight = pyautogui.size()
 pyautogui.FAILSAFE = False
 
@@ -178,9 +211,19 @@ def previous_song():
 
 ######################################  TV CONTROL FUNCTIONS    #######################################
 
+@eel.expose
+def speak_from_text(text):
+    speak_text(text)  # The function defined above
+
+
+# At the end of your main script or when the Eel server shuts down
+def cleanup():
+    serial_com.ser.close()
+    print("Serial port closed")
+
+# Start the eel web server
 if __name__ == "__main__":
     eel.init('web', allowed_extensions=[".js",".html"])
     #eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
     resetMouse()
     eel.start('index.html', cmdline_args=['--start-fullscreen'])
-    
