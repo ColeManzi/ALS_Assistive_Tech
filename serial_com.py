@@ -3,7 +3,6 @@ Main Module
 
 This module contains functions for controlling a TV using serial communication.
 """
-
 import serial
 import time
 from enum import Enum

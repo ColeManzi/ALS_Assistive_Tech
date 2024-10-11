@@ -1277,6 +1277,17 @@ div.button-settings {
   line-height: normal;
 }
 
+div#tv-remote-menu {
+   visibility: hidden;
+   position: absolute;
+   z-index: 8;
+}
+
+/* Does nothing but when removed, user TV Remote 
+buttons click doesn't register to the Arduino */
+#init-remtoe-btn {
+   display: none;
+}
 
 .desktop-text .button-outlet {
   position: absolute;
