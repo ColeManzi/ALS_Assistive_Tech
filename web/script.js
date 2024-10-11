@@ -65,8 +65,13 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________
 */
 const menuContainer = document.getElementById("main-menu");
+//const menuItems = menuContainer.querySelectorAll(
+  //".button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings"
+//);
+
+// This just iterates over Yes and No
 const menuItems = menuContainer.querySelectorAll(
-  ".button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings"
+  ".button-Yes-MM,.button-No-MM"
 );
 /*
 _____________________________________________________________________________________________________

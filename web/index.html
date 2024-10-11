@@ -20,10 +20,10 @@
       <!--PAGE TITLE-->
       <div class="page-title">
         <div class="text-wrapper">
-          Main Menu
+          <!--Main Menu (leave blank for now since there is no menu) -->
         </div>
       </div>
-      <!--TEXT-2-SPEECH MAIN MENU BUTTON-->
+      <!--TEXT-2-SPEECH MAIN MENU BUTTON--
       <div class="button-text-speech" onclick="openSubmenu(event, 'main-menu', 'text-2-speech')">
         <div class="group">
           <div class="overlap-group">
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <!--TV CONTROLS MAIN MENU BUTTON-->
+      <--TV CONTROLS MAIN MENU BUTTON--
       <div class="button-TV-controls" onclick="openSubmenu(event,'main-menu', 'tv-control-menu')">
         <div class="group">
           <div class="overlap-group">
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <!--MUSIC CONTROL MAIN MENU BUTTON-->
+      <--MUSIC CONTROL MAIN MENU BUTTON--
       <div class="button-music" onclick="openSubmenu(event,'main-menu','music-menu')">
         <div class="group">
           <div class="overlap-group">
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <!--OUTLET MAIN MENU BUTTON -->
+      <--OUTLET MAIN MENU BUTTON --
       <div class="button-outlet" onclick="openSubmenu(event,'main-menu','outlet-menu')">
         <div class="group">
           <div class="overlap-group">
@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <!--SETTINGS MAIN MENU BUTTON-->
+      <--SETTINGS MAIN MENU BUTTON--
       <div class="button-settings" onclick="openSubmenu(event,'main-menu','settings-page')">
         <div class="group">
           <div class="overlap-group">
@@ -63,6 +63,37 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+-->
+
+      <!--YES Button-->
+        <div class="button-Yes-MM" onclick="speakYes()">
+          <div class="group">
+            <div class="overlap-group">
+              <div class="text-wrapper-2">Yes</div>
+            </div>
+          </div>
+        </div>
+      <!--No Button-->
+        <div class="button-No-MM" onclick="speakNo()">
+          <div class="group">
+            <div class="overlap-group">
+              <div class="text-wrapper-2">No</div>
+            </div>
+          </div>
+        </div>
+      <!--Settings Button-->
+      <!-- Settings button as its own container -->
+        <div class="button-settings-MM" onclick="openSubmenu(event,'main-menu','settings-page')">
+            <div class="text-wrapper-settings-MM">Settings</div>
+        </div>
+        <div class="settings-tip">
+            <div class="settings-tip-text-wrapper">Drag the mouse over "settings" and left click to access speed settings.</div>
+        </div>
+        <div class="mouse-tip-text-wrapper">IMPORTANT: Please make sure the mouse is positioned OUTSIDE of the grey boxes when Jane is using the device. Thank you.</div>
+      </div>
       </div>
     </div>
   </div>
@@ -537,7 +568,7 @@
           </button>
         </div>
       </div>
-      <!-- Does nothing but when removed, user TV Remote 
+      <!-- Does nothing but when removed, user TV Remote
             buttons click doesn't register to the Arduino -->
       <div class="Button-init-remote" id="init-remote-btn"  state="off" id="tv-init">
         <div class="overlap-group-wrapper">
@@ -606,7 +637,6 @@
   </div>
 
   <!-- MUSIC CONTROLS-->
-
   <div class="desktop-music-menu" id="music-menu">
     <div class="div">
       <div class="button-main-menu" onclick="openSubmenu(event,'music-menu','main-menu')">
@@ -696,7 +726,6 @@
   </div>
 
   <!-- OUTLET CONTROLS-->
-
   <div class="desktop-outlet" id="outlet-menu">
     <div class="div">
       <div class="button-main-menu" onclick="openSubmenu(event,'outlet-menu','main-menu')">
