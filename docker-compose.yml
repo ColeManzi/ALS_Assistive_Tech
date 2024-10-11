@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  assistive-tech:
+    build:
+      context: .
+      dockerfile: DockerFile
