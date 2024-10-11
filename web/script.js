@@ -73,18 +73,23 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________
 */
 const menuContainer = document.getElementById('main-menu');
-const menuItems = menuContainer.querySelectorAll('.button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings');
+//const menuItems = menuContainer.querySelectorAll('.button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings');
+const menuItems = menuContainer.querySelectorAll('.button-text-speech, .button-TV-controls'/*, .button-settings'*/);
+
 /*
 _____________________________________________________________________________________________________
                                             T2S/KEYBOARD CONSTANTS
 _____________________________________________________________________________________________________
 */
 const t2sContainer = document.getElementById('text-2-speech');
-const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu');
+// const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu');
+const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no, .button-main-menu');
+
 
 const keyboardContainer = document.getElementById('text-2-speech');
-const keyboardItems = keyboardContainer.querySelectorAll('.prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase');
-
+const keyboardItems = keyboardContainer.querySelectorAll('.prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-space,.key-new-phrase');
+const currentRows = keyboardContainer.querySelectorAll('.prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5')
+const rowDict = {0:43,1:0,2:1,3:2,4:3,5:4,6:15,7:24,8:33,9:42};
 
 /**
 ___________________________________________________________________________________________________
@@ -213,7 +218,23 @@ document.addEventListener('DOMContentLoaded', function () {
     let cycleTimeout;
     let currentIndex = 0;
     let cycling = false;
+    // If you set this to 1, it unbreaks everything
+    let t2scycle = 2;
      
+    const highlightRow = (index) => {
+        currentRows.forEach(item => {
+            item.style.boxShadow = ''; // Remove any existing glow effect
+        });
+        // Then, apply a yellow glow to the current item
+        const currentItem = currentRows[index];
+        // const nextItem = currentItems[(index + 1)];
+
+        if (currentItem) {
+            currentItem.style.boxShadow = '0 0 30px purple'; // Apply a yellow glow effect
+        }
+    }
+
+
     const highlightItem = (index) => {
         // First, remove the yellow glow from all current items
         currentItems.forEach(item => {
@@ -228,8 +249,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const cycleItems = () => {
         if (!cycling) return;
-        highlightItem(currentIndex);
-        currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+        if (currentItems.length == 47 && t2scycle == 2){
+            highlightRow(currentIndex);
+            currentIndex = (currentIndex + 1) % currentRows.length; // Use currentItems for length
+        }else{
+            highlightItem(currentIndex);
+            currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+        }
         cycleTimeout = setTimeout(cycleItems, cycleTime);
     };
 
@@ -245,9 +271,28 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!cycling) return;
         clearTimeout(cycleTimeout);
         cycling = false;
-        const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
-        currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
-        currentIndex = 0;
+        if (currentItems.length == 47 && t2scycle == 2){
+            // const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+            // currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+            
+            currentIndex = rowDict[currentIndex];
+            t2scycle = 1;
+            if(currentIndex == 0 || currentIndex == 1 || currentIndex == 2 || currentIndex == 3){
+                currentItems[currentIndex].click(); // Click the highlighted item using currentItems
+                currentItems[currentIndex].style.boxShadow = ''; // Click the highlighted item using currentItems
+                currentIndex = 0;
+                t2scycle =  2;
+            }
+        }
+        else{
+            const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+            currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+            currentItems[selectedItemIndex].style.boxShadow = ''; // Click the highlighted item using currentItems
+            console.log(currentIndex);
+
+            currentIndex = 0;
+            t2scycle =  2;
+        }
     });
 });
 /*

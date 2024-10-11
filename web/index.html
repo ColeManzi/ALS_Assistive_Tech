@@ -23,7 +23,7 @@
           Main Menu
         </div>
       </div>
-      <!--TEXT-2-SPEECH MAIN MENU BUTTON-->
+      <!--TEXT-2-SPEECH MAIN MENU BUTTON--
       <div class="button-text-speech" onclick="openSubmenu(event, 'main-menu', 'text-2-speech')">
         <div class="group">
           <div class="overlap-group">
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <!--TV CONTROLS MAIN MENU BUTTON-->
+      <!--TV CONTROLS MAIN MENU BUTTON--
       <div class="button-TV-controls" onclick="openSubmenu(event,'main-menu', 'tv-control-menu')">
         <div class="group">
           <div class="overlap-group">
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <!--MUSIC CONTROL MAIN MENU BUTTON-->
+      <!--MUSIC CONTROL MAIN MENU BUTTON--
       <div class="button-music" onclick="openSubmenu(event,'main-menu','music-menu')">
         <div class="group">
           <div class="overlap-group">
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <!--OUTLET MAIN MENU BUTTON -->
+      <!--OUTLET MAIN MENU BUTTON--
       <div class="button-outlet" onclick="openSubmenu(event,'main-menu','outlet-menu')">
         <div class="group">
           <div class="overlap-group">
@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <!--SETTINGS MAIN MENU BUTTON-->
+      <!--SETTINGS MAIN MENU BUTTON--
       <div class="button-settings" onclick="openSubmenu(event,'main-menu','settings-page')">
         <div class="group">
           <div class="overlap-group">
@@ -66,6 +66,38 @@
       </div>
     </div>
   </div>
+-->
+
+
+<!--COLE'S CODE-->
+      <!--YES BUTTON-->
+      <div class="button-text-speech" onclick="speakYes()">
+        <div class="group">
+          <div class="overlap-group">
+            <div class="text-wrapper-2">YES</div>
+          </div>
+        </div>
+      </div>
+      <!--NO BUTTON-->
+      <div class="button-TV-controls" onclick="speakNo()"">
+        <div class="group">
+          <div class="overlap-group">
+            <div class="text-wrapper-2">NO</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-settings" onclick="openSubmenu(event,'main-menu','settings-page')">
+        <div class="group">
+          <div class="overlap-group">
+            <div class="text-wrapper-2">Settings
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
 
   <!--TEXT-2-SPEECH MENU-->
   <div class="desktop-text" id="text-2-speech">
@@ -75,22 +107,25 @@
           <div class="keyboard" id="keyboard">
             <div class="div">
               <!--THIS IS WHERE PREDICTIVE TEXT FUNCTIONALITY WILL GO, THIS WILL NEED TO BE DONE IN JAVASCRIPT, *MAY BE VERY INVOLVED*-->
-              <div class="predictive-text" id='predictivetext'>
-                <div class="prediction" id="prediction1" onclick="addToPhrase(this.innerText);" contenteditable="true">
+              <div class = "row0">
+
+                <div class="predictive-text" id='predictivetext'>
+                  <div class="prediction" id="prediction1" onclick="addToPhrase(this.innerText);" contenteditable="true">
+                  </div>
+                  <div class="prediction-2" id="prediction2" onclick="addToPhrase(this.innerText);"
+                    contenteditable="true"></div>
+                  <div class="prediction-3" id="prediction3" onclick="addToPhrase(this.innerText);"
+                    contenteditable="true"></div>
                 </div>
-                <div class="prediction-2" id="prediction2" onclick="addToPhrase(this.innerText);"
-                  contenteditable="true"></div>
-                <div class="prediction-3" id="prediction3" onclick="addToPhrase(this.innerText);"
-                  contenteditable="true"></div>
-              </div>
-              <div class="key-mini-space" onclick="addToPhrase(' ')">
-                <div class="group-mini-space">
-                    <button class="div-wrapper"></button>
-                    <div class="text-mini-space">Space</div>
+                <div class="key-mini-space" onclick="addToPhrase(' ')">
+                  <div class="group-mini-space">
+                      <button class="div-wrapper"></button>
+                      <div class="text-mini-space">Space</div>
+                  </div>
                 </div>
               </div>
               <div class="overlap-2">
-                <div class="row">
+                <div class="row" id = "row-1">
                   <div class="key-q" onclick="addToPhrase('Q');">
                     <div class="group">
                       <button class="div-wrapper">
@@ -170,7 +205,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row-2">
+                <div class="row-2" id = "row-2">
                   <div class="key-a" onclick="addToPhrase('A');">
                     <div class="group-2">
                       <button class="div-wrapper">
@@ -244,7 +279,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row-3">
+              <div class="row-3" id = "row-3">
                 <div class="key-z" onclick="addToPhrase('Z');">
                   <div class="group-2">
                     <button class="div-wrapper">
@@ -311,7 +346,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row-4">
+              <div class="row-4" id = "row-4">
                 <div class="key-00" onclick="addToPhrase('1');">
                   <div class="group-2">
                     <button class="div-wrapper">
@@ -383,7 +418,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row-5">
+              <div class="row-5" id = "row-5">
                 <div class="key-speak-it" onclick="speakPhrase()">
                   <div class="group-3">
                     <!--FUNCTIONALITY TO COLLECT STRING FROM TEXT PHRASE BOX AND PASS TO TEXT TO SPEECH-->

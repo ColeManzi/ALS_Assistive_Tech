@@ -48,7 +48,7 @@ def loadConfig():
 def resetMouse():
     pyautogui.moveTo(0, screenHeight)
 ###################################### TV REMOTE ################################################################
-@eel.expose 
+@eel.expose
 def powerOnOff():
     serial_com.send_command(serial_com.TVCommand.TURN_ON_OFF.value)
 
