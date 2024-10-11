@@ -1,5 +1,8 @@
 # CSE450 - Assistive Tech
 
+## This branch is specifically for working on the Assistive Tech Application when away from the device. Be careful when creating a pull request for this branch.
+
+
 ## Libraries
 
 |Library | Links| Notes |
