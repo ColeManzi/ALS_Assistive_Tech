@@ -14,6 +14,16 @@ const plugSelectOrder = [
   "main-menu-btn",
 ];
 
+const tvRemoteSelectOrder = [
+  "tv-power",
+  "tv-mute",
+  "tv-channel-up",
+  "tv-channel-down",
+  "tv-volume-up",
+  "tv-volume-down",
+  "main-menu-btn",
+];
+
 const plugSubmenuOrder = [
   "plug-submenu-on",
   "plug-submenu-off",
@@ -59,34 +69,56 @@ let plugLabels = {
   5: "Plug 5",
 };
 
+const tvRemoteLabels = {
+  "tv-power": "Power",
+  "tv-mute": "Mute",
+  "tv-channel-up": "Channel Up",
+  "tv-channel-down": "Channel Down",
+  "tv-volume-up": "Volume Up",
+  "tv-volume-down": "Volume Down",
+};
+
 /*
 _____________________________________________________________________________________________________
                                             MAIN MENU CONSTANTS
 _____________________________________________________________________________________________________
 */
 const menuContainer = document.getElementById("main-menu");
-//const menuItems = menuContainer.querySelectorAll(
-  //".button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings"
-//);
-
-// This just iterates over Yes and No
+//const menuItems = menuContainer.querySelectorAll('.button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings');
 const menuItems = menuContainer.querySelectorAll(
-  ".button-Yes-MM,.button-No-MM"
+  ".button-text-speech, .button-TV-controls" /*, .button-settings'*/
 );
+
 /*
 _____________________________________________________________________________________________________
                                             T2S/KEYBOARD CONSTANTS
 _____________________________________________________________________________________________________
 */
 const t2sContainer = document.getElementById("text-2-speech");
+// const t2sItems = t2sContainer.querySelectorAll('.button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu');
 const t2sItems = t2sContainer.querySelectorAll(
-  ".button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu"
+  ".button-yes,.button-no, .button-main-menu"
 );
 
 const keyboardContainer = document.getElementById("text-2-speech");
 const keyboardItems = keyboardContainer.querySelectorAll(
-  ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
+  ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-space,.key-new-phrase"
 );
+const currentRows = keyboardContainer.querySelectorAll(
+  ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
+);
+const rowDict = {
+  0: 43,
+  1: 0,
+  2: 1,
+  3: 2,
+  4: 3,
+  5: 4,
+  6: 15,
+  7: 24,
+  8: 33,
+  9: 42,
+};
 
 /**
 ___________________________________________________________________________________________________
@@ -212,6 +244,73 @@ function openSubmenu(event, supermenuId, submenuId) {
 
 /*
 --------------------------------------------------
+TV Control Functions
+--------------------------------------------------
+*/
+/*
+--------------------------------------------------
+*/
+/* Does nothing but when removed, user TV Remote 
+buttons click doesn't register to the Arduino */
+function powerOn() {
+  //eel.powerOn()
+}
+const button = document.getElementById("init-remtoe-btn");
+button.addEventListener("click", powerOn);
+/*
+--------------------------------------------------
+*/
+
+// Function to send power on/off command
+function powerOnOff() {
+  eel.powerOnOff();
+}
+// Attach powerOnOff function to button
+const powerButton = document.getElementById("tv-power");
+powerButton.addEventListener("click", powerOnOff);
+
+// Function to send mute command
+function muteUnmute() {
+  eel.muteUnmute();
+}
+// Attach muteUnmute function to button
+const muteButton = document.getElementById("tv-mute");
+muteButton.addEventListener("click", muteUnmute);
+
+// Function to send volume up command
+function volumeUp() {
+  eel.volumeUp();
+}
+// Attach volumeUp function to button
+const volumeUpButton = document.getElementById("tv-volume-up");
+volumeUpButton.addEventListener("click", volumeUp);
+
+// Function to send volume down command
+function volumeDown() {
+  eel.volumeDown();
+}
+// Attach volumeDown function to button
+const volumeDownButton = document.getElementById("tv-volume-down");
+volumeDownButton.addEventListener("click", volumeDown);
+
+// Function to send channel up command
+function channelUp() {
+  eel.channelUp();
+}
+// Attach channelUp function to button
+const channelUpButton = document.getElementById("tv-channel-up");
+channelUpButton.addEventListener("click", channelUp);
+
+// Function to send channel down command
+function channelDown() {
+  eel.channelDown();
+}
+// Attach channelDown function to button
+const channelDownButton = document.getElementById("tv-channel-down");
+channelDownButton.addEventListener("click", channelDown);
+
+/*
+--------------------------------------------------
         Input Mode Functions
 --------------------------------------------------
 */
@@ -220,6 +319,21 @@ document.addEventListener("DOMContentLoaded", function () {
   let cycleTimeout;
   let currentIndex = 0;
   let cycling = false;
+  // If you set this to 1, it unbreaks everything
+  let t2scycle = 2;
+
+  const highlightRow = (index) => {
+    currentRows.forEach((item) => {
+      item.style.boxShadow = ""; // Remove any existing glow effect
+    });
+    // Then, apply a yellow glow to the current item
+    const currentItem = currentRows[index];
+    // const nextItem = currentItems[(index + 1)];
+
+    if (currentItem) {
+      currentItem.style.boxShadow = "0 0 30px purple"; // Apply a yellow glow effect
+    }
+  };
 
   const highlightItem = (index) => {
     // First, remove the yellow glow from all current items
@@ -235,8 +349,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const cycleItems = () => {
     if (!cycling) return;
-    highlightItem(currentIndex);
-    currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+    if (currentItems.length == 47 && t2scycle == 2) {
+      highlightRow(currentIndex);
+      currentIndex = (currentIndex + 1) % currentRows.length; // Use currentItems for length
+    } else {
+      highlightItem(currentIndex);
+      currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+    }
     cycleTimeout = setTimeout(cycleItems, cycleTime);
   };
 
@@ -252,10 +371,33 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!cycling) return;
     clearTimeout(cycleTimeout);
     cycling = false;
-    const selectedItemIndex =
-      (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
-    currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
-    currentIndex = 0;
+    if (currentItems.length == 47 && t2scycle == 2) {
+      // const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+      // currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+
+      currentIndex = rowDict[currentIndex];
+      t2scycle = 1;
+      if (
+        currentIndex == 0 ||
+        currentIndex == 1 ||
+        currentIndex == 2 ||
+        currentIndex == 3
+      ) {
+        currentItems[currentIndex].click(); // Click the highlighted item using currentItems
+        currentItems[currentIndex].style.boxShadow = ""; // Click the highlighted item using currentItems
+        currentIndex = 0;
+        t2scycle = 2;
+      }
+    } else {
+      const selectedItemIndex =
+        (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+      currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+      currentItems[selectedItemIndex].style.boxShadow = ""; // Click the highlighted item using currentItems
+      console.log(currentIndex);
+
+      currentIndex = 0;
+      t2scycle = 2;
+    }
   });
 });
 /*
@@ -621,19 +763,20 @@ ________________________________________________________________________________
 function setMusicDirectory(directory) {
   eel.set_music_directory(directory);
 }
-
-//Comment out the first playsong function and uncomment the other playsong function with just the song name
 function playClassicalMusic() {
   setMusicDirectory("classical"); // Set music directory to classical
-  playSong('/home/pi/ALS-Assistive-Tech/Music/Classical/Ave Maria (after J.S. Bach).mp3', 'Classical'); // Play the first song (replace with actual song name)
-  // playSong("Ave Maria (after J.S. Bach).mp3");
+  playSong(
+    "/home/pi/ALS-Assistive-Tech/Music/Classical/Ave Maria (after J.S. Bach).mp3",
+    "Classical"
+  ); // Play the first song (replace with actual song name)
 }
 
-//Comment out the first playsong function and uncomment the other playsong function with just the song name
 function playChristianMusic() {
   setMusicDirectory("christian"); // Set music directory to christian
-  playSong('/home/pi/ALS-Assistive-Tech/Music/Christian/A Mighty Fortress Is Our God.mp3', 'Christian'); // Play the first song (replace with actual song name)
-  // playSong("A Mighty Fortress Is Our God.mp3");
+  playSong(
+    "/home/pi/ALS-Assistive-Tech/Music/Christian/A Mighty Fortress Is Our God.mp3",
+    "Christian"
+  ); // Play the first song (replace with actual song name)
 }
 
 function playSong(filePath, genre) {

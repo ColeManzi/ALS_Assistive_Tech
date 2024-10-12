@@ -1,12 +1,13 @@
 import eel
+import serial_com
 
 import rfcontroller  # This import should be commented out when testing on a PC
 import os
 import json
-
 import pyautogui
 import threading
 import vlc
+import os
 import serial_com
 from serial_com import send_command, TVCommand
 
@@ -24,9 +25,7 @@ pyautogui.FAILSAFE = False
 
 @eel.expose
 def togglePlug(command):
-    # print(
-    #     command
-    # )  # For testing on a PC, this line should be uncommented, and the following line should be commented out
+    # print(command) # For testing on a PC, this line should be uncommented, and the following line should be commented out
     controller.sendcode(
         command
     )  # This line should be commented out when testing on PC, the library is not available on PC
@@ -152,14 +151,8 @@ def speak_can_i_ask():
 
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 
-# Comment out both pi music directories when working on a PC (away from pi)
 classical_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Christian"
 christian_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Classical"
-
-# Uncomment these directories when working on a PC
-# christian_music_dir = "Music/Christian"
-# classical_music_dir = "Music/Classical"
-
 current_song_index = 0
 current_genre = ""  # Define the current genre variable
 
@@ -222,6 +215,19 @@ def previous_song():
 
 ######################################  TV CONTROL FUNCTIONS    #######################################
 
+
+@eel.expose
+def speak_from_text(text):
+    speak_text(text)  # The function defined above
+
+
+# At the end of your main script or when the Eel server shuts down
+def cleanup():
+    serial_com.ser.close()
+    print("Serial port closed")
+
+
+# Start the eel web server
 if __name__ == "__main__":
     eel.init("web", allowed_extensions=[".js", ".html"])
     # eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
