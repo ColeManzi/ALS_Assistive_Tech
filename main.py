@@ -18,16 +18,16 @@ import sys
 ############################################    GUI SETUP   #######################################################
 
 # controller = rfcontroller.RFController()  # Comment this out when developing on desktop
-# screenWidth, screenHeight = pyautogui.size()
-# pyautogui.FAILSAFE = False
+screenWidth, screenHeight = pyautogui.size()
+pyautogui.FAILSAFE = False
 
 
 @eel.expose
 def togglePlug(command):
-    print(
-        command
-    )  # For testing on a PC, this line should be uncommented, and the following line should be commented out
-    # controller.sendcode(command) # This line should be commented out when testing on PC, the library is not available on PC
+    # print(
+    #     command
+    # )  # For testing on a PC, this line should be uncommented, and the following line should be commented out
+    controller.sendcode(command) # This line should be commented out when testing on PC, the library is not available on PC
 
 
 # Below, some lines are commented out because to autostart on the pi we had to include full file paths. When working on the
@@ -52,9 +52,9 @@ def loadConfig():
         eel.loadConfig(config)
 
 
-# @eel.expose
-# def resetMouse():
-#     pyautogui.moveTo(0, screenHeight)
+@eel.expose
+def resetMouse():
+    pyautogui.moveTo(0, screenHeight)
 
 
 ###################################### TV REMOTE ################################################################
@@ -151,12 +151,12 @@ def speak_can_i_ask():
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 
 # Comment out both pi music directories when working on a PC (away from pi)
-# classical_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Christian"
-# christian_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Classical"
+classical_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Christian"
+christian_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Classical"
 
 # Uncomment these directories when working on a PC
-christian_music_dir = "Music/Christian"
-classical_music_dir = "Music/Classical"
+# christian_music_dir = "Music/Christian"
+# classical_music_dir = "Music/Classical"
 
 current_song_index = 0
 current_genre = ""  # Define the current genre variable
@@ -223,5 +223,5 @@ def previous_song():
 if __name__ == "__main__":
     eel.init("web", allowed_extensions=[".js", ".html"])
     # eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
-    # resetMouse()
+    resetMouse()
     eel.start("index.html", cmdline_args=["--start-fullscreen"])

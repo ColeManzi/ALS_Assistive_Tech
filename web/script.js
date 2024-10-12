@@ -625,15 +625,15 @@ function setMusicDirectory(directory) {
 //Comment out the first playsong function and uncomment the other playsong function with just the song name
 function playClassicalMusic() {
   setMusicDirectory("classical"); // Set music directory to classical
-  // playSong('/home/pi/ALS-Assistive-Tech/Music/Classical/Ave Maria (after J.S. Bach).mp3', 'Classical'); // Play the first song (replace with actual song name)
-  playSong("Ave Maria (after J.S. Bach).mp3");
+  playSong('/home/pi/ALS-Assistive-Tech/Music/Classical/Ave Maria (after J.S. Bach).mp3', 'Classical'); // Play the first song (replace with actual song name)
+  // playSong("Ave Maria (after J.S. Bach).mp3");
 }
 
 //Comment out the first playsong function and uncomment the other playsong function with just the song name
 function playChristianMusic() {
   setMusicDirectory("christian"); // Set music directory to christian
-  // playSong('/home/pi/ALS-Assistive-Tech/Music/Christian/A Mighty Fortress Is Our God.mp3', 'Christian'); // Play the first song (replace with actual song name)
-  playSong("A Mighty Fortress Is Our God.mp3");
+  playSong('/home/pi/ALS-Assistive-Tech/Music/Christian/A Mighty Fortress Is Our God.mp3', 'Christian'); // Play the first song (replace with actual song name)
+  // playSong("A Mighty Fortress Is Our God.mp3");
 }
 
 function playSong(filePath, genre) {
