@@ -3,35 +3,29 @@ Main Module
 
 This module contains functions for controlling a TV using serial communication.
 """
-
 import serial
 import time
 from enum import Enum
 
-
 class TVCommand(Enum):
     """Enum class for TV commands."""
+    TURN_ON_OFF = '1'
+    MUTE_UNMUTE = '2'
+    VOLUME_UP = '3' 
+    VOLUME_DOWN = '4'
+    CHANNEL_UP = '5'
+    CHANNEL_DOWN = '6'
 
-    TURN_ON_OFF = "1"
-    MUTE_UNMUTE = "2"
-    VOLUME_UP = "3"
-    VOLUME_DOWN = "4"
-    CHANNEL_UP = "5"
-    CHANNEL_DOWN = "6"
-
-
-try:
+try: 
     """Open serial port."""
-    ser = serial.Serial("/dev/ttyACM0", 115200, timeout=1)
+    ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
     print("Connected to:", ser.name)
 except serial.SerialException:
-    pass
-    # print("Error opening port")
-    # exit()
+    print("Error opening port")
+    exit()
 
-# Add a delay to allow Arduino to boot up
+# Add a delay to allow Arduino to boot up  
 time.sleep(2)
-
 
 def send_command(command):
     """Send a command to the serial port.
@@ -45,16 +39,15 @@ def send_command(command):
     # Flush buffers
     ser.flush()
     # Flush a second time to clear buffers
-    ser.flush()
+    ser.flush() 
     # Send actual command
     ser.write(command.encode())
     # Longer delay
-    time.sleep(1)
+    time.sleep(1)  
     # Read response
     response = ser.readline().decode().strip()
     print("Sent:", command)
     print("Response:", response)
-
 
 def send_commands():
     """Send all commands."""

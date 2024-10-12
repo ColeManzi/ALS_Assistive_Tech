@@ -1,12 +1,12 @@
 import eel
+import serial_com
 
-# import rfcontroller  # This import should be commented out when testing on a PC
-import os
+# import rfcontroller # This import should be commented out when testing on a PC
 import json
-
 import pyautogui
 import threading
 import vlc
+import os
 import serial_com
 from serial_com import send_command, TVCommand
 
@@ -17,17 +17,48 @@ import sys
 
 ############################################    GUI SETUP   #######################################################
 
-# controller = rfcontroller.RFController()  # Comment this out when developing on desktop
-# screenWidth, screenHeight = pyautogui.size()
-# pyautogui.FAILSAFE = False
+# Function to send power on command
+# @eel.expose
+# def powerOnOff():
+#     serial_com.send_command(serial_com.TVCommand.TURN_ON_OFF.value)
+
+# # Function to send mute command
+# @eel.expose
+# def muteUnmute():
+#     serial_com.send_command(serial_com.TVCommand.MUTE_UNMUTE.value)
+
+# # Function to send volume up command
+# @eel.expose
+# def volumeUp():
+#     serial_com.send_command(serial_com.TVCommand.VOLUME_UP.value)
+
+# # Function to send volume down command
+# @eel.expose
+# def volumeDown():
+#     serial_com.send_command(serial_com.TVCommand.VOLUME_DOWN.value)
+
+# # Function to send channel up command
+# @eel.expose
+# def channelUp():
+#     serial_com.send_command(serial_com.TVCommand.CHANNEL_UP.value)
+
+# # Function to send channel down command
+# @eel.expose
+# def channelDown():
+#     serial_com.send_command(serial_com.TVCommand.CHANNEL_DOWN.value)
+
+
+# controller = rfcontroller.RFController() # Comment this out when developing on desktop
+screenWidth, screenHeight = pyautogui.size()
+pyautogui.FAILSAFE = False
 
 
 @eel.expose
 def togglePlug(command):
-    print(
+    # print(command) # For testing on a PC, this line should be uncommented, and the following line should be commented out
+    controller.sendcode(
         command
-    )  # For testing on a PC, this line should be uncommented, and the following line should be commented out
-    # controller.sendcode(command) # This line should be commented out when testing on PC, the library is not available on PC
+    )  # This line should be commented out when testing on PC, the library is not available on PC
 
 
 # Below, some lines are commented out because to autostart on the pi we had to include full file paths. When working on the
@@ -52,9 +83,9 @@ def loadConfig():
         eel.loadConfig(config)
 
 
-# @eel.expose
-# def resetMouse():
-#     pyautogui.moveTo(0, screenHeight)
+@eel.expose
+def resetMouse():
+    pyautogui.moveTo(0, screenHeight)
 
 
 ###################################### TV REMOTE ################################################################
@@ -150,14 +181,8 @@ def speak_can_i_ask():
 
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 
-# Comment out both pi music directories when working on a PC (away from pi)
-# classical_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Christian"
-# christian_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Classical"
-
-# Uncomment these directories when working on a PC
-christian_music_dir = "Music/Christian"
-classical_music_dir = "Music/Classical"
-
+classical_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Christian"
+christian_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Classical"
 current_song_index = 0
 current_genre = ""  # Define the current genre variable
 
@@ -220,8 +245,21 @@ def previous_song():
 
 ######################################  TV CONTROL FUNCTIONS    #######################################
 
+
+@eel.expose
+def speak_from_text(text):
+    speak_text(text)  # The function defined above
+
+
+# At the end of your main script or when the Eel server shuts down
+def cleanup():
+    serial_com.ser.close()
+    print("Serial port closed")
+
+
+# Start the eel web server
 if __name__ == "__main__":
     eel.init("web", allowed_extensions=[".js", ".html"])
     # eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
-    # resetMouse()
+    resetMouse()
     eel.start("index.html", cmdline_args=["--start-fullscreen"])
