@@ -1,6 +1,6 @@
 import eel
 
-# import rfcontroller  # This import should be commented out when testing on a PC
+import rfcontroller  # This import should be commented out when testing on a PC
 import os
 import json
 
@@ -17,7 +17,7 @@ import sys
 
 ############################################    GUI SETUP   #######################################################
 
-# controller = rfcontroller.RFController()  # Comment this out when developing on desktop
+controller = rfcontroller.RFController()  # Comment this out when developing on desktop
 screenWidth, screenHeight = pyautogui.size()
 pyautogui.FAILSAFE = False
 
@@ -27,7 +27,9 @@ def togglePlug(command):
     # print(
     #     command
     # )  # For testing on a PC, this line should be uncommented, and the following line should be commented out
-    controller.sendcode(command) # This line should be commented out when testing on PC, the library is not available on PC
+    controller.sendcode(
+        command
+    )  # This line should be commented out when testing on PC, the library is not available on PC
 
 
 # Below, some lines are commented out because to autostart on the pi we had to include full file paths. When working on the
