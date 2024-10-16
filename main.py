@@ -3,6 +3,7 @@ import eel
 # import rfcontroller  # This import should be commented out when testing on a PC
 import os
 import json
+import pyttsx3
 
 import pyautogui
 import threading
@@ -106,12 +107,15 @@ def speak_text_with_vlc(text):
     if not text:  # Check if the text is empty or None
         print("No text provided to speak.")
         return  # Exit the function
-    tts = gTTS(text=text, lang="en")
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+    # tts = gTTS(text=text, lang="en")
 
     # Using tempfile to create a temporary MP3 file
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmpfile:
-        tts.save(tmpfile.name)  # Save the speech to the temporary MP3 file
-        play_speech(tmpfile.name)  # Play the MP3 file using VLC
+    # with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmpfile:
+    #     tts.save(tmpfile.name)  # Save the speech to the temporary MP3 file
+    #     play_speech(tmpfile.name)  # Play the MP3 file using VLC
 
 
 def play_speech(file_path):
