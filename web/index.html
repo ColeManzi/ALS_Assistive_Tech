@@ -23,7 +23,7 @@
           <!--Main Menu (leave blank for now since there is no menu) -->
         </div>
       </div>
-      <!--TEXT-2-SPEECH MAIN MENU BUTTON--
+      <!--TEXT-2-SPEECH MAIN MENU BUTTON-->
       <div class="button-text-speech" onclick="openSubmenu(event, 'main-menu', 'text-2-speech')">
         <div class="group">
           <div class="overlap-group">
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <--TV CONTROLS MAIN MENU BUTTON--
+      <!--TV CONTROLS MAIN MENU BUTTON--
       <div class="button-TV-controls" onclick="openSubmenu(event,'main-menu', 'tv-control-menu')">
         <div class="group">
           <div class="overlap-group">
@@ -457,6 +457,7 @@
               </button>
             </div>
           </div>
+          <!--
           <div class="button-large">
             <div class="group-6">
               <button class="overlap-group-5">
@@ -464,10 +465,31 @@
               </button>
             </div>
           </div>
+          -->
+
           <div class="page-title">
             <div class="text-speech">Text-2-speech</div>
           </div>
-        </div>
+
+          <!-- Email Send Button -->
+          <div class="button-send-email" onclick="sendEmail()">
+            <button class="overlap-group-6">
+              <p class="text">Send Email</p>
+            </button>
+          </div>
+
+          <!-- EmailJS Stuff -->
+          <script type="text/javascript"
+                  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+          </script>
+          <script type="text/javascript">
+             (function(){
+                emailjs.init({
+                  publicKey: "fkFzURE1GOsblNkxL",
+                });
+             })();
+          </script>
+        <!--
         <div class="button-settings" onclick="openSubmenu(event,'text-2-speech','settings-page')">
           <div class="group-7">
             <button class="overlap-group-6">
@@ -498,7 +520,7 @@
         </div>
         <div class="button-ask-something" onclick="speakCanIAsk()">
           <div class="group-7">
-            <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY OUT LOUD-->
+            <--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY OUT LOUD--
             <button class="overlap-group-6">
               <p class="text">I’d Like To Ask You Something</p>
             </button>
@@ -513,23 +535,15 @@
         </div>
         <div class="button-no" onclick="speakNo()">
           <div class="group-7">
-            <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY NO OUT LOUD-->
-            <button class="overlap-group-6">
-              <div class="text-no">No</div>
-            </button>
+
           </div>
-        </div>
-        <div class="button-yes" onclick="speakYes()">
-          <div class="group-7">
-            <!--ADD FUNCTIONALITY TO TEXT-2-SPEECH BACKEND TO AUTOMATICALLY SAY YES OUT LOUD-->
-            <button class="overlap-group-6">
-              <div class="text-yes">Yes</div>
-            </button>
-          </div>
+          -->
         </div>
       </div>
     </div>
   </div>
+
+
   <!-- TV CONTROLS -->
   <div class="desktop-TV-controls" id="tv-control-menu">
     <div class="div">
