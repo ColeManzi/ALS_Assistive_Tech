@@ -79,11 +79,8 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________
 */
 const t2sContainer = document.getElementById("text-2-speech");
-//const t2sItems = t2sContainer.querySelectorAll(
-//  ".button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu"
-//);
 const t2sItems = t2sContainer.querySelectorAll(
-  ".phrase-text,.button-main-menu, .button-send-email"
+  ".button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu"
 );
 
 const keyboardContainer = document.getElementById("text-2-speech");
@@ -565,38 +562,6 @@ function speakPhrase() {
   textBox.innerText = "";
 }
 eel.expose(speakPhrase);
-
-/*
---------------------------------------------------
-        SENDING EMAIL FUNCTION
---------------------------------------------------
-*/
-
-
-function sendEmail() {
-    var textBox = document.getElementById("phrase-text-box");
-    var text = textBox.innerText; // Use .value for input box, .innerText or .textContent for div/span
-    const emailParams = {
-        subject: "None",
-        message: text
-    };
-
-    // Send the email using EmailJS
-    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            //alert('Email sent successfully!');
-        }, function(error) {
-            console.error('FAILED...', error);
-            //alert('Failed to send email.');
-        });
-}
-
-
-
-
-
-
 /*
 --------------------------------------------------
 TV Control Functions
