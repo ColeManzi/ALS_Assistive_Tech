@@ -24,6 +24,7 @@ PyAutoGUI==0.9.54
 PyGetWindow==0.0.9
 PyMsgBox==1.0.9
 pyserial
+pyttsx3
 # pyobjc-core==10.0
 # pyobjc-framework-Cocoa==10.0
 # pyobjc-framework-Quartz==10.0

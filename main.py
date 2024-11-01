@@ -1,15 +1,16 @@
-import eel
+
 
 # import rfcontroller  # This import should be commented out when testing on a PC
 import os
 import json
-
+import pyttsx3
+import eel
 import pyautogui
 import threading
 import vlc
 import serial_com
 from serial_com import send_command, TVCommand
-
+import subprocess
 from gtts import gTTS
 import tempfile
 import sys
@@ -106,12 +107,8 @@ def speak_text_with_vlc(text):
     if not text:  # Check if the text is empty or None
         print("No text provided to speak.")
         return  # Exit the function
-    tts = gTTS(text=text, lang="en")
 
-    # Using tempfile to create a temporary MP3 file
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmpfile:
-        tts.save(tmpfile.name)  # Save the speech to the temporary MP3 file
-        play_speech(tmpfile.name)  # Play the MP3 file using VLC
+    subprocess.run(["espeak", "-v", "english+f4", text])
 
 
 def play_speech(file_path):
