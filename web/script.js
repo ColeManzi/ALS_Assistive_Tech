@@ -65,14 +65,10 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________
 */
 const menuContainer = document.getElementById("main-menu");
-//const menuItems = menuContainer.querySelectorAll(
-  //".button-text-speech,.button-TV-controls,.button-music,.button-outlet,.button-settings"
-//);
-
-// This just iterates over Yes and No
 const menuItems = menuContainer.querySelectorAll(
-  ".button-Yes-MM,.button-No-MM"
+  ".button-text-speech,.button-yes-no"
 );
+
 /*
 _____________________________________________________________________________________________________
                                             T2S/KEYBOARD CONSTANTS
@@ -80,7 +76,7 @@ ________________________________________________________________________________
 */
 const t2sContainer = document.getElementById("text-2-speech");
 const t2sItems = t2sContainer.querySelectorAll(
-  ".button-yes,.button-no,.button-starts-with,.button-ask-something,.button-large,.phrase-text,.button-TV-controls,.button-music,.button-outlet,.button-settings,.button-main-menu"
+  ".phrase-text,.button-main-menu"
 );
 
 const keyboardContainer = document.getElementById("text-2-speech");
@@ -90,12 +86,12 @@ const keyboardItems = keyboardContainer.querySelectorAll(
 
 /**
 ___________________________________________________________________________________________________
-                                        TV CONTROL CONSTANTS
+                                        YES/NO CONSTANTS
 ___________________________________________________________________________________________________
  */
-const tvContainer = document.getElementById("tv-control-menu");
+const tvContainer = document.getElementById("yes-no-menu");
 const tvItems = tvContainer.querySelectorAll(
-  ".button-main-menu,.button-settings,.button-outlet,.button-music,.button-text-speech,.button-mute-ON-OFF,.button-volume-DOWN,.button-volume-UP,.button-channel-DOWN,.button-channel-UP,.button-power-ON-OFF"
+  ".button-Yes,.button-No,.button-main-menu"
 );
 /*
 /*
@@ -105,7 +101,7 @@ ________________________________________________________________________________
 */
 const musicContainer = document.getElementById("music-menu");
 const musicItems = musicContainer.querySelectorAll(
-  ".button-main-menu,.button-settings,.button-outlet,.button-TV-controls,.button-text-speech,.button-skip-song,.button-PAUSE-PLAY,.button-previous-song,.button-classical,.button-christian"
+  ".button-main-menu,.button-settings,.button-outlet,.button-yes-no,.button-text-speech,.button-skip-song,.button-PAUSE-PLAY,.button-previous-song,.button-classical,.button-christian"
 );
 /*
 /*
@@ -115,7 +111,7 @@ ________________________________________________________________________________
 */
 const outletContainer = document.getElementById("outlet-menu");
 const outletItems = outletContainer.querySelectorAll(
-  ".button-main-menu,.button-settings,.button-TV-controls,.button-music,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
+  ".button-main-menu,.button-settings,.button-yes-no,.button-music,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
 );
 
 /*
@@ -175,7 +171,7 @@ function openSubmenu(event, supermenuId, submenuId) {
       currentContainer = t2sContainer;
       currentItems = t2sItems;
     }
-    if (submenuId === "tv-control-menu") {
+    if (submenuId === "yes-no-menu") {
       currentContainer = tvContainer;
       currentItems = tvItems;
     }

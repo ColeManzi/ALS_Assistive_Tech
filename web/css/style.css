@@ -95,7 +95,7 @@ div.button-text-speech {
   left: 191px;
 }
 
-div.button-TV-controls {
+div.button-yes-no {
   position: absolute;
   width: 432px;
   height: 212px;
@@ -119,6 +119,14 @@ div.button-outlet {
   left: 478px;
 }
 
+div.button-settings {
+  top: 613px;
+  left: 1059px;
+  position: absolute;
+  width: 432px;
+  height: 212px;
+}
+
 div.button-settings-MM {
   top: 2%;
   right: 2%;
@@ -132,7 +140,9 @@ div.button-settings-MM {
   justify-content: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-div.text-wrapper-settings-MM {
+
+
+div.text-wrapper-settings {
   font-family: "Work Sans", Helvetica;
   font-weight: 600;
   color: #000000;
@@ -168,8 +178,6 @@ div.mouse-tip-text-wrapper {
   color: #000;
   font-size: 36px;
 }
-
-
 
 
 
@@ -1387,7 +1395,7 @@ div.mouse-tip-text-wrapper {
   overflow: hidden;
 }
 
-.desktop-text .button-no {
+.desktop-text .button-no-t {
   width: 225px;
   top: 286px;
   left: 0;
@@ -1411,7 +1419,7 @@ div.mouse-tip-text-wrapper {
   line-height: normal;
 }
 
-.desktop-text .button-yes {
+.desktop-text .button-yes-t {
   width: 225px;
   top: 94px;
   left: 0;
@@ -1441,7 +1449,7 @@ buttons click doesn't register to the Arduino */
   display: none;
 }
 
-.desktop-TV-controls {
+.desktop-Yes-No {
   background-color: #cffcff;
   display: flex;
   flex-direction: row;
@@ -1449,40 +1457,55 @@ buttons click doesn't register to the Arduino */
   width: 100%;
 }
 
-.desktop-TV-controls .div {
+.desktop-Yes-No .div {
   background-color: #cffcff;
   width: 1920px;
   height: 1080px;
   position: relative;
 }
 
-.desktop-TV-controls .button-main-menu {
+.desktop-Yes-No .button-No {
   position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  left: 1418px;
-  overflow: hidden;
+  width: 432px;
+  height: 212px;
+  top: 295px;
+  left: 55%;
 }
 
-.desktop-TV-controls .group {
-  width: 222px;
+.desktop-Yes-No .button-Yes {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 295px;
+  left: 25%;
+}
+
+.desktop-Yes-No .button-main-menu {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 826px;
+  left: 40%;
+}
+
+.desktop-Yes-No .group {
   top: 5px;
   left: 5px;
+  width: 432px;
+  height: 212px;
   position: relative;
-  height: 135px;
 }
 
-.desktop-TV-controls .overlap-group {
+.desktop-Yes-No .overlap-group {
   position: relative;
-  width: 220px;
-  height: 135px;
+  width: 432px;
+  height: 212px;
   background-color: #d9d9d9;
   border-radius: 10px;
   box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
 }
 
-.desktop-TV-controls .text {
+.desktop-Yes-No .text {
   position: absolute;
   width: 220px;
   height: 135px;
@@ -1497,144 +1520,6 @@ buttons click doesn't register to the Arduino */
   line-height: normal;
 }
 
-.desktop-TV-controls .button-settings {
-  left: 1133px;
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  overflow: hidden;
-}
-
-.desktop-TV-controls .button-outlet {
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  left: 848px;
-  overflow: hidden;
-}
-
-.desktop-TV-controls .button-music {
-  left: 563px;
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  overflow: hidden;
-}
-
-.desktop-TV-controls .button-text-speech {
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  left: 278px;
-  overflow: hidden;
-}
-
-.desktop-TV-controls .button-mute-ON-OFF {
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 388px;
-  left: 1432px;
-}
-
-.desktop-TV-controls .overlap-group-wrapper {
-  width: 307px;
-  top: 8px;
-  left: 2px;
-  position: relative;
-  height: 135px;
-}
-
-.desktop-TV-controls .div-wrapper {
-  position: relative;
-  width: 305px;
-  height: 135px;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
-}
-
-.desktop-TV-controls .text-wrapper {
-  position: absolute;
-  width: 305px;
-  height: 135px;
-  top: 0;
-  left: 0;
-  font-family: "Work Sans", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.desktop-TV-controls .button-volume-DOWN {
-  top: 477px;
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  left: 1014px;
-}
-
-.desktop-TV-controls .button-volume-UP {
-  top: 302px;
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  left: 1014px;
-}
-
-.desktop-TV-controls .button-channel-DOWN {
-  top: 477px;
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  left: 596px;
-}
-
-.desktop-TV-controls .button-channel-UP {
-  top: 302px;
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  left: 596px;
-}
-
-.desktop-TV-controls .button-power-ON-OFF {
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 380px;
-  left: 178px;
-}
-
-.desktop-TV-controls .page-title {
-  position: absolute;
-  width: 772px;
-  height: 82px;
-  top: 20px;
-  left: 596px;
-}
-
-.desktop-TV-controls .TV-controls {
-  position: absolute;
-  width: 727px;
-  height: 82px;
-  top: -1px;
-  left: 22px;
-  font-family: "Work Sans", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
 
 .desktop-music-menu {
   background-color: #cffcff;
