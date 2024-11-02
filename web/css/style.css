@@ -1468,7 +1468,7 @@ buttons click doesn't register to the Arduino */
   position: absolute;
   width: 432px;
   height: 212px;
-  top: 826px;
+  bottom: 10%;
   left: 40%;
 }
 
