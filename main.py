@@ -107,17 +107,17 @@ def speak_text_with_vlc(text):
     if not text:  # Check if the text is empty or None
         print("No text provided to speak.")
         return  # Exit the function
+
+    # comment out this code if you are working on the raspberry pi
     engine = pyttsx3.init()
     engine.setProperty('voice','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0')
     engine.setProperty("rate", 125)
     engine.say(text)
     engine.runAndWait()
-    # tts = gTTS(text=text, lang="en")
 
-    # # Using tempfile to create a temporary MP3 file
-    # with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmpfile:
-    #     tts.save(tmpfile.name)  # Save the speech to the temporary MP3 file
-    #     play_speech(tmpfile.name)  # Play the MP3 file using VLC
+    # comment out the line below if you are working on a pc
+    #subprocess.run(["espeak", "-v", "english+f4", text])
+
 
 
 def play_speech(file_path):
