@@ -8,6 +8,7 @@ import pyautogui
 import threading
 import vlc
 import serial_com
+import pyttsx3
 from serial_com import send_command, TVCommand
 
 from gtts import gTTS
@@ -106,12 +107,17 @@ def speak_text_with_vlc(text):
     if not text:  # Check if the text is empty or None
         print("No text provided to speak.")
         return  # Exit the function
-    tts = gTTS(text=text, lang="en")
+    engine = pyttsx3.init()
+    engine.setProperty('voice','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0')
+    engine.setProperty("rate", 125)
+    engine.say(text)
+    engine.runAndWait()
+    # tts = gTTS(text=text, lang="en")
 
-    # Using tempfile to create a temporary MP3 file
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmpfile:
-        tts.save(tmpfile.name)  # Save the speech to the temporary MP3 file
-        play_speech(tmpfile.name)  # Play the MP3 file using VLC
+    # # Using tempfile to create a temporary MP3 file
+    # with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmpfile:
+    #     tts.save(tmpfile.name)  # Save the speech to the temporary MP3 file
+    #     play_speech(tmpfile.name)  # Play the MP3 file using VLC
 
 
 def play_speech(file_path):
