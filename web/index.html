@@ -39,6 +39,14 @@
           </div>
         </div>
       </div>
+      <!--COMMON PHRASES MAIN MENU BUTTON-->
+      <div class="button-common-phrase" onclick="openSubmenu(event,'main-menu','common-phrase-menu')">
+        <div class="group">
+          <div class="overlap-group">
+            <div class="text-wrapper-2">Common Phrases</div>
+          </div>
+        </div>
+      </div>
 
       <!--SETTINGS BUTTON MAIN MENU--
         <div class="button-settings-MM" onclick="openSubmenu(event,'main-menu','settings-page')">
@@ -418,7 +426,7 @@
     </div>
   </div>
 
-  <!-- TV CONTROLS -->
+  <!-- YES/NO CONTROLS -->
 
   <div class="desktop-Yes-No" id="yes-no-menu">
     <div class="div">
@@ -447,91 +455,57 @@
   </div>
 
 
-  <!-- MUSIC CONTROLS-->
-  <div class="desktop-music-menu" id="music-menu">
+  <!-- COMMON PHRASES CONTROLS-->
+  <div class="common-phrase-menu" id="common-phrase-menu">
     <div class="div">
-      <div class="button-main-menu" onclick="openSubmenu(event,'music-menu','main-menu')">
+      <div class="button-main-menu" onclick="openSubmenu(event,'common-phrase-menu','main-menu')">
         <div class="group">
           <button class="overlap-group">
             <div class="text">Main Menu</div>
           </button>
         </div>
       </div>
-      <div class="button-settings" onclick="openSubmenu(event,'music-menu','settings-page')">
-        <div class="group">
-          <button class="overlap-group">
-            <div class="text">Settings</div>
-          </button>
-        </div>
-      </div>
-      <div class="button-outlet" onclick="openSubmenu(event,'music-menu','outlet-menu')">
-        <div class="group">
-          <button class="overlap-group">
-            <div class="text">Outlet Controls</div>
-          </button>
-        </div>
-      </div>
-      <div class="button-TV-controls" onclick="openSubmenu(event,'music-menu','tv-control-menu')">
-        <div class="group">
-          <button class="overlap-group">
-            <div class="text">Tv Controls</div>
-          </button>
-        </div>
-      </div>
-      <div class="button-text-speech" onclick="openSubmenu(event,'music-menu','text-2-speech')">
-        <div class="group">
-          <button class="overlap-group">
-            <div class="text">Text-2-speech</div>
-          </button>
-        </div>
-      </div>
-      <div class="button-skip-song" onclick="nextSong()">
-        <div class="group">
-          <!--ADD SKIP SONG FUNCTIONALITY HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-          <button class="overlap-group">
-            <div class="text">Skip Song</div>
-          </button>
-        </div>
-      </div>
-      <div class="button-PAUSE-PLAY" onclick="pauseSong()">
-        <div class="group">
-          <!--ADD PLAY/PAUSE SONG FUNCTIONALITY HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-          <button class="overlap-group">
-            <div class="text">Pause/play</div>
-          </button>
-        </div>
-      </div>
-      <div class="button-previous-song" onclick="previousSong()">
-        <div class="group">
-          <!--ADD PREV SONG FUNCTIONALITY HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-          <button class="overlap-group">
-            <div class="text">Previous Song</div>
-          </button>
-        </div>
-      </div>
-      <div class="button-classical" onclick="playClassicalMusic()">
+      <div class="button-uncomfortable" onclick="speakUncomfortable()">
         <div class="overlap-group-wrapper">
-          <!--ADD FUNCTIONALITY TO PLAY THE CLASSICAL MUSIC HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
           <button class="quick-phrases-wrapper">
-            <div class="quick-phrases">Classical</div>
+            <div class="text-wrapper-settings">Im Uncomfortable</div>
           </button>
         </div>
       </div>
-      <div class="button-christian" onclick="playChristianMusic()">
+      <div class="button-nauseous" onclick="speakNauseous()">
         <div class="overlap-group-wrapper">
-          <!--ADD FUNCTIONALITY TO PLAY THE CHRISTIAN MUSIC HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
           <button class="quick-phrases-wrapper">
-            <div class="quick-phrases">Christian</div>
+            <div class="text-wrapper-settings">Im nauseous</div>
           </button>
         </div>
       </div>
-      <!--ADD FUNCTIONALITY TO DISPLAY THE SONG INFO HERE AND CALL SCRIPT.JS FUNCTION ONCLICK-->
-      <div class="display">
-        <div id="song-playing" class="song-playing"></div>
-        <div id="genre" class="genre"></div>
+      <div class="button-pain" onclick="speakPain()">
+        <div class="overlap-group-wrapper">
+          <button class="quick-phrases-wrapper">
+            <div class="text-wrapper-settings">Im in pain</div>
+          </button>
+        </div>
       </div>
-      <div class="page-title">
-        <div class="text-wrapper">Music</div>
+      <div class="button-thank-you" onclick="speakThankYou()">
+        <div class="overlap-group-wrapper">
+          <button class="quick-phrases-wrapper">
+            <div class="text-wrapper-settings">Thank you!</div>
+          </button>
+        </div>
+      </div>
+      <div class="button-hello" onclick="speakHello()">
+        <div class="overlap-group-wrapper">
+          <button class="quick-phrases-wrapper">
+            <div class="text-wrapper-settings">Hello!</div>
+          </button>
+        </div>
+      </div>
+      <div class="button-bye" onclick="speakBye()">
+        <div class="overlap-group-wrapper">
+          <button class="quick-phrases-wrapper">
+            <div class="text-wrapper-settings">Good Bye!</div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -560,7 +534,7 @@
           </button>
         </div>
       </div>
-      <div class="button-music" onclick="openSubmenu(event,'outlet-menu','music-menu')">
+      <div class="button-common-phrase" onclick="openSubmenu(event,'outlet-menu','common-phrase-menu')">
         <div class="group">
           <button class="overlap-group">
             <div class="text">Music</div>

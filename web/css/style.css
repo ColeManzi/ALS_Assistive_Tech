@@ -8,11 +8,11 @@
   /* Initially hidden */
 }
 
-#tv-control-menu {
+#yes-no-menu {
   display: none;
 }
 
-#music-menu {
+#common-phrase-menu {
   display: none;
 }
 
@@ -32,6 +32,12 @@
   box-shadow: 0 0 10px #000;
   /* Black shadow for a glowing effect */
 }
+
+/*
+====================================================================================================
+                                        MAIN MENU CSS
+====================================================================================================
+*/
 
 .desktop-main-menu {
   background-color: #cffcff;
@@ -71,22 +77,6 @@
   line-height: normal;
 }
 
-div.button-Yes-MM {
-  position: absolute;
-  width: 432px;
-  height: 212px;
-  top: 295px;
-  left: 25%;
-}
-
-div.button-No-MM {
-  position: absolute;
-  width: 432px;
-  height: 212px;
-  top: 295px;
-  left: 55%;
-}
-
 div.button-text-speech {
   position: absolute;
   width: 432px;
@@ -103,7 +93,7 @@ div.button-yes-no {
   left: 771px;
 }
 
-div.button-music {
+div.button-common-phrase {
   top: 295px;
   left: 1340px;
   position: absolute;
@@ -126,21 +116,6 @@ div.button-settings {
   width: 432px;
   height: 212px;
 }
-
-div.button-settings-MM {
-  top: 2%;
-  right: 2%;
-  position: absolute;
-  width: 250px;
-  height: 100px;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 
 div.text-wrapper-settings {
   font-family: "Work Sans", Helvetica;
@@ -179,10 +154,6 @@ div.mouse-tip-text-wrapper {
   font-size: 36px;
 }
 
-
-
-
-
 .desktop-main-menu .group {
   width: 434px;
   height: 212px;
@@ -208,6 +179,13 @@ div.mouse-tip-text-wrapper {
   font-size: 36px;
   text-align: center;
 }
+
+
+/*
+====================================================================================================
+                                        TEXT-2-SPEECH CSS
+====================================================================================================
+*/
 
 .desktop-text {
   background-color: #cffcff;
@@ -1449,6 +1427,12 @@ buttons click doesn't register to the Arduino */
   display: none;
 }
 
+/*
+====================================================================================================
+                                        YES/NO CSS
+====================================================================================================
+*/
+
 .desktop-Yes-No {
   background-color: #cffcff;
   display: flex;
@@ -1520,8 +1504,13 @@ buttons click doesn't register to the Arduino */
   line-height: normal;
 }
 
+/*
+====================================================================================================
+                                        COMMON PHRASES CSS
+====================================================================================================
+*/
 
-.desktop-music-menu {
+.common-phrase-menu {
   background-color: #cffcff;
   display: flex;
   flex-direction: row;
@@ -1529,14 +1518,14 @@ buttons click doesn't register to the Arduino */
   width: 100%;
 }
 
-.desktop-music-menu .div {
+.common-phrase-menu .div {
   background-color: #cffcff;
   width: 1920px;
   height: 1080px;
   position: relative;
 }
 
-.desktop-music-menu .button-main-menu {
+.common-phrase-menu .button-main-menu {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1545,7 +1534,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .group {
+.common-phrase-menu .group {
   position: relative;
   width: 222px;
   height: 135px;
@@ -1553,7 +1542,7 @@ buttons click doesn't register to the Arduino */
   left: 5px;
 }
 
-.desktop-music-menu .overlap-group {
+.common-phrase-menu .overlap-group {
   position: relative;
   width: 220px;
   height: 135px;
@@ -1562,7 +1551,7 @@ buttons click doesn't register to the Arduino */
   box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
 }
 
-.desktop-music-menu .text {
+.common-phrase-menu .text {
   position: absolute;
   width: 220px;
   height: 135px;
@@ -1577,7 +1566,7 @@ buttons click doesn't register to the Arduino */
   line-height: normal;
 }
 
-.desktop-music-menu .button-settings {
+.common-phrase-menu .button-settings {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1586,7 +1575,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .button-outlet {
+.common-phrase-menu .button-outlet {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1595,7 +1584,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .button-TV-controls {
+.common-phrase-menu .button-TV-controls {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1604,7 +1593,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .button-text-speech {
+.common-phrase-menu .button-text-speech {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1613,7 +1602,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .button-skip-song {
+.common-phrase-menu .button-skip-song {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1622,7 +1611,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .button-PAUSE-PLAY {
+.common-phrase-menu .button-PAUSE-PLAY {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1631,7 +1620,7 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .button-previous-song {
+.common-phrase-menu .button-previous-song {
   position: absolute;
   width: 225px;
   height: 150px;
@@ -1640,20 +1629,60 @@ buttons click doesn't register to the Arduino */
   overflow: hidden;
 }
 
-.desktop-music-menu .button-classical {
+.common-phrase-menu .button-uncomfortable {
   position: absolute;
   width: 432px;
   height: 212px;
-  top: 358px;
-  left: 55%;
+  top: 20%;
+  left: 10%;
 }
 
-.desktop-music-menu .overlap-group-wrapper {
+.common-phrase-menu .button-nauseous {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 20%;
+  left: 40%;
+}
+
+.common-phrase-menu .button-pain {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 20%;
+  left: 70%;
+}
+
+.common-phrase-menu .button-thank-you {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 50%;
+  left: 10%;
+}
+
+.common-phrase-menu .button-hello {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 50%;
+  left: 40%;
+}
+
+.common-phrase-menu .button-bye {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 50%;
+  left: 70%;
+}
+
+.common-phrase-menu .overlap-group-wrapper {
   width: 434px;
   height: 212px;
 }
 
-.desktop-music-menu .quick-phrases-wrapper {
+.common-phrase-menu .quick-phrases-wrapper {
   position: relative;
   width: 432px;
   height: 212px;
@@ -1662,7 +1691,7 @@ buttons click doesn't register to the Arduino */
   box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
 }
 
-.desktop-music-menu .quick-phrases {
+.common-phrase-menu .quick-phrases {
   position: absolute;
   width: 432px;
   height: 212px;
@@ -1677,7 +1706,7 @@ buttons click doesn't register to the Arduino */
   line-height: normal;
 }
 
-.desktop-music-menu .button-play-ALL {
+.common-phrase-menu .button-play-ALL {
   position: absolute;
   width: 432px;
   height: 212px;
@@ -1685,15 +1714,7 @@ buttons click doesn't register to the Arduino */
   left: 744px;
 }
 
-.desktop-music-menu .button-christian {
-  position: absolute;
-  width: 432px;
-  height: 212px;
-  top: 358px;
-  left: 25%;
-}
-
-.desktop-music-menu .display {
+.common-phrase-menu .display {
   position: absolute;
   width: 800px;
   height: 148px;
@@ -1701,7 +1722,7 @@ buttons click doesn't register to the Arduino */
   left: 582px;
 }
 
-.desktop-music-menu .song-playing {
+.common-phrase-menu .song-playing {
   position: absolute;
   width: 800px;
   height: 55px;
@@ -1711,7 +1732,7 @@ buttons click doesn't register to the Arduino */
   box-shadow: inset 0px 4px 4px #00000040, 0px 4px 4px #00000040;
 }
 
-.desktop-music-menu .genre {
+.common-phrase-menu .genre {
   position: absolute;
   width: 400px;
   height: 55px;
@@ -1721,7 +1742,7 @@ buttons click doesn't register to the Arduino */
   box-shadow: inset 0px 4px 4px #00000040, 0px 4px 4px #00000040;
 }
 
-.desktop-music-menu .page-title {
+.common-phrase-menu .page-title {
   position: absolute;
   width: 772px;
   height: 82px;
@@ -1729,7 +1750,7 @@ buttons click doesn't register to the Arduino */
   left: 596px;
 }
 
-.desktop-music-menu .text-wrapper {
+.common-phrase-menu .text-wrapper {
   position: absolute;
   width: 727px;
   height: 82px;
@@ -1744,200 +1765,13 @@ buttons click doesn't register to the Arduino */
   line-height: normal;
 }
 
-.desktop-outlet {
-  background-color: #cffcff;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-}
 
-.desktop-outlet .div {
-  background-color: #cffcff;
-  width: 1920px;
-  height: 1080px;
-  position: relative;
-}
 
-.desktop-outlet .button-main-menu {
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  left: 1418px;
-  overflow: hidden;
-}
-
-.desktop-outlet .group {
-  width: 222px;
-  top: 5px;
-  left: 5px;
-  position: relative;
-  height: 135px;
-}
-
-.desktop-outlet .overlap-group {
-  position: relative;
-  width: 220px;
-  height: 135px;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
-}
-
-.desktop-outlet .text {
-  position: absolute;
-  width: 220px;
-  height: 135px;
-  top: 0;
-  left: 0;
-  font-family: "Work Sans", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.desktop-outlet .button-settings {
-  left: 1133px;
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  overflow: hidden;
-}
-
-.desktop-outlet .button-TV-controls {
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  left: 848px;
-  overflow: hidden;
-}
-
-.desktop-outlet .button-music {
-  left: 563px;
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  overflow: hidden;
-}
-
-.desktop-outlet .button-text-speech {
-  position: absolute;
-  width: 225px;
-  height: 150px;
-  top: 826px;
-  left: 278px;
-  overflow: hidden;
-}
-
-.desktop-outlet .button-plug-ON-OFF-5 {
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 530px;
-  left: 1199px;
-}
-
-.desktop-outlet .overlap-group-wrapper {
-  width: 307px;
-  top: 8px;
-  left: 2px;
-  position: relative;
-  height: 135px;
-}
-
-.desktop-outlet .quick-phrases-wrapper {
-  position: relative;
-  width: 305px;
-  height: 135px;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
-}
-
-.desktop-outlet .quick-phrases {
-  position: absolute;
-  width: 305px;
-  height: 135px;
-  top: 0;
-  left: 0;
-  font-family: "Work Sans", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.desktop-outlet .button-plug-ON-OFF-4{
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 530px;
-  left: 804px;
-}
-
-.desktop-outlet .button-plug-ON-OFF-1{
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 530px;
-  left: 411px;
-}
-
-.desktop-outlet .button-plug-ON-OFF-2 {
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 325px;
-  left: 1197px;
-}
-
-.desktop-outlet .button-plug-ON-OFF-3 {
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 325px;
-  left: 807px;
-}
-
-.desktop-outlet .button-all-plugs-ON {
-  position: absolute;
-  width: 310px;
-  height: 150px;
-  top: 325px;
-  left: 414px;
-}
-
-.desktop-outlet .page-title {
-  position: absolute;
-  width: 772px;
-  height: 82px;
-  top: 20px;
-  left: 596px;
-}
-
-.desktop-outlet .text-wrapper {
-  position: absolute;
-  width: 727px;
-  height: 82px;
-  top: -1px;
-  left: 22px;
-  font-family: "Work Sans", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
+/*
+====================================================================================================
+                                        SETTINGS CSS
+====================================================================================================
+*/
 
 .desktop-settings {
   background-color: #cffcff;
@@ -2190,3 +2024,5 @@ buttons click doesn't register to the Arduino */
   letter-spacing: 0;
   line-height: normal;
 }
+
+

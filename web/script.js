@@ -66,7 +66,7 @@ ________________________________________________________________________________
 */
 const menuContainer = document.getElementById("main-menu");
 const menuItems = menuContainer.querySelectorAll(
-  ".button-text-speech,.button-yes-no"
+  ".button-text-speech,.button-yes-no, .button-common-phrase"
 );
 
 /*
@@ -89,19 +89,19 @@ ________________________________________________________________________________
                                         YES/NO CONSTANTS
 ___________________________________________________________________________________________________
  */
-const tvContainer = document.getElementById("yes-no-menu");
-const tvItems = tvContainer.querySelectorAll(
+const yesNoContainer = document.getElementById("yes-no-menu");
+const yesNoItems = yesNoContainer.querySelectorAll(
   ".button-Yes,.button-No,.button-main-menu"
 );
 /*
 /*
 ___________________________________________________________________________________________________
-                                        MUSIC CONTROL CONSTANTS
+                                        COMMON PHRASES CONSTANTS
 ___________________________________________________________________________________________________
 */
-const musicContainer = document.getElementById("music-menu");
-const musicItems = musicContainer.querySelectorAll(
-  ".button-main-menu,.button-settings,.button-outlet,.button-yes-no,.button-text-speech,.button-skip-song,.button-PAUSE-PLAY,.button-previous-song,.button-classical,.button-christian"
+const commonPhraseContainer = document.getElementById("common-phrase-menu");
+const commonPhraseItems = commonPhraseContainer.querySelectorAll(
+  ".button-uncomfortable,.button-nauseous,.button-pain,.button-thank-you,.button-hello,.button-bye,.button-main-menu"
 );
 /*
 /*
@@ -111,7 +111,7 @@ ________________________________________________________________________________
 */
 const outletContainer = document.getElementById("outlet-menu");
 const outletItems = outletContainer.querySelectorAll(
-  ".button-main-menu,.button-settings,.button-yes-no,.button-music,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
+  ".button-main-menu,.button-settings,.button-yes-no,.button-common-phrase,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
 );
 
 /*
@@ -172,12 +172,12 @@ function openSubmenu(event, supermenuId, submenuId) {
       currentItems = t2sItems;
     }
     if (submenuId === "yes-no-menu") {
-      currentContainer = tvContainer;
-      currentItems = tvItems;
+      currentContainer = yesNoContainer;
+      currentItems = yesNoItems;
     }
-    if (submenuId === "music-menu") {
-      currentContainer = musicContainer;
-      currentItems = musicItems;
+    if (submenuId === "common-phrase-menu") {
+      currentContainer = commonPhraseContainer;
+      currentItems = commonPhraseItems;
     }
     if (submenuId === "outlet-menu") {
       currentContainer = outletContainer;
@@ -544,6 +544,7 @@ function speakYes() {
 function speakNo() {
   eel.speak_no();
 }
+
 function speakItStarts() {
   eel.speak_it_starts();
 }
@@ -611,53 +612,28 @@ function channelDown() {
 }
 /*
 _________________________________________________________________________________________________
-                                MUSIC PLAYER CONTROL FUNCTIONS
+                                COMMON PHRASE FUNCTIONS
 __________________________________________________________________________________________________
 */
-function setMusicDirectory(directory) {
-  eel.set_music_directory(directory);
-}
 
-//Comment out the first playsong function and uncomment the other playsong function with just the song name
-function playClassicalMusic() {
-  setMusicDirectory("classical"); // Set music directory to classical
-  // playSong('/home/pi/ALS-Assistive-Tech/Music/Classical/Ave Maria (after J.S. Bach).mp3', 'Classical'); // Play the first song (replace with actual song name)
-  playSong("Ave Maria (after J.S. Bach).mp3");
+function speakUncomfortable() {
+  eel.speak_text_with_vlc("I am uncomfortable");
 }
-
-//Comment out the first playsong function and uncomment the other playsong function with just the song name
-function playChristianMusic() {
-  setMusicDirectory("christian"); // Set music directory to christian
-  // playSong('/home/pi/ALS-Assistive-Tech/Music/Christian/A Mighty Fortress Is Our God.mp3', 'Christian'); // Play the first song (replace with actual song name)
-  playSong("A Mighty Fortress Is Our God.mp3");
+function speakNauseous() {
+  eel.speak_text_with_vlc("I feel nauseous");
 }
-
-function playSong(filePath, genre) {
-  eel.play_song(filePath, genre); // filePath is the path to the song file
+function speakPain() {
+  eel.speak_text_with_vlc("I am in pain");
 }
-
-function pauseSong() {
-  eel.pause_song();
+function speakThankYou() {
+  eel.speak_text_with_vlc("Thank You!");
 }
-
-function stopSong() {
-  eel.stop_song();
+function speakHello() {
+  eel.speak_text_with_vlc("Hello!");
 }
-
-function nextSong() {
-  eel.next_song(); // Function to play the next song
+function speakBye() {
+  eel.speak_text_with_vlc("Good Bye!");
 }
-
-function previousSong() {
-  eel.previous_song(); // Function to play the previous song
-}
-// Update the song information displayed in the div boxes
-function updateSongInformation(songName, genre) {
-  document.getElementById("song-playing").innerText =
-    "Now Playing: " + songName;
-  document.getElementById("genre").innerText = "Genre: " + genre;
-}
-eel.expose(updateSongInformation); // Expose the function to Eel
 
 /*
 ______________________________________________________________________________________________________
