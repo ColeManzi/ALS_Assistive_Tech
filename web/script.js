@@ -686,8 +686,8 @@ function loadConfig(config) {
 
 function updateLabels() {
   for (var label in plugLabels) {
-    document.getElementById("plug-" + label).innerHTML = plugLabels[label];
+    document.getElementById("plug" + label).innerHTML = plugLabels[label];
   }
-  document.getElementById("speed-label").innerHTML =
-    "Current Speed: " + timeToSeconds[cycleTime];
+  //document.getElementById("speed-label").innerHTML =
+  //  "Current Speed: " + timeToSeconds[cycleTime];
 }

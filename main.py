@@ -9,6 +9,7 @@ import threading
 import vlc
 import serial_com
 import pyttsx3
+import subprocess
 from serial_com import send_command, TVCommand
 
 from gtts import gTTS
@@ -19,8 +20,8 @@ import sys
 ############################################    GUI SETUP   #######################################################
 
 # controller = rfcontroller.RFController()  # Comment this out when developing on desktop
-# screenWidth, screenHeight = pyautogui.size()
-# pyautogui.FAILSAFE = False
+creenWidth, screenHeight = pyautogui.size()
+pyautogui.FAILSAFE = False
 
 
 @eel.expose
@@ -54,8 +55,8 @@ def loadConfig():
 
 
 # @eel.expose
-# def resetMouse():
-#     pyautogui.moveTo(0, screenHeight)
+def resetMouse():
+    pyautogui.moveTo(0, screenHeight)
 
 
 ###################################### TV REMOTE ################################################################
@@ -109,14 +110,14 @@ def speak_text_with_vlc(text):
         return  # Exit the function
 
     # comment out this code if you are working on the raspberry pi
-    engine = pyttsx3.init()
-    engine.setProperty('voice','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0')
-    engine.setProperty("rate", 125)
-    engine.say(text)
-    engine.runAndWait()
+    #engine = pyttsx3.init()
+    #engine.setProperty('voice','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0')
+    #engine.setProperty("rate", 125)
+    #engine.say(text)
+    #engine.runAndWait()
 
     # comment out the line below if you are working on a pc
-    #subprocess.run(["espeak", "-v", "english+f4", text])
+    subprocess.run(["espeak", "-v", "english+f4", text])
 
 
 
@@ -229,5 +230,5 @@ def previous_song():
 if __name__ == "__main__":
     eel.init("web", allowed_extensions=[".js", ".html"])
     # eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
-    # resetMouse()
-    eel.start("index.html", cmdline_args=["--start-fullscreen"])
+    resetMouse()
+    eel.start("index.html", cmdline_args=["--start-maximized"])
