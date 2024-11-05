@@ -20,7 +20,7 @@ import sys
 ############################################    GUI SETUP   #######################################################
 
 # controller = rfcontroller.RFController()  # Comment this out when developing on desktop
-creenWidth, screenHeight = pyautogui.size()
+screenWidth, screenHeight = pyautogui.size()
 pyautogui.FAILSAFE = False
 
 

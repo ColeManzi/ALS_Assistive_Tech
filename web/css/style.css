@@ -819,11 +819,11 @@ div.mouse-tip-text-wrapper {
 }
 
 .desktop-text .key-auto-2 {
-  left: 1026px;
   position: absolute;
-  width: 116px;
-  height: 84px;
-  top: 0;
+  width: 100px;
+  height: 100px;
+  top: 40px;
+  left: 1150px;
 }
 
 .desktop-text .row-4 {
@@ -1119,8 +1119,8 @@ div.mouse-tip-text-wrapper {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 0;
-  left: 978px;
+  top: 140px;
+  left: 1150px;
 }
 
 .desktop-text .go-back-icon {

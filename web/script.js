@@ -81,7 +81,7 @@ const t2sItems = t2sContainer.querySelectorAll(
 
 const keyboardContainer = document.getElementById("text-2-speech");
 const keyboardItems = keyboardContainer.querySelectorAll(
-  ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
+  ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-auto-2,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
 );
 
 /**
