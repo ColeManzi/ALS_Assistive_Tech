@@ -632,7 +632,7 @@ function speakHello() {
   eel.speak_text_with_vlc("Hello!");
 }
 function speakBye() {
-  eel.speak_text_with_vlc("Good Bye!");
+  eel.speak_text_with_vlc("Go Bills!");
 }
 
 /*
