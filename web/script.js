@@ -64,65 +64,69 @@ ________________________________________________________________________________
                                             MAIN MENU CONSTANTS
 _____________________________________________________________________________________________________
 */
-const menuContainer = document.getElementById("main-menu");
-const menuItems = menuContainer.querySelectorAll(
-  ".button-text-speech,.button-yes-no, .button-common-phrase"
-);
+
+// const menuContainer = document.getElementById("main-menu");
+// const menuItems = menuContainer.querySelectorAll(
+//   ".button-text-speech,.button-yes-no, .button-common-phrase"
+// );
 
 /*
 _____________________________________________________________________________________________________
                                             T2S/KEYBOARD CONSTANTS
 _____________________________________________________________________________________________________
 */
-const t2sContainer = document.getElementById("text-2-speech");
-const t2sItems = t2sContainer.querySelectorAll(
-  ".phrase-text,.button-main-menu"
-);
 
-const keyboardContainer = document.getElementById("text-2-speech");
-const keyboardItems = keyboardContainer.querySelectorAll(
-  ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-auto-2,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
-);
+// const t2sContainer = document.getElementById("text-2-speech");
+// const t2sItems = t2sContainer.querySelectorAll(
+//   ".phrase-text,.button-main-menu"
+// );
+
+// const keyboardContainer = document.getElementById("text-2-speech");
+// const keyboardItems = keyboardContainer.querySelectorAll(
+//   ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-auto-2,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
+// );
 
 /**
 ___________________________________________________________________________________________________
                                         YES/NO CONSTANTS
 ___________________________________________________________________________________________________
  */
-const yesNoContainer = document.getElementById("yes-no-menu");
-const yesNoItems = yesNoContainer.querySelectorAll(
-  ".button-Yes,.button-No,.button-main-menu"
-);
+
+// const yesNoContainer = document.getElementById("yes-no-menu");
+// const yesNoItems = yesNoContainer.querySelectorAll(
+//   ".button-Yes,.button-No,.button-main-menu"
+// );
 /*
 /*
 ___________________________________________________________________________________________________
                                         COMMON PHRASES CONSTANTS
 ___________________________________________________________________________________________________
 */
-const commonPhraseContainer = document.getElementById("common-phrase-menu");
-const commonPhraseItems = commonPhraseContainer.querySelectorAll(
-  ".button-uncomfortable,.button-nauseous,.button-pain,.button-thank-you,.button-hello,.button-bye,.button-main-menu"
-);
+// const commonPhraseContainer = document.getElementById("common-phrase-menu");
+// const commonPhraseItems = commonPhraseContainer.querySelectorAll(
+//   ".button-uncomfortable,.button-nauseous,.button-pain,.button-thank-you,.button-hello,.button-bye,.button-main-menu"
+// );
 /*
 /*
 ____________________________________________________________________________________________________________________
                                         OUTLET CONTROL CONSTANTS
 ____________________________________________________________________________________________________________________
 */
-const outletContainer = document.getElementById("outlet-menu");
-const outletItems = outletContainer.querySelectorAll(
-  ".button-main-menu,.button-settings,.button-yes-no,.button-common-phrase,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
-);
+
+// const outletContainer = document.getElementById("outlet-menu");
+// const outletItems = outletContainer.querySelectorAll(
+//   ".button-main-menu,.button-settings,.button-yes-no,.button-common-phrase,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
+// );
 
 /*
 _____________________________________________________________________________________________________________________
                                         SETTINGS CONTROL CONSTANTS
 _____________________________________________________________________________________________________________________
 */
-const settingsContainer = document.getElementById("settings-page");
-const settingsItems = settingsContainer.querySelectorAll(
-  ".switch-speed-sec,.switch-speed-sec-2,.switch-speed-sec-3,.switch-speed-sec-4,.switch-speed-sec-5,.switch-speed-sec-6,.switch-speed-sec-7,.switch-speed-sec-8,.button-go-back"
-);
+// const settingsContainer = document.getElementById("settings-page");
+// const settingsItems = settingsContainer.querySelectorAll(
+//   ".switch-speed-sec,.switch-speed-sec-2,.switch-speed-sec-3,.switch-speed-sec-4,.switch-speed-sec-5,.switch-speed-sec-6,.switch-speed-sec-7,.switch-speed-sec-8,.button-go-back"
+// );
 /*
 ____________________________________________________________________________________________________________________
             Global Vars
@@ -151,39 +155,72 @@ function resetMouse(event) {
 }
 
 //default to main menu container and items
-let currentContainer = menuContainer;
-let currentItems = menuItems;
+let currentContainer = null;
+let currentItems = null;
 
-function openSubmenu(event, supermenuId, submenuId) {
+if (document.getElementById("main-menu")) {
+  const menuContainer = document.getElementById("main-menu");
+  const menuItems = menuContainer.querySelectorAll(
+    ".button-text-speech,.button-yes-no, .button-common-phrase"
+  );
+
+  currentContainer = menuContainer;
+  currentItems = menuItems;
+}
+
+function openSubmenu(event, submenuId) {
   if (event != undefined) event.stopPropagation();
-  let supermenu = document.getElementById(supermenuId);
   let submenu = document.getElementById(submenuId);
 
-  if (supermenu && submenu) {
-    supermenu.style.display = "none"; // Hide the supermenu
-    submenu.style.display = "block"; // Show the submenu
-
+  if (submenu) {
     if (submenuId === "main-menu") {
       currentContainer = menuContainer;
       currentItems = menuItems;
     }
     if (submenuId === "text-2-speech") {
+      const t2sContainer = document.getElementById("text-2-speech");
+      const t2sItems = t2sContainer.querySelectorAll(
+        ".phrase-text,.button-main-menu"
+      );
+
       currentContainer = t2sContainer;
       currentItems = t2sItems;
     }
     if (submenuId === "yes-no-menu") {
+      const yesNoContainer = document.getElementById("yes-no-menu");
+      const yesNoItems = yesNoContainer.querySelectorAll(
+        ".button-Yes,.button-No,.button-main-menu"
+      );
+
+      console.log("yes and no");
       currentContainer = yesNoContainer;
       currentItems = yesNoItems;
     }
     if (submenuId === "common-phrase-menu") {
+      const commonPhraseContainer =
+        document.getElementById("common-phrase-menu");
+      const commonPhraseItems = commonPhraseContainer.querySelectorAll(
+        ".button-uncomfortable,.button-nauseous,.button-pain,.button-thank-you,.button-hello,.button-bye,.button-main-menu"
+      );
+
       currentContainer = commonPhraseContainer;
       currentItems = commonPhraseItems;
     }
     if (submenuId === "outlet-menu") {
+      const outletContainer = document.getElementById("outlet-menu");
+      const outletItems = outletContainer.querySelectorAll(
+        ".button-main-menu,.button-settings,.button-yes-no,.button-common-phrase,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
+      );
+
       currentContainer = outletContainer;
       currentItems = outletItems;
     }
     if (submenuId === "settings-page") {
+      const settingsContainer = document.getElementById("settings-page");
+      const settingsItems = settingsContainer.querySelectorAll(
+        ".switch-speed-sec,.switch-speed-sec-2,.switch-speed-sec-3,.switch-speed-sec-4,.switch-speed-sec-5,.switch-speed-sec-6,.switch-speed-sec-7,.switch-speed-sec-8,.button-go-back"
+      );
+
       currentContainer = settingsContainer;
       currentItems = settingsItems;
     }
@@ -191,6 +228,11 @@ function openSubmenu(event, supermenuId, submenuId) {
   const keyboardButton = document.querySelector(".phrase-text"); // If there's only one keyboard button
   if (keyboardButton) {
     keyboardButton.addEventListener("click", function () {
+      const keyboardContainer = document.getElementById("text-2-speech");
+      const keyboardItems = keyboardContainer.querySelectorAll(
+        ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-auto-2,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
+      );
+
       currentContainer = keyboardContainer;
       currentItems = keyboardItems;
       item.style.boxShadow = "";
@@ -199,6 +241,11 @@ function openSubmenu(event, supermenuId, submenuId) {
   const backButton = document.querySelector(".key-go-back"); //for back button
   if (backButton) {
     backButton.addEventListener("click", function () {
+      const t2sContainer = document.getElementById("text-2-speech");
+      const t2sItems = t2sContainer.querySelectorAll(
+        ".phrase-text,.button-main-menu"
+      );
+
       currentContainer = t2sContainer;
       currentItems = t2sItems;
       item.style.boxShadow = "";
@@ -213,46 +260,48 @@ function openSubmenu(event, supermenuId, submenuId) {
 */
 
 document.addEventListener("DOMContentLoaded", function () {
-  let cycleTimeout;
-  let currentIndex = 0;
-  let cycling = false;
+  {
+    let cycleTimeout;
+    let currentIndex = 0;
+    let cycling = false;
 
-  const highlightItem = (index) => {
-    // First, remove the yellow glow from all current items
-    currentItems.forEach((item) => {
-      item.style.boxShadow = ""; // Remove any existing glow effect
+    const highlightItem = (index) => {
+      // First, remove the yellow glow from all current items
+      currentItems.forEach((item) => {
+        item.style.boxShadow = ""; // Remove any existing glow effect
+      });
+      // Then, apply a yellow glow to the current item
+      const currentItem = currentItems[index];
+      if (currentItem) {
+        currentItem.style.boxShadow = "0 0 30px purple"; // Apply a yellow glow effect
+      }
+    };
+
+    const cycleItems = () => {
+      if (!cycling) return;
+      highlightItem(currentIndex);
+      currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+      cycleTimeout = setTimeout(cycleItems, cycleTime);
+    };
+
+    // Use a more generic event listener that checks if the currentContainer contains the event target
+    document.addEventListener("pointerdown", function (event) {
+      if (currentContainer.contains(event.target)) {
+        cycling = true;
+        cycleItems();
+      }
     });
-    // Then, apply a yellow glow to the current item
-    const currentItem = currentItems[index];
-    if (currentItem) {
-      currentItem.style.boxShadow = "0 0 30px purple"; // Apply a yellow glow effect
-    }
-  };
 
-  const cycleItems = () => {
-    if (!cycling) return;
-    highlightItem(currentIndex);
-    currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
-    cycleTimeout = setTimeout(cycleItems, cycleTime);
-  };
-
-  // Use a more generic event listener that checks if the currentContainer contains the event target
-  document.addEventListener("pointerdown", function (event) {
-    if (currentContainer.contains(event.target)) {
-      cycling = true;
-      cycleItems();
-    }
-  });
-
-  document.addEventListener("pointerup", function () {
-    if (!cycling) return;
-    clearTimeout(cycleTimeout);
-    cycling = false;
-    const selectedItemIndex =
-      (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
-    currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
-    currentIndex = 0;
-  });
+    document.addEventListener("pointerup", function () {
+      if (!cycling) return;
+      clearTimeout(cycleTimeout);
+      cycling = false;
+      const selectedItemIndex =
+        (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+      currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+      currentIndex = 0;
+    });
+  }
 });
 /*
 --------------------------------------------------
