@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Not sure if the code between these is needed -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes"
+    />
+    <link rel="shortcut icon" href="#" />
+    <title>Assistive Tech UI</title>
+    <!-- Not sure if the code between these is needed -->
+
+    <link rel="stylesheet" href="css/globals.css" type="text/css" />
+    <link rel="stylesheet" href="css/yes_no.css" type="text/css" />
+  </head>
+  <body>
+    <!-- YES/NO CONTROLS -->
+
+    <div class="desktop-Yes-No" id="yes-no-menu">
+      <div class="div">
+        <div class="button-Yes" onclick="speakYes()">
+          <div class="group">
+            <button class="overlap-group">
+              <div class="text-wrapper-settings">Yes</div>
+            </button>
+          </div>
+        </div>
+        <div class="button-No" onclick="speakNo()">
+          <div class="group">
+            <button class="overlap-group">
+              <div class="text-wrapper-settings">No</div>
+            </button>
+          </div>
+        </div>
+        <a href="index.html">
+          <div class="button-main-menu">
+            <div class="group">
+              <button class="overlap-group">
+                <div class="text-wrapper-settings">Main Menu</div>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

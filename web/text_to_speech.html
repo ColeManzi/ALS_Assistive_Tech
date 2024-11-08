@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Not sure if the code between these is needed -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes"
+    />
+    <link rel="shortcut icon" href="#" />
+    <title>Assistive Tech UI</title>
+    <!-- Not sure if the code between these is needed -->
+
+    <link rel="stylesheet" href="css/globals.css" type="text/css" />
+    <link rel="stylesheet" href="css/text_to_speech.css" type="text/css" />
+  </head>
+
+  <body>
+    <!--TEXT-2-SPEECH MENU-->
+    <div class="desktop-text" id="text-2-speech">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="overlap-group">
+            <div class="keyboard" id="keyboard">
+              <div class="div">
+                <!--THIS IS WHERE PREDICTIVE TEXT FUNCTIONALITY WILL GO, THIS WILL NEED TO BE DONE IN JAVASCRIPT, *MAY BE VERY INVOLVED*-->
+                <div class="predictive-text" id="predictivetext">
+                  <div
+                    class="prediction"
+                    id="prediction1"
+                    onclick="addToPhrase(this.innerText);"
+                    contenteditable="true"
+                  ></div>
+                  <div
+                    class="prediction-2"
+                    id="prediction2"
+                    onclick="addToPhrase(this.innerText);"
+                    contenteditable="true"
+                  ></div>
+                  <div
+                    class="prediction-3"
+                    id="prediction3"
+                    onclick="addToPhrase(this.innerText);"
+                    contenteditable="true"
+                  ></div>
+                </div>
+                <div class="key-mini-space" onclick="addToPhrase(' ')">
+                  <div class="group-mini-space">
+                    <button class="div-wrapper"></button>
+                    <div class="text-mini-space">Space</div>
+                  </div>
+                </div>
+                <div class="key-go-back" onclick="newPhrase()">
+                  <button class="div-wrapper">
+                    <div class="text-wrapper-1">Back</div>
+                  </button>
+                </div>
+                <div class="key-auto-2" id="auto3" onclick="speakPhrase();">
+                  <div class="overlap-group-wrapper">
+                    <button class="overlap-group-2">
+                      <div class="text-wrapper-1">Speak</div>
+                    </button>
+                  </div>
+                </div>
+                <div class="overlap-2">
+                  <div class="row">
+                    <div class="key-q" onclick="addToPhrase('Q');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-q">Q</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-w" onclick="addToPhrase('W');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-2">W</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-e" onclick="addToPhrase('E');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-3">E</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-r" onclick="addToPhrase('R');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-4">R</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-t" onclick="addToPhrase('T');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-5">T</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-y" onclick="addToPhrase('Y');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-3">Y</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-u" onclick="addToPhrase('U');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-6">U</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-i" onclick="addToPhrase('I');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-7">I</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-o" onclick="addToPhrase('O');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-8">O</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-p" onclick="addToPhrase('P');">
+                      <div class="group">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-9">P</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-auto" id="'auto1" onclick="speakPhrase();">
+                      <div class="overlap-group-wrapper">
+                        <!--ADD AUTO FUNCTIONALITY HERE FOR FIRST ROW-->
+                        <button class="overlap-group-2">
+                          <div class="text-wrapper-10">Speak</div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row-2">
+                    <div class="key-a" onclick="addToPhrase('A');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-11">A</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-s" onclick="addToPhrase('S');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-9">S</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-d" onclick="addToPhrase('D');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-6">D</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-f" onclick="addToPhrase('F');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-3">F</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-g" onclick="addToPhrase('G');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-8">G</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-h" onclick="addToPhrase('H');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-8">H</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-j" onclick="addToPhrase('J');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-12">J</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-k" onclick="addToPhrase('K');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-11">K</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="key-l" onclick="addToPhrase('L');">
+                      <div class="group-2">
+                        <button class="div-wrapper">
+                          <div class="text-wrapper-13">L</div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-3">
+                  <div class="key-z" onclick="addToPhrase('Z');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-3">Z</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-x" onclick="addToPhrase('X');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-9">X</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-c" onclick="addToPhrase('C');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-11">C</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-v" onclick="addToPhrase('V');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-11">V</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-b" onclick="addToPhrase('B');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-11">B</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-n" onclick="addToPhrase('N');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-8">N</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-m" onclick="addToPhrase('M');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-14">M</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-backspace" onclick="deleteChar();">
+                    <!--ADD BACKSPACE FUNCTIONALITY HERE IN SCRIPT.JS FOR DELETING CHARACTER-->
+                    <div class="group-delete">
+                      <button class="div-wrapper-delete">
+                        <div class="text-wrapper-1">Delete</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-4">
+                  <div class="key-00" onclick="addToPhrase('1');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-11">1</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key" onclick="addToPhrase('2');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-15">2</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-2" onclick="addToPhrase('3');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-16">3</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-3" onclick="addToPhrase('4');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-17">4</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-4" onclick="addToPhrase('5');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-18">5</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-5" onclick="addToPhrase('6');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-18">6</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-6" onclick="addToPhrase('7');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-12">7</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-7" onclick="addToPhrase('8');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-4">8</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-8" onclick="addToPhrase('9');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-12">9</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-9" onclick="addToPhrase('0');">
+                    <div class="group-2">
+                      <button class="div-wrapper">
+                        <div class="text-wrapper-12">0</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row-5">
+                  <div class="key-speak-it" onclick="speakPhrase()">
+                    <div class="group-3">
+                      <!--FUNCTIONALITY TO COLLECT STRING FROM TEXT PHRASE BOX AND PASS TO TEXT TO SPEECH-->
+                      <button class="speak-it-wrapper">
+                        <div class="speak-it">Speak It</div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="key-new-phrase" onclick="newPhrase()">
+                    <div class="group-5">
+                      <button class="overlap-group-4">
+                        <div class="text-wrapper-20">New Phrase</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="phrase-text">
+                  <!--THIS IS WHERE THE TEXT BOX IS, CHANGE CSS TO MAKE THE TEXT LOOK BETTER IN THE TEXT BOX LATER-->
+                  <div
+                    class="phrase"
+                    id="phrase-text-box"
+                    contenteditable="true"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <a href="index.html">
+              <div class="button-main-menu">
+                <div class="group-6">
+                  <button class="overlap-group-5">
+                    <div class="text-wrapper-21">Main Menu</div>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

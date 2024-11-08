@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Not sure if the code between these is needed -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes"
+    />
+    <link rel="shortcut icon" href="#" />
+    <title>Assistive Tech UI</title>
+    <!-- Not sure if the code between these is needed -->
+
+    <link rel="stylesheet" href="css/globals.css" type="text/css" />
+    <link rel="stylesheet" href="css/common_phrases.css" type="text/css" />
+  </head>
+  <body>
+    <!-- COMMON PHRASES CONTROLS-->
+    <div class="common-phrase-menu" id="common-phrase-menu">
+      <div class="div">
+        <a href="index.html">
+          <div class="button-main-menu">
+            <div class="group">
+              <button class="overlap-group">
+                <div class="text">Main Menu</div>
+              </button>
+            </div>
+          </div>
+        </a>
+        <div class="button-uncomfortable" onclick="speakUncomfortable()">
+          <div class="overlap-group-wrapper">
+            <button class="quick-phrases-wrapper">
+              <div class="text-wrapper-settings">Im Uncomfortable</div>
+            </button>
+          </div>
+        </div>
+        <div class="button-nauseous" onclick="speakNauseous()">
+          <div class="overlap-group-wrapper">
+            <button class="quick-phrases-wrapper">
+              <div class="text-wrapper-settings">Im nauseous</div>
+            </button>
+          </div>
+        </div>
+        <div class="button-pain" onclick="speakPain()">
+          <div class="overlap-group-wrapper">
+            <button class="quick-phrases-wrapper">
+              <div class="text-wrapper-settings">Im in pain</div>
+            </button>
+          </div>
+        </div>
+        <div class="button-thank-you" onclick="speakThankYou()">
+          <div class="overlap-group-wrapper">
+            <button class="quick-phrases-wrapper">
+              <div class="text-wrapper-settings">Thank you!</div>
+            </button>
+          </div>
+        </div>
+        <div class="button-hello" onclick="speakHello()">
+          <div class="overlap-group-wrapper">
+            <button class="quick-phrases-wrapper">
+              <div class="text-wrapper-settings">Hello!</div>
+            </button>
+          </div>
+        </div>
+        <div class="button-bye" onclick="speakBye()">
+          <div class="overlap-group-wrapper">
+            <button class="quick-phrases-wrapper">
+              <div class="text-wrapper-settings">Go Bills!</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
