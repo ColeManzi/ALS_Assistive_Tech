@@ -158,12 +158,12 @@ def speak_can_i_ask():
 ######################################  MUSIC PLAYER FUNCTIONS ###################################################
 
 # Comment out both pi music directories when working on a PC (away from pi)
-# classical_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Christian"
-# christian_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Classical"
+classical_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Christian"
+christian_music_dir = "/home/pi/ALS-Assistive-Tech/Music/Classical"
 
 # Uncomment these directories when working on a PC
-christian_music_dir = "Music/Christian"
-classical_music_dir = "Music/Classical"
+# christian_music_dir = "Music/Christian"
+# classical_music_dir = "Music/Classical"
 
 current_song_index = 0
 current_genre = ""  # Define the current genre variable

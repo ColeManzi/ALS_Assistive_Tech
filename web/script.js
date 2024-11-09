@@ -83,6 +83,8 @@ const keyboardContainer = document.getElementById("text-2-speech");
 const keyboardItems = keyboardContainer.querySelectorAll(
   ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-auto-2,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
 );
+const currentRows = keyboardContainer.querySelectorAll('.prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5')
+const rowDict = {0:43,1:0,2:1,3:2,4:3,5:4,6:15,7:24,8:33,9:42};
 
 /**
 ___________________________________________________________________________________________________
@@ -191,9 +193,12 @@ function openSubmenu(event, supermenuId, submenuId) {
   const keyboardButton = document.querySelector(".phrase-text"); // If there's only one keyboard button
   if (keyboardButton) {
     keyboardButton.addEventListener("click", function () {
+      console.log("I am here")
       currentContainer = keyboardContainer;
       currentItems = keyboardItems;
-      item.style.boxShadow = "";
+      currentItems.forEach(item => {
+        item.style.boxShadow = ''; // Remove any existing glow effect
+    });
     });
   }
   const backButton = document.querySelector(".key-go-back"); //for back button
@@ -201,7 +206,9 @@ function openSubmenu(event, supermenuId, submenuId) {
     backButton.addEventListener("click", function () {
       currentContainer = t2sContainer;
       currentItems = t2sItems;
-      item.style.boxShadow = "";
+      currentItems.forEach(item => {
+        item.style.boxShadow = ''; // Remove any existing glow effect
+    });
     });
   }
 }
@@ -212,46 +219,87 @@ function openSubmenu(event, supermenuId, submenuId) {
 --------------------------------------------------
 */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
+  console.log(`Length of current items is: ${keyboardItems.length}`)
   let cycleTimeout;
   let currentIndex = 0;
   let cycling = false;
+  // If you set this to 1, it unbreaks everything
+  let t2scycle = 2;
+   
+  const highlightRow = (index) => {
+      currentRows.forEach(item => {
+          item.style.boxShadow = ''; // Remove any existing glow effect
+      });
+      // Then, apply a yellow glow to the current item
+      const currentItem = currentRows[index];
+      console.log(`The current row is ${currentItem}`)
+      // const nextItem = currentItems[(index + 1)];
+
+      if (currentItem) {
+          currentItem.style.boxShadow = '0 0 30px purple'; // Apply a yellow glow effect
+      }
+  }
+
 
   const highlightItem = (index) => {
-    // First, remove the yellow glow from all current items
-    currentItems.forEach((item) => {
-      item.style.boxShadow = ""; // Remove any existing glow effect
-    });
-    // Then, apply a yellow glow to the current item
-    const currentItem = currentItems[index];
-    if (currentItem) {
-      currentItem.style.boxShadow = "0 0 30px purple"; // Apply a yellow glow effect
-    }
+      // First, remove the yellow glow from all current items
+      currentItems.forEach(item => {
+          item.style.boxShadow = ''; // Remove any existing glow effect
+      });
+      // Then, apply a yellow glow to the current item
+      const currentItem = currentItems[index];
+      if (currentItem) {
+          currentItem.style.boxShadow = '0 0 30px purple'; // Apply a yellow glow effect
+      }
   };
 
   const cycleItems = () => {
-    if (!cycling) return;
-    highlightItem(currentIndex);
-    currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
-    cycleTimeout = setTimeout(cycleItems, cycleTime);
+      if (!cycling) return;
+      if (currentItems.length == 46 && t2scycle == 2){
+          highlightRow(currentIndex);
+          currentIndex = (currentIndex + 1) % currentRows.length; // Use currentItems for length
+      }else{
+          highlightItem(currentIndex);
+          currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+      }
+      cycleTimeout = setTimeout(cycleItems, cycleTime);
   };
 
   // Use a more generic event listener that checks if the currentContainer contains the event target
-  document.addEventListener("pointerdown", function (event) {
-    if (currentContainer.contains(event.target)) {
-      cycling = true;
-      cycleItems();
-    }
+  document.addEventListener('pointerdown', function (event) {
+      if (currentContainer.contains(event.target)) {
+          cycling = true;
+          cycleItems();
+      }
   });
 
-  document.addEventListener("pointerup", function () {
-    if (!cycling) return;
-    clearTimeout(cycleTimeout);
-    cycling = false;
-    const selectedItemIndex =
-      (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
-    currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
-    currentIndex = 0;
+  document.addEventListener('pointerup', function () {
+      if (!cycling) return;
+      clearTimeout(cycleTimeout);
+      cycling = false;
+      if (currentItems.length == 46 && t2scycle == 2){
+          // const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+          // currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+          
+          currentIndex = rowDict[currentIndex];
+          t2scycle = 1;
+          if(currentIndex == 0 || currentIndex == 1 || currentIndex == 2 || currentIndex == 3){
+              currentItems[currentIndex].click(); // Click the highlighted item using currentItems
+              currentItems[currentIndex].style.boxShadow = ''; // Click the highlighted item using currentItems
+              currentIndex = 0;
+              t2scycle =  2;
+          }
+      }
+      else{
+          const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
+          currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
+          currentItems[selectedItemIndex].style.boxShadow = ''; // Click the highlighted item using currentItems
+          console.log(currentIndex);
+
+          currentIndex = 0;
+          t2scycle =  2;
+      }
   });
 });
 /*
