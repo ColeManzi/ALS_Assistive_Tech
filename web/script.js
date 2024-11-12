@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let cycling = false;
   // If you set this to 1, it unbreaks everything
   let t2scycle = 2;
+  let rowidx = 0;
 
   const highlightRow = (index) => {
     currentRows.forEach(item => {
@@ -260,13 +261,26 @@ document.addEventListener('DOMContentLoaded', function () {
     if (currentItems.length == 46 && t2scycle == 2) {
       highlightRow(currentIndex);
       currentIndex = (currentIndex + 1) % currentRows.length; // Use currentItems for length
+      rowidx = currentIndex;
       console.log("Current index sonk= " + currentIndex)
     } else {
 
       if (currentItems.length == 46 && t2scycle == 1) {
-        highlightItem(currentIndex);
-        currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
-        console.log("Current index sink= " + currentIndex)
+        // the individual starting pt now
+        console.log("rowidx" + rowidx)
+        if (rowidx == 0) {
+          console.log("Current index sink= " + currentIndex)
+          highlightItem(currentIndex);
+          currentIndex = currentIndex == 44 ? 45 : 44
+        } else {
+          minv = rowDict[rowidx]
+          maxv = rowidx != 8 ? (rowDict[rowidx + 1] - 1) : 43
+
+          highlightItem(currentIndex);
+          currentIndex = (currentIndex < maxv) ? (currentIndex + 1) : minv;
+          // currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
+          console.log("Current index sink= " + currentIndex)
+        }
       } else {
         highlightItem(currentIndex);
         currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
@@ -299,6 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentItems[currentIndex].style.boxShadow = ''; // Click the highlighted item using currentItems
         currentIndex = 0;
         t2scycle = 2;
+
       }
     }
     else {
