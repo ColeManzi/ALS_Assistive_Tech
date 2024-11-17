@@ -165,7 +165,7 @@ let currentRows = null;
 if (document.getElementById("main-menu")) {
   const menuContainer = document.getElementById("main-menu");
   const menuItems = menuContainer.querySelectorAll(
-    ".button-text-speech,.button-yes-no, .button-common-phrase"
+    ".button-text-speech,.button-yes-no, .button-common-phrase, .button-send-email"
   );
 
   currentContainer = menuContainer;
@@ -240,10 +240,10 @@ function openSubmenu(event, submenuId) {
       currentContainer = commonPhraseContainer;
       currentItems = commonPhraseItems;
     }
-    if (submenuId === "outlet-menu") {
-      const outletContainer = document.getElementById("outlet-menu");
+    if (submenuId === "send-email-menu") {
+      const outletContainer = document.getElementById("send-email-menu");
       const outletItems = outletContainer.querySelectorAll(
-        ".button-main-menu,.button-settings,.button-yes-no,.button-common-phrase,.button-text-speech,.button-plug-ON-OFF-5,.button-plug-ON-OFF-4,.button-plug-ON-OFF-1,.button-plug-ON-OFF-2,.button-plug-ON-OFF-3,.button-all-plugs-ON"
+        ".button-main-menu, .button-Suzanne, .button-David, .button-Sandy, .button-Natalie "
       );
 
       currentContainer = outletContainer;
@@ -507,6 +507,29 @@ const setKeyboardButtonCycle = (ele) => {
   menuIdMapping["dynamic-kb"] = dynamicKeyboardOrder;
   resetCycle("dynamic-kb");
 };
+
+/*
+--------------------------------------------------
+        SENDING EMAIL FUNCTION
+--------------------------------------------------
+*/
+function sendEmail() {
+    const emailParams = {
+        ToEmail: "colemanz@buffalo.edu",
+        subject: "None",
+        message: "Hello!"
+    };
+    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Email sent successfully!');
+        }, function(error) {
+            console.error('FAILED...', error);
+            alert('Failed to send email.');
+        });
+}
+
+
 /*
 _________________________________________________________________________________________________
                                 TEXT-2-SPEECH FUNCTIONS

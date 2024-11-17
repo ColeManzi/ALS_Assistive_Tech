@@ -20,6 +20,10 @@
   display: none;
 }
 
+#send-email-menu {
+  display: none;
+}
+
 #settings-page {
   display: none;
 }
@@ -101,7 +105,7 @@ div.button-common-phrase {
   height: 212px;
 }
 
-div.button-outlet {
+div.button-send-email {
   position: absolute;
   width: 432px;
   height: 212px;
@@ -145,7 +149,7 @@ div.settings-tip-text-wrapper {
 }
 
 div.mouse-tip-text-wrapper {
-  top: 65%;
+  top: 85%;
   left: 10%;
   position: absolute;
   font-family: "Work Sans", Helvetica;
