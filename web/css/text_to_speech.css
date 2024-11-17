@@ -521,7 +521,7 @@
   line-height: normal;
 }
 
-.desktop-text .group-wrapper {
+.desktop-text .key-auto-1 {
   left: 1037px;
   position: absolute;
   width: 120px;
@@ -644,11 +644,11 @@
 }
 
 .desktop-text .key-auto-2 {
+  left: 1026px;
   position: absolute;
-  width: 100px;
-  height: 100px;
-  top: 40px;
-  left: 1150px;
+  width: 116px;
+  height: 84px;
+  top: 0;
 }
 
 .desktop-text .row-4 {
@@ -665,7 +665,7 @@
   position: absolute;
   height: 100px;
 }
-.desktop-text .key-mini-space {
+.desktop-text .key-mini-space{
   width: 100px;
   left: 1150px;
   top: 240px;
@@ -944,8 +944,8 @@
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 140px;
-  left: 1150px;
+  top: 0;
+  left: 978px;
 }
 
 .desktop-text .go-back-icon {
@@ -1032,7 +1032,7 @@
   text-align: center;
   /* Center text horizontally */
 }
-.desktop-text .key-space-small {
+.desktop-text .key-space-small{
   width: 120px;
   top: 0;
   left: 1155px;
@@ -1152,6 +1152,7 @@
   line-height: normal;
 }
 
+
 .desktop-text .button-outlet {
   position: absolute;
   width: 225px;
@@ -1197,7 +1198,7 @@
   overflow: hidden;
 }
 
-.desktop-text .button-no-t {
+.desktop-text .button-no {
   width: 225px;
   top: 286px;
   left: 0;
@@ -1221,7 +1222,7 @@
   line-height: normal;
 }
 
-.desktop-text .button-yes-t {
+.desktop-text .button-yes {
   width: 225px;
   top: 94px;
   left: 0;

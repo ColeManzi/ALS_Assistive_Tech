@@ -199,20 +199,20 @@ function openSubmenu(event, submenuId) {
 
       keyboardContainer = document.getElementById("text-2-speech");
       keyboardItems = keyboardContainer.querySelectorAll(
-        ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-go-back,.key-auto-2,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-00,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-speak-it,.key-new-phrase"
+        ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-auto-1,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-00,.key-speak-it,.key-new-phrase,.key-go-back"
       );
       currentRows = keyboardContainer.querySelectorAll(
         ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
       );
       rowDict = {
-        0: 44,
+        0: 42,
         1: 0,
         2: 1,
         3: 2,
         4: 3,
-        5: 6,
-        6: 17,
-        7: 26,
+        5: 4,
+        6: 15,
+        7: 25,
         8: 34,
         9: 42,
       };
@@ -325,13 +325,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const cycleItems = () => {
     if (!cycling) return;
 
-    if (currentItems.length == 46 && t2scycle == 2) {
+    if (currentItems.length == 47 && t2scycle == 2) {
       highlightRow(currentIndex);
       currentIndex = (currentIndex + 1) % currentRows.length; // Use currentItems for length
       rowidx = currentIndex;
       console.log("Current index sonk= " + currentIndex);
     } else {
-      if (currentItems.length == 46 && t2scycle == 1) {
+      if (currentItems.length == 47 && t2scycle == 1) {
         // the individual starting pt now
         console.log("rowidx" + rowidx);
         if (rowidx == 0) {
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!cycling) return;
     clearTimeout(cycleTimeout);
     cycling = false;
-    if (currentItems.length == 46 && t2scycle == 2) {
+    if (currentItems.length == 47 && t2scycle == 2) {
       // const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
       // currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
 
@@ -709,7 +709,7 @@ TV Control Functions
 /*
 --------------------------------------------------
 */
-/* Does nothing but when removed, user TV Remote 
+/* Does nothing but when removed, user TV Remote
 buttons click doesn't register to the Arduino */
 function powerOn() {
   //eel.powerOn()
