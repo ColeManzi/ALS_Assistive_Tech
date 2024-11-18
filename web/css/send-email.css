@@ -1,0 +1,151 @@
+#send-email-menu {
+  display: block;
+}
+
+.overlap-group.highlighted {
+  background-color: #ffe135;
+  /* Bright yellow for visibility */
+  border: 2px solid #000;
+  /* Solid black border */
+  box-shadow: 0 0 10px #000;
+  /* Black shadow for a glowing effect */
+}
+
+/*
+====================================================================================================
+                                        Send Email CSS
+====================================================================================================
+*/
+
+
+.send-email-menu {
+  background-color: #cffcff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.send-email-menu .div {
+  background-color: #cffcff;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+}
+
+.send-email-menu .button-main-menu {
+  position: absolute;
+  width: 225px;
+  height: 150px;
+  top: 826px;
+  left: 1418px;
+  overflow: hidden;
+}
+
+.send-email-menu .group {
+  position: relative;
+  width: 222px;
+  height: 135px;
+  top: 5px;
+  left: 5px;
+}
+
+.send-email-menu .overlap-group {
+  position: relative;
+  width: 220px;
+  height: 135px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
+}
+
+.send-email-menu .text {
+  position: absolute;
+  width: 220px;
+  height: 135px;
+  top: 0;
+  left: 0;
+  font-family: "Work Sans", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.send-email-menu .button-Suzanne {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 20%;
+  left: 10%;
+}
+
+.send-email-menu .button-David {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 20%;
+  left: 40%;
+}
+
+.send-email-menu .button-Sandy {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 20%;
+  left: 70%;
+}
+
+.send-email-menu .button-Natalie {
+  position: absolute;
+  width: 432px;
+  height: 212px;
+  top: 50%;
+  left: 10%;
+}
+
+.send-email-menu .overlap-group-wrapper {
+  width: 434px;
+  height: 212px;
+}
+
+.send-email-menu .page-title {
+  position: absolute;
+  width: 772px;
+  height: 82px;
+  top: 20px;
+  left: 596px;
+}
+
+.send-email-menu .text-wrapper {
+  position: absolute;
+  width: 727px;
+  height: 82px;
+  top: -1px;
+  left: 22px;
+  font-family: "Work Sans", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+div.text-wrapper-settings {
+  font-family: "Work Sans", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 36px;
+}
+
+.send-email-menu .quick-phrases-wrapper {
+  position: relative;
+  width: 432px;
+  height: 212px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px #00000040, inset 0px 4px 4px #00000040;
+}
