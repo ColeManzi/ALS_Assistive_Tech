@@ -219,6 +219,27 @@ function openSubmenu(event, submenuId) {
 
       currentContainer = t2sContainer;
       currentItems = t2sItems;
+      const keyboardButton = document.querySelector(".phrase-text"); // If there's only one keyboard button
+      if (keyboardButton) {
+        keyboardButton.addEventListener("click", function () {
+          console.log("I am here");
+          currentContainer = keyboardContainer;
+          currentItems = keyboardItems;
+          currentItems.forEach((item) => {
+            item.style.boxShadow = ""; // Remove any existing glow effect
+          });
+        });
+      }
+      const backButton = document.querySelector(".key-go-back"); //for back button
+      if (backButton) {
+        backButton.addEventListener("click", function () {
+          currentContainer = t2sContainer;
+          currentItems = t2sItems;
+          currentItems.forEach((item) => {
+            item.style.boxShadow = ""; // Remove any existing glow effect
+          });
+        });
+      }
     }
     if (submenuId === "yes-no-menu") {
       const yesNoContainer = document.getElementById("yes-no-menu");
@@ -241,13 +262,13 @@ function openSubmenu(event, submenuId) {
       currentItems = commonPhraseItems;
     }
     if (submenuId === "send-email-menu") {
-      const outletContainer = document.getElementById("send-email-menu");
-      const outletItems = outletContainer.querySelectorAll(
+      const sendEmailContainer = document.getElementById("send-email-menu");
+      const sendEmailItems = sendEmailContainer.querySelectorAll(
         ".button-main-menu, .button-Suzanne, .button-David, .button-Sandy, .button-Natalie "
       );
 
-      currentContainer = outletContainer;
-      currentItems = outletItems;
+      currentContainer = sendEmailContainer;
+      currentItems = sendEmailItems;
     }
     if (submenuId === "settings-page") {
       const settingsContainer = document.getElementById("settings-page");
@@ -258,27 +279,6 @@ function openSubmenu(event, submenuId) {
       currentContainer = settingsContainer;
       currentItems = settingsItems;
     }
-  }
-  const keyboardButton = document.querySelector(".phrase-text"); // If there's only one keyboard button
-  if (keyboardButton) {
-    keyboardButton.addEventListener("click", function () {
-      console.log("I am here");
-      currentContainer = keyboardContainer;
-      currentItems = keyboardItems;
-      currentItems.forEach((item) => {
-        item.style.boxShadow = ""; // Remove any existing glow effect
-      });
-    });
-  }
-  const backButton = document.querySelector(".key-go-back"); //for back button
-  if (backButton) {
-    backButton.addEventListener("click", function () {
-      currentContainer = t2sContainer;
-      currentItems = t2sItems;
-      currentItems.forEach((item) => {
-        item.style.boxShadow = ""; // Remove any existing glow effect
-      });
-    });
   }
 }
 
