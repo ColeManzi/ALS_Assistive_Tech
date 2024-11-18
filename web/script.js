@@ -157,8 +157,13 @@ function resetMouse(event) {
 //default to main menu container and items
 let currentContainer = null;
 let currentItems = null;
+
 let keyboardContainer = null;
 let keyboardItems = null;
+
+let emailKeyboardContainer = null;
+let emailKeyboardItems = null;
+
 let rowDict = null;
 let currentRows = null;
 
@@ -235,6 +240,57 @@ function openSubmenu(event, submenuId) {
         backButton.addEventListener("click", function () {
           currentContainer = t2sContainer;
           currentItems = t2sItems;
+          currentItems.forEach((item) => {
+            item.style.boxShadow = ""; // Remove any existing glow effect
+          });
+        });
+      }
+    }
+    if (submenuId === "send_email_text") {
+      const emailt2sContainer = document.getElementById("send_email_text");
+      const emailt2sItems = emailt2sContainer.querySelectorAll(
+        ".phrase-text,.button-main-menu"
+      );
+
+      emailKeyboardContainer = document.getElementById("send_email_text");
+      emailKeyboardItems = emailKeyboardContainer.querySelectorAll(
+        ".prediction,.prediction-2,.prediction-3,.key-mini-space,.key-q,.key-w,.key-e,.key-r,.key-t,.key-y,.key-u,.key-i,.key-o,.key-p,.key-auto,.key-a,.key-s,.key-d,.key-f,.key-g,.key-h,.key-j,.key-k,.key-l,.key-auto-1,.key-z,.key-x,.key-c,.key-v,.key-b,.key-n,.key-m,.key-backspace,.key-auto-2,.key,.key-2,.key-3,.key-4,.key-5,.key-6,.key-7,.key-8,.key-9,.key-00,.key-speak-it,.key-new-phrase,.key-go-back"
+      );
+      currentRows = emailKeyboardContainer.querySelectorAll(
+        ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
+      );
+      rowDict = {
+        0: 44,
+        1: 0,
+        2: 1,
+        3: 2,
+        4: 3,
+        5: 4,
+        6: 15,
+        7: 25,
+        8: 34,
+        9: 44,
+      };
+
+      currentContainer = emailt2sContainer;
+      currentItems = emailt2sItems;
+
+      const keyboardButton = document.querySelector(".phrase-text"); // If there's only one keyboard button
+      if (keyboardButton) {
+        keyboardButton.addEventListener("click", function () {
+          console.log("I am here");
+          currentContainer = emailKeyboardContainer;
+          currentItems = emailKeyboardItems;
+          currentItems.forEach((item) => {
+            item.style.boxShadow = ""; // Remove any existing glow effect
+          });
+        });
+      }
+      const backButton = document.querySelector(".key-go-back"); //for back button
+      if (backButton) {
+        backButton.addEventListener("click", function () {
+          currentContainer = emailt2sContainer;
+          currentItems = emailt2sItems;
           currentItems.forEach((item) => {
             item.style.boxShadow = ""; // Remove any existing glow effect
           });
@@ -513,20 +569,88 @@ const setKeyboardButtonCycle = (ele) => {
         SENDING EMAIL FUNCTION
 --------------------------------------------------
 */
-function sendEmail() {
+function sendEmailToSuzanne() {
+    const message = localStorage.getItem('emailText').toLowerCase()
     const emailParams = {
+        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+        //ToEmail: "Suzanne_M_Novelli@GLIC.com",
         ToEmail: "colemanz@buffalo.edu",
         subject: "None",
-        message: "Hello!"
+        message: message
     };
     emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
-            alert('Email sent successfully!');
+            localStorage.removeItem('emailText');
+            window.location.href = "index.html";
         }, function(error) {
             console.error('FAILED...', error);
-            alert('Failed to send email.');
         });
+}
+
+function sendEmailToDavid() {
+    const message = localStorage.getItem('emailText').toLowerCase()
+    const emailParams = {
+        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+        //ToEmail: "DRNOVELLI@aol.com",
+        subject: "None",
+        message: message
+    };
+    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            localStorage.removeItem('emailText');
+            window.location.href = "index.html";
+        }, function(error) {
+            console.error('FAILED...', error);
+        });
+}
+
+function sendEmailToSandy() {
+    const message = localStorage.getItem('emailText').toLowerCase()
+    const emailParams = {
+        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+        //ToEmail: "Sanov17@aol.com",
+        subject: "None",
+        message: message
+    };
+    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            localStorage.removeItem('emailText');
+            window.location.href = "index.html";
+        }, function(error) {
+            console.error('FAILED...', error);
+        });
+}
+
+function sendEmailToNatalie() {
+    const message = localStorage.getItem('emailText').toLowerCase()
+    const emailParams = {
+        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+        //ToEmail: "Npersichini@palliativecare.org",
+        subject: "None",
+        message: message
+    };
+    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            localStorage.removeItem('emailText');
+            window.location.href = "index.html";
+        }, function(error) {
+            console.error('FAILED...', error);
+        });
+}
+
+
+
+function handleEmail() {
+  var textBox = document.getElementById("phrase-text-box");
+  var text = textBox.innerText;
+
+  localStorage.setItem('emailText', text);
+
+  window.location.href = "send-email.html";
 }
 
 
