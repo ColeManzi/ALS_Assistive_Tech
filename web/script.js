@@ -205,7 +205,7 @@ function openSubmenu(event, submenuId) {
         ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
       );
       rowDict = {
-        0: 42,
+        0: 44,
         1: 0,
         2: 1,
         3: 2,
@@ -214,7 +214,7 @@ function openSubmenu(event, submenuId) {
         6: 15,
         7: 25,
         8: 34,
-        9: 42,
+        9: 44,
       };
 
       currentContainer = t2sContainer;
@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rowidx == 0) {
           console.log("Current index sink= " + currentIndex);
           highlightItem(currentIndex);
-          currentIndex = currentIndex == 44 ? 45 : 44;
+          currentIndex = currentIndex == 46 ? 44 : (currentIndex += 1);
         } else {
           minv = rowDict[rowidx];
           maxv = rowidx != 8 ? rowDict[rowidx + 1] - 1 : 43;
@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         highlightItem(currentIndex);
         currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
-        console.log("Current index sink= " + currentIndex);
+        console.log("Current index sinkk= " + currentIndex);
       }
     }
     cycleTimeout = setTimeout(cycleItems, cycleTime);
