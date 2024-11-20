@@ -623,7 +623,6 @@ function sendEmailToSuzanne() {
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
     //ToEmail: "Suzanne_M_Novelli@GLIC.com",
-    ToEmail: "colemanz@buffalo.edu",
     subject: "None",
     message: message
   };

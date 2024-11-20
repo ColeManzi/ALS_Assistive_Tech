@@ -56,7 +56,7 @@ def loadConfig():
 
 # @eel.expose
 def resetMouse():
-    pyautogui.moveTo(0, screenHeight)
+    pyautogui.moveTo(200, 200)
 
 
 ###################################### TV REMOTE ################################################################
