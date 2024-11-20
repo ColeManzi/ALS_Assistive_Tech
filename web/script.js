@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const cycleItems = () => {
     if (!cycling) return;
-
+    console.log("t2sval " + t2scycle)
     if (currentItems.length == 47 && t2scycle == 2) {
       highlightRow(currentIndex);
       currentIndex = (currentIndex + 1) % currentRows.length; // Use currentItems for length
@@ -393,15 +393,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rowidx == 0) {
           console.log("Current index sink= " + currentIndex);
           highlightItem(currentIndex);
-          currentIndex = currentIndex == 46 ? 44 : (currentIndex += 1);
+          currentIndex = (currentIndex == 46) ? 44 : (currentIndex += 1);
+          console.log("Next index is equal to = " + currentIndex);
         } else {
           minv = rowDict[rowidx];
           maxv = rowidx != 8 ? rowDict[rowidx + 1] - 1 : 43;
 
           highlightItem(currentIndex);
+          console.log("Current index is equal to = " + currentIndex);
           currentIndex = currentIndex < maxv ? currentIndex + 1 : minv;
           // currentIndex = (currentIndex + 1) % currentItems.length; // Use currentItems for length
-          console.log("Current index sink= " + currentIndex);
+          console.log("Next index is equal to = " + currentIndex);
         }
       } else {
         highlightItem(currentIndex);
@@ -424,6 +426,33 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!cycling) return;
     clearTimeout(cycleTimeout);
     cycling = false;
+    console.log("POINTERUPCURIDX: " + currentIndex);
+    if ((currentIndex == 4 && rowidx == 5) || currentIndex == 15 || currentIndex == 25) {
+      console.log("speak button is getting hit");
+      speakPhrase();
+      if (currentIndex == 4 || currentIndex == 15 || currentIndex == 25) {
+        currentItems[14].style.boxShadow = "";
+        currentItems[24].style.boxShadow = "";
+        currentItems[33].style.boxShadow = "";
+      }
+
+    }
+    if (currentIndex == 44) {
+      const t2sContainer = document.getElementById("text-2-speech");
+      currentItems.forEach((item) => {
+        item.style.boxShadow = ""; // Remove any existing glow effect
+      });
+      currentItems = keyboardContainer.querySelectorAll(
+        ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
+      );
+      currentItems.forEach((item) => {
+        item.style.boxShadow = ""; // Remove any existing glow effect
+      });
+      currentItems = t2sContainer.querySelectorAll(
+        ".phrase-text,.button-main-menu"
+      );
+      openSubmenu(event, 'main-menu');
+    }
     if (currentItems.length == 47 && t2scycle == 2) {
       // const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;
       // currentItems[selectedItemIndex].click(); // Click the highlighted item using currentItems
@@ -570,76 +599,76 @@ const setKeyboardButtonCycle = (ele) => {
 --------------------------------------------------
 */
 function sendEmailToSuzanne() {
-    const message = localStorage.getItem('emailText').toLowerCase()
-    const emailParams = {
-        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-        //ToEmail: "Suzanne_M_Novelli@GLIC.com",
-        ToEmail: "colemanz@buffalo.edu",
-        subject: "None",
-        message: message
-    };
-    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            localStorage.removeItem('emailText');
-            window.location.href = "index.html";
-        }, function(error) {
-            console.error('FAILED...', error);
-        });
+  const message = localStorage.getItem('emailText').toLowerCase()
+  const emailParams = {
+    // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+    //ToEmail: "Suzanne_M_Novelli@GLIC.com",
+    ToEmail: "colemanz@buffalo.edu",
+    subject: "None",
+    message: message
+  };
+  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+    .then(function (response) {
+      console.log('SUCCESS!', response.status, response.text);
+      localStorage.removeItem('emailText');
+      window.location.href = "index.html";
+    }, function (error) {
+      console.error('FAILED...', error);
+    });
 }
 
 function sendEmailToDavid() {
-    const message = localStorage.getItem('emailText').toLowerCase()
-    const emailParams = {
-        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-        //ToEmail: "DRNOVELLI@aol.com",
-        subject: "None",
-        message: message
-    };
-    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            localStorage.removeItem('emailText');
-            window.location.href = "index.html";
-        }, function(error) {
-            console.error('FAILED...', error);
-        });
+  const message = localStorage.getItem('emailText').toLowerCase()
+  const emailParams = {
+    // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+    //ToEmail: "DRNOVELLI@aol.com",
+    subject: "None",
+    message: message
+  };
+  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+    .then(function (response) {
+      console.log('SUCCESS!', response.status, response.text);
+      localStorage.removeItem('emailText');
+      window.location.href = "index.html";
+    }, function (error) {
+      console.error('FAILED...', error);
+    });
 }
 
 function sendEmailToSandy() {
-    const message = localStorage.getItem('emailText').toLowerCase()
-    const emailParams = {
-        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-        //ToEmail: "Sanov17@aol.com",
-        subject: "None",
-        message: message
-    };
-    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            localStorage.removeItem('emailText');
-            window.location.href = "index.html";
-        }, function(error) {
-            console.error('FAILED...', error);
-        });
+  const message = localStorage.getItem('emailText').toLowerCase()
+  const emailParams = {
+    // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+    //ToEmail: "Sanov17@aol.com",
+    subject: "None",
+    message: message
+  };
+  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+    .then(function (response) {
+      console.log('SUCCESS!', response.status, response.text);
+      localStorage.removeItem('emailText');
+      window.location.href = "index.html";
+    }, function (error) {
+      console.error('FAILED...', error);
+    });
 }
 
 function sendEmailToNatalie() {
-    const message = localStorage.getItem('emailText').toLowerCase()
-    const emailParams = {
-        // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-        //ToEmail: "Npersichini@palliativecare.org",
-        subject: "None",
-        message: message
-    };
-    emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            localStorage.removeItem('emailText');
-            window.location.href = "index.html";
-        }, function(error) {
-            console.error('FAILED...', error);
-        });
+  const message = localStorage.getItem('emailText').toLowerCase()
+  const emailParams = {
+    // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
+    //ToEmail: "Npersichini@palliativecare.org",
+    subject: "None",
+    message: message
+  };
+  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
+    .then(function (response) {
+      console.log('SUCCESS!', response.status, response.text);
+      localStorage.removeItem('emailText');
+      window.location.href = "index.html";
+    }, function (error) {
+      console.error('FAILED...', error);
+    });
 }
 
 

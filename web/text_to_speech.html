@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Not sure if the code between these is needed -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes"
-    />
-    <link rel="shortcut icon" href="#" />
-    <title>Assistive Tech UI</title>
-    <!-- Not sure if the code between these is needed -->
 
-    <link rel="stylesheet" href="css/globals.css" type="text/css" />
-    <link rel="stylesheet" href="css/text_to_speech.css" type="text/css" />
-  </head>
+<head>
+  <!-- Not sure if the code between these is needed -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes" />
+  <link rel="shortcut icon" href="#" />
+  <title>Assistive Tech UI</title>
+  <!-- Not sure if the code between these is needed -->
 
-  <body
-    onload="openSubmenu(event,'text-2-speech')"
-    oncontextmenu="return false;"
-  >
+  <link rel="stylesheet" href="css/globals.css" type="text/css" />
+  <link rel="stylesheet" href="css/text_to_speech.css" type="text/css" />
+</head>
+
+<body onload="openSubmenu(event,'text-2-speech')" oncontextmenu="return false;">
   <!--TEXT-2-SPEECH MENU-->
   <div class="desktop-text" id="text-2-speech">
     <div class="overlap-wrapper">
@@ -38,8 +33,8 @@
               </div>
               <div class="key-mini-space" onclick="addToPhrase(' ')">
                 <div class="group-mini-space">
-                    <button class="div-wrapper"></button>
-                    <div class="text-mini-space">Space</div>
+                  <button class="div-wrapper"></button>
+                  <div class="text-mini-space">Space</div>
                 </div>
               </div>
               <div class="overlap-2">
@@ -360,8 +355,8 @@
                     </button>
                   </div>
                 </div>
-                <div class="key-go-back" onclick = "newPhrase('HARRY')">
-                  
+                <div class="key-go-back" onclick="newPhrase('HARRY')">
+
                   <button class="div-wrapper">
                     <div class="text-wrapper-1">Back</div>
                   </button>
@@ -373,21 +368,22 @@
               </div>
             </div>
           </div>
-            <a href="index.html">
-              <div class="button-main-menu">
-                <div class="group-6">
-                  <button class="overlap-group-5">
-                    <div class="text-wrapper-21">Main Menu</div>
-                  </button>
-                </div>
+          <a href="index.html">
+            <div class="button-main-menu">
+              <div class="group-6">
+                <button class="overlap-group-5">
+                  <div class="text-wrapper-21">Main Menu</div>
+                </button>
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
+  </div>
 
-    <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-  </body>
+  <script type="text/javascript" src="/eel.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
 </html>
