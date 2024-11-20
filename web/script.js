@@ -3,7 +3,7 @@
             Constants
 -------------------------------------------
 */
-
+let subs = "";
 const plugSelectOrder = [
   "plug-all",
   "plug-1",
@@ -188,6 +188,7 @@ if (document.getElementById("main-menu")) {
  */
 
 function openSubmenu(event, submenuId) {
+  subs = submenuId;
   if (event != undefined) event.stopPropagation();
   let submenu = document.getElementById(submenuId);
 
@@ -427,9 +428,13 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(cycleTimeout);
     cycling = false;
     console.log("POINTERUPCURIDX: " + currentIndex);
-    if ((currentIndex == 4 && rowidx == 5) || currentIndex == 15 || currentIndex == 25) {
+    if (currentIndex == 4 && subs != "text-2-speech" && rowidx == 5) {
+      handleEmail();
+    }
+    if (((currentIndex == 4 && rowidx == 5) || currentIndex == 15 || currentIndex == 25) && subs == "text-2-speech") {
       console.log("speak button is getting hit");
       speakPhrase();
+      console.log("SUBMENUID: " + subs)
       if (currentIndex == 4 || currentIndex == 15 || currentIndex == 25) {
         currentItems[14].style.boxShadow = "";
         currentItems[24].style.boxShadow = "";
@@ -439,19 +444,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (currentIndex == 44) {
       const t2sContainer = document.getElementById("text-2-speech");
+      const emailt2sContainer = document.getElementById("send_email_text")
       currentItems.forEach((item) => {
         item.style.boxShadow = ""; // Remove any existing glow effect
       });
-      currentItems = keyboardContainer.querySelectorAll(
-        ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
-      );
+      try {
+        currentItems = keyboardContainer.querySelectorAll(
+          ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
+        );
+      }
+      catch {
+        currentItems = emailKeyboardContainer.querySelectorAll(".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
+        );
+      }
       currentItems.forEach((item) => {
         item.style.boxShadow = ""; // Remove any existing glow effect
       });
-      currentItems = t2sContainer.querySelectorAll(
-        ".phrase-text,.button-main-menu"
-      );
-      openSubmenu(event, 'main-menu');
+      try {
+        currentItems = t2sContainer.querySelectorAll(
+          ".phrase-text,.button-main-menu"
+        );
+        openSubmenu(event, 'main-menu');
+      }
+      catch {
+        currentItems = emailt2sContainer.querySelectorAll(
+          ".phrase-text,.button-main-menu"
+        );
+        openSubmenu(event, 'main-menu');
+      }
     }
     if (currentItems.length == 47 && t2scycle == 2) {
       // const selectedItemIndex = (currentIndex === 0 ? currentItems.length : currentIndex) - 1;

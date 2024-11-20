@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes"
-    />
-    <link rel="shortcut icon" href="#" />
-    <title>Assistive Tech UI</title>
 
-    <link rel="stylesheet" href="css/globals.css" type="text/css" />
-    <link rel="stylesheet" href="css/send_email_text.css" type="text/css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes" />
+  <link rel="shortcut icon" href="#" />
+  <title>Assistive Tech UI</title>
 
-  <body
-    onload="openSubmenu(event,'send_email_text')"
-    oncontextmenu="return false;"
-  >
+  <link rel="stylesheet" href="css/globals.css" type="text/css" />
+  <link rel="stylesheet" href="css/send_email_text.css" type="text/css" />
+</head>
+
+<body onload="openSubmenu(event,'send_email_text')" oncontextmenu="return false;">
   <!--TEXT-2-SPEECH MENU-->
   <div class="desktop-text" id="send_email_text">
     <div class="overlap-wrapper">
@@ -36,8 +31,8 @@
               </div>
               <div class="key-mini-space" onclick="addToPhrase(' ')">
                 <div class="group-mini-space">
-                    <button class="div-wrapper"></button>
-                    <div class="text-mini-space">Space</div>
+                  <button class="div-wrapper"></button>
+                  <div class="text-mini-space">Space</div>
                 </div>
               </div>
               <div class="overlap-2">
@@ -112,7 +107,7 @@
                       </button>
                     </div>
                   </div>
-                  <div class="key-auto" id="'auto1" onclick="handleEmail();">
+                  <div class="key-auto" id="auto1" onclick="handleEmail();">
                     <div class="overlap-group-wrapper">
                       <button class="overlap-group-2">
                         <div class="text-wrapper-10">SEND</div>
@@ -357,7 +352,7 @@
                     </button>
                   </div>
                 </div>
-                <div class="key-go-back" onclick = "newPhrase('HARRY')">
+                <div class="key-go-back" onclick="newPhrase('HARRY')">
 
                   <button class="div-wrapper">
                     <div class="text-wrapper-1">Back</div>
@@ -370,21 +365,22 @@
               </div>
             </div>
           </div>
-            <a href="index.html">
-              <div class="button-main-menu">
-                <div class="group-6">
-                  <button class="overlap-group-5">
-                    <div class="text-wrapper-21">Main Menu</div>
-                  </button>
-                </div>
+          <a href="index.html">
+            <div class="button-main-menu">
+              <div class="group-6">
+                <button class="overlap-group-5">
+                  <div class="text-wrapper-21">Main Menu</div>
+                </button>
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
+  </div>
 
-    <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-  </body>
+  <script type="text/javascript" src="/eel.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
 </html>
