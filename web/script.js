@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const cycleItems = () => {
     if (!cycling) return;
-    console.log("t2sval " + t2scycle)
+    console.log("t2sval " + t2scycle);
     if (currentItems.length == 47 && t2scycle == 2) {
       highlightRow(currentIndex);
       currentIndex = (currentIndex + 1) % currentRows.length; // Use currentItems for length
@@ -394,7 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rowidx == 0) {
           console.log("Current index sink= " + currentIndex);
           highlightItem(currentIndex);
-          currentIndex = (currentIndex == 46) ? 44 : (currentIndex += 1);
+          currentIndex = currentIndex == 46 ? 44 : (currentIndex += 1);
           console.log("Next index is equal to = " + currentIndex);
         } else {
           minv = rowDict[rowidx];
@@ -431,20 +431,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentIndex == 4 && subs != "text-2-speech" && rowidx == 5) {
       handleEmail();
     }
-    if (((currentIndex == 4 && rowidx == 5) || currentIndex == 15 || currentIndex == 25) && subs == "text-2-speech") {
+    if (
+      ((currentIndex == 4 && rowidx == 5) ||
+        currentIndex == 15 ||
+        currentIndex == 25) &&
+      subs == "text-2-speech"
+    ) {
       console.log("speak button is getting hit");
       speakPhrase();
-      console.log("SUBMENUID: " + subs)
+      console.log("SUBMENUID: " + subs);
       if (currentIndex == 4 || currentIndex == 15 || currentIndex == 25) {
         currentItems[14].style.boxShadow = "";
         currentItems[24].style.boxShadow = "";
         currentItems[33].style.boxShadow = "";
       }
-
     }
     if (currentIndex == 44) {
       const t2sContainer = document.getElementById("text-2-speech");
-      const emailt2sContainer = document.getElementById("send_email_text")
+      const emailt2sContainer = document.getElementById("send_email_text");
       currentItems.forEach((item) => {
         item.style.boxShadow = ""; // Remove any existing glow effect
       });
@@ -452,9 +456,9 @@ document.addEventListener("DOMContentLoaded", function () {
         currentItems = keyboardContainer.querySelectorAll(
           ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
         );
-      }
-      catch {
-        currentItems = emailKeyboardContainer.querySelectorAll(".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
+      } catch {
+        currentItems = emailKeyboardContainer.querySelectorAll(
+          ".prediction, .prediction-2,.prediction-3,.key-mini-space,.row,.row-2,.row-3,.row-4,.row-5"
         );
       }
       currentItems.forEach((item) => {
@@ -464,13 +468,12 @@ document.addEventListener("DOMContentLoaded", function () {
         currentItems = t2sContainer.querySelectorAll(
           ".phrase-text,.button-main-menu"
         );
-        openSubmenu(event, 'main-menu');
-      }
-      catch {
+        openSubmenu(event, "main-menu");
+      } catch {
         currentItems = emailt2sContainer.querySelectorAll(
           ".phrase-text,.button-main-menu"
         );
-        openSubmenu(event, 'main-menu');
+        openSubmenu(event, "main-menu");
       }
     }
     if (currentItems.length == 47 && t2scycle == 2) {
@@ -619,88 +622,93 @@ const setKeyboardButtonCycle = (ele) => {
 --------------------------------------------------
 */
 function sendEmailToSuzanne() {
-  const message = localStorage.getItem('emailText').toLowerCase()
+  const message = localStorage.getItem("emailText").toLowerCase();
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
     //ToEmail: "Suzanne_M_Novelli@GLIC.com",
     subject: "None",
-    message: message
+    message: message,
   };
-  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-    .then(function (response) {
-      console.log('SUCCESS!', response.status, response.text);
-      localStorage.removeItem('emailText');
+  emailjs.send("service_c22kjag", "template_hnlo6qs", emailParams).then(
+    function (response) {
+      console.log("SUCCESS!", response.status, response.text);
+      localStorage.removeItem("emailText");
       window.location.href = "index.html";
-    }, function (error) {
-      console.error('FAILED...', error);
-    });
+    },
+    function (error) {
+      console.error("FAILED...", error);
+    }
+  );
 }
 
 function sendEmailToDavid() {
-  const message = localStorage.getItem('emailText').toLowerCase()
+  const message = localStorage.getItem("emailText").toLowerCase();
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
     //ToEmail: "DRNOVELLI@aol.com",
     subject: "None",
-    message: message
+    message: message,
   };
-  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-    .then(function (response) {
-      console.log('SUCCESS!', response.status, response.text);
-      localStorage.removeItem('emailText');
+  emailjs.send("service_c22kjag", "template_hnlo6qs", emailParams).then(
+    function (response) {
+      console.log("SUCCESS!", response.status, response.text);
+      localStorage.removeItem("emailText");
       window.location.href = "index.html";
-    }, function (error) {
-      console.error('FAILED...', error);
-    });
+    },
+    function (error) {
+      console.error("FAILED...", error);
+    }
+  );
 }
 
 function sendEmailToSandy() {
-  const message = localStorage.getItem('emailText').toLowerCase()
+  const message = localStorage.getItem("emailText").toLowerCase();
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
     //ToEmail: "Sanov17@aol.com",
     subject: "None",
-    message: message
+    message: message,
   };
-  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-    .then(function (response) {
-      console.log('SUCCESS!', response.status, response.text);
-      localStorage.removeItem('emailText');
+  emailjs.send("service_c22kjag", "template_hnlo6qs", emailParams).then(
+    function (response) {
+      console.log("SUCCESS!", response.status, response.text);
+      localStorage.removeItem("emailText");
       window.location.href = "index.html";
-    }, function (error) {
-      console.error('FAILED...', error);
-    });
+    },
+    function (error) {
+      console.error("FAILED...", error);
+    }
+  );
 }
 
 function sendEmailToNatalie() {
-  const message = localStorage.getItem('emailText').toLowerCase()
+  const message = localStorage.getItem("emailText").toLowerCase();
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
     //ToEmail: "Npersichini@palliativecare.org",
     subject: "None",
-    message: message
+    message: message,
   };
-  emailjs.send('service_c22kjag', 'template_hnlo6qs', emailParams)
-    .then(function (response) {
-      console.log('SUCCESS!', response.status, response.text);
-      localStorage.removeItem('emailText');
+  emailjs.send("service_c22kjag", "template_hnlo6qs", emailParams).then(
+    function (response) {
+      console.log("SUCCESS!", response.status, response.text);
+      localStorage.removeItem("emailText");
       window.location.href = "index.html";
-    }, function (error) {
-      console.error('FAILED...', error);
-    });
+    },
+    function (error) {
+      console.error("FAILED...", error);
+    }
+  );
 }
-
-
 
 function handleEmail() {
   var textBox = document.getElementById("phrase-text-box");
   var text = textBox.innerText;
 
-  localStorage.setItem('emailText', text);
+  localStorage.setItem("emailText", text);
 
   window.location.href = "send-email.html";
 }
-
 
 /*
 _________________________________________________________________________________________________

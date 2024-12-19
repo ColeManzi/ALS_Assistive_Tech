@@ -24,6 +24,7 @@ var previousElement;
 var previousColor;
 var cycleTimeout;
 var cycleTime = 500; //2000
+let subs = "";
 
 /*
 --------------------------------------------------
