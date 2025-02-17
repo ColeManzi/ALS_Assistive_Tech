@@ -106,7 +106,7 @@ ________________________________________________________________________________
 // const commonPhraseItems = commonPhraseContainer.querySelectorAll(
 //   ".button-uncomfortable,.button-nauseous,.button-pain,.button-thank-you,.button-hello,.button-bye,.button-main-menu"
 // );
-/*
+
 /*
 ____________________________________________________________________________________________________________________
                                         OUTLET CONTROL CONSTANTS
@@ -122,7 +122,7 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________
                                         SETTINGS CONTROL CONSTANTS
 _____________________________________________________________________________________________________________________
-*/
+
 // const settingsContainer = document.getElementById("settings-page");
 // const settingsItems = settingsContainer.querySelectorAll(
 //   ".switch-speed-sec,.switch-speed-sec-2,.switch-speed-sec-3,.switch-speed-sec-4,.switch-speed-sec-5,.switch-speed-sec-6,.switch-speed-sec-7,.switch-speed-sec-8,.button-go-back"
@@ -138,7 +138,7 @@ var selectedMenuOrder;
 var previousElement;
 var previousColor;
 var cycleTimeout;
-var cycleTime = 500; //2000
+var cycleTime = 1000; //2000
 
 /*
 --------------------------------------------------
