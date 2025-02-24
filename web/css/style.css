@@ -121,6 +121,14 @@ div.button-settings {
   height: 212px;
 }
 
+div.button-outlet-controls {
+  top: 613px;
+  left: 1100px;
+  position: absolute;
+  width: 432px;
+  height: 212px;
+}
+
 div.text-wrapper-settings {
   font-family: "Work Sans", Helvetica;
   font-weight: 600;

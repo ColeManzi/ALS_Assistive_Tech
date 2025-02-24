@@ -170,7 +170,7 @@ let currentRows = null;
 if (document.getElementById("main-menu")) {
   const menuContainer = document.getElementById("main-menu");
   const menuItems = menuContainer.querySelectorAll(
-    ".button-text-speech,.button-yes-no, .button-common-phrase, .button-send-email"
+    ".button-text-speech,.button-yes-no, .button-common-phrase, .button-send-email, .button-outlet-controls"
   );
 
   currentContainer = menuContainer;
@@ -326,6 +326,14 @@ function openSubmenu(event, submenuId) {
 
       currentContainer = sendEmailContainer;
       currentItems = sendEmailItems;
+    }
+    if (submenuId === "outlet-controls-menu") {
+      const outletControlContainer = document.getElementById("outlet-controls-menu");
+      const outletControlItems = sendEmailContainer.querySelectorAll(
+      );
+
+      currentContainer = outletControlContainer;
+      currentItems = outletControlItems;
     }
     if (submenuId === "settings-page") {
       const settingsContainer = document.getElementById("settings-page");

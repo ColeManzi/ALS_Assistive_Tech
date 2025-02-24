@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Not sure if the code between these is needed -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale = 1.0, user-scalable = yes"
+    />
+    <link rel="shortcut icon" href="#" />
+    <title>Assistive Tech UI</title>
+    <!-- Not sure if the code between these is needed -->
+
+    <link rel="stylesheet" href="css/globals.css" type="text/css" />
+    <link rel="stylesheet" href="css/outlet_controls.css.css" type="text/css" />
+  </head>
+  <body
+    onload="openSubmenu(event,'outlet-controls-menu')" oncontextmenu="return false;"
+  >
+      <!-- OUTLET CONTROLS-->
+        <div class="outlet-controls" id="outlet-controls">
+          <div class="div">
+            <a href="index.html">
+              <div class="button-main-menu">
+                <div class="group">
+                  <button class="overlap-group">
+                    <div class="text-wrapper-settings">Main Menu</div>
+                  </button>
+                </div>
+              </div>
+            </a>
+          <!--BUTTON TO PLUG FUNCTIONALITY-->
+          <div class="button-plug-ON-OFF-5" onclick="togglePlug5()" id="plug5" state="off">
+            <div class="overlap-group-wrapper">
+              <button class="quick-phrases-wrapper">
+                <div class="quick-phrases">Plug 5 On/off</div>
+              </button>
+            </div>
+          </div>
+          <!--BUTTON TO PLUG FUNCTIONALITY-->
+          <div class="button-plug-ON-OFF-4" onclick="togglePlug4()" id="plug4" state="off">
+            <div class="overlap-group-wrapper">
+              <button class="quick-phrases-wrapper">
+                <div class="quick-phrases">Plug 4 On/off</div>
+              </button>
+            </div>
+          </div>
+          <!--BUTTON TO PLUG FUNCTIONALITY-->
+          <div class="button-plug-ON-OFF-1" onclick="togglePlug3()" id="plug3" state="off">
+            <div class="overlap-group-wrapper">
+              <button class="quick-phrases-wrapper">
+                <div class="quick-phrases">Plug 3 On/off</div>
+              </button>
+            </div>
+          </div>
+          <!--BUTTON TO PLUG FUNCTIONALITY-->
+          <div class="button-plug-ON-OFF-2" onclick="togglePlug2()" id="plug2">
+            <div class="overlap-group-wrapper">
+              <button class="quick-phrases-wrapper">
+                <div class="quick-phrases">Plug 2 On/off</div>
+              </button>
+            </div>
+          </div>
+          <!--BUTTON TO PLUG FUNCTIONALITY-->
+          <div class="button-plug-ON-OFF-3" onclick="togglePlug1()" id="plug1">
+            <div class="overlap-group-wrapper">
+              <button class="quick-phrases-wrapper">
+                <div class="quick-phrases">Plug 1 On/off</div>
+              </button>
+            </div>
+          </div>
+          <!--BUTTON TO PLUG FUNCTIONALITY-->
+          <div class="button-all-plugs-ON" onclick="toggleAll()" state="off">
+            <div class="overlap-group-wrapper">
+              <button class="quick-phrases-wrapper">
+                <div class="quick-phrases">All Plugs On/off</div>
+              </button>
+            </div>
+          </div>
+          <div class="page-title">
+            <div class="text-wrapper">Outlet Controls</div>
+          </div>
+        </div>
+       </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
