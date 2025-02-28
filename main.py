@@ -1,6 +1,6 @@
 import eel
 
-# import rfcontroller  # This import should be commented out when testing on a PC
+import rfcontroller  # This import should be commented out when testing on a PC
 import os
 import json
 
@@ -19,7 +19,7 @@ import sys
 
 ############################################    GUI SETUP   #######################################################
 
-# controller = rfcontroller.RFController()  # Comment this out when developing on desktop
+controller = rfcontroller.RFController()  # Comment this out when developing on desktop
 screenWidth, screenHeight = pyautogui.size()
 pyautogui.FAILSAFE = False
 
@@ -29,7 +29,7 @@ def togglePlug(command):
     print(
         command
     )  # For testing on a PC, this line should be uncommented, and the following line should be commented out
-    # controller.sendcode(command) # This line should be commented out when testing on PC, the library is not available on PC
+    controller.sendcode(command) # This line should be commented out when testing on PC, the library is not available on PC
 
 
 # Below, some lines are commented out because to autostart on the pi we had to include full file paths. When working on the
@@ -110,14 +110,14 @@ def speak_text_with_vlc(text):
         return  # Exit the function
 
     # comment out this code if you are working on the raspberry pi
-    engine = pyttsx3.init()
+    #engine = pyttsx3.init()
     # engine.setProperty('voice','HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0')
-    engine.setProperty("rate", 125)
-    engine.say(text)
-    engine.runAndWait()
+    #engine.setProperty("rate", 125)
+    #engine.say(text)
+    #engine.runAndWait()
 
     # comment out the line below if you are working on a pc
-    # subprocess.run(["espeak", "-v", "english+f4", text])
+    subprocess.run(["espeak", "-v", "english+f4", text])
 
 
 def play_speech(file_path):

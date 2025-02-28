@@ -26,8 +26,8 @@ try:
     print("Connected to:", ser.name)
 except serial.SerialException:
     pass
-    # print("Error opening port")
-    # exit()
+    #print("Error opening port")
+    #exit()
 
 # Add a delay to allow Arduino to boot up
 time.sleep(2)

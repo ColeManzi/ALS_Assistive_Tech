@@ -138,7 +138,7 @@ var selectedMenuOrder;
 var previousElement;
 var previousColor;
 var cycleTimeout;
-var cycleTime = 1000; //2000
+var cycleTime = 500; //2000
 
 /*
 --------------------------------------------------
@@ -329,7 +329,8 @@ function openSubmenu(event, submenuId) {
     }
     if (submenuId === "outlet-controls-menu") {
       const outletControlContainer = document.getElementById("outlet-controls-menu");
-      const outletControlItems = sendEmailContainer.querySelectorAll(
+      const outletControlItems = outletControlContainer.querySelectorAll(
+        ".button-plug-ON-OFF-5, .button-plug-ON-OFF-4, .button-plug-ON-OFF-3, .button-plug-ON-OFF-2, .button-plug-ON-OFF-1, .button-all-plugs-ON, .button-main-menu"
       );
 
       currentContainer = outletControlContainer;
@@ -544,6 +545,7 @@ function togglePlug1() {
   }
 }
 function togglePlug2() {
+  console.log(plugState2)
   if (plugState2 === 0) {
     plugState2 = 1;
     console.log("2 on");
@@ -626,11 +628,11 @@ const setKeyboardButtonCycle = (ele) => {
         SENDING EMAIL FUNCTION
 --------------------------------------------------
 */
-function sendEmailToSuzanne() {
+function sendEmailToContact1() {
   const message = localStorage.getItem('emailText').toLowerCase()
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-    //ToEmail: "Suzanne_M_Novelli@GLIC.com",
+    ToEmail: "colemanz@buffalo.edu",
     subject: "None",
     message: message
   };
@@ -644,11 +646,11 @@ function sendEmailToSuzanne() {
     });
 }
 
-function sendEmailToDavid() {
+function sendEmailToContact2() {
   const message = localStorage.getItem('emailText').toLowerCase()
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-    //ToEmail: "DRNOVELLI@aol.com",
+    //ToEmail: "",
     subject: "None",
     message: message
   };
@@ -662,11 +664,11 @@ function sendEmailToDavid() {
     });
 }
 
-function sendEmailToSandy() {
+function sendEmailToContact3() {
   const message = localStorage.getItem('emailText').toLowerCase()
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-    //ToEmail: "Sanov17@aol.com",
+    //ToEmail: "",
     subject: "None",
     message: message
   };
@@ -680,11 +682,11 @@ function sendEmailToSandy() {
     });
 }
 
-function sendEmailToNatalie() {
+function sendEmailToContact4() {
   const message = localStorage.getItem('emailText').toLowerCase()
   const emailParams = {
     // KEEP THIS COMMENTED UNTIL WE GIVE HER THE DEVICE
-    //ToEmail: "Npersichini@palliativecare.org",
+    //ToEmail: "",
     subject: "None",
     message: message
   };
@@ -1031,7 +1033,7 @@ function loadConfig(config) {
 
 function updateLabels() {
   for (var label in plugLabels) {
-    document.getElementById("plug" + label).innerHTML = plugLabels[label];
+    document.getElementById("Plug " + label).innerHTML = plugLabels[label];
   }
   //document.getElementById("speed-label").innerHTML =
   //  "Current Speed: " + timeToSeconds[cycleTime];
