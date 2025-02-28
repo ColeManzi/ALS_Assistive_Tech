@@ -1033,7 +1033,11 @@ function loadConfig(config) {
 
 function updateLabels() {
   for (var label in plugLabels) {
-    document.getElementById("Plug " + label).innerHTML = plugLabels[label];
+    try { 
+      document.getElementById("Plug " + label).innerHTML = plugLabels[label];
+    } catch {
+    }
+    
   }
   //document.getElementById("speed-label").innerHTML =
   //  "Current Speed: " + timeToSeconds[cycleTime];
