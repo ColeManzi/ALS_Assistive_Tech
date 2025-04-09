@@ -138,7 +138,7 @@ var selectedMenuOrder;
 var previousElement;
 var previousColor;
 var cycleTimeout;
-var cycleTime = 500; //2000
+var cycleTime = 1000; //2000
 
 /*
 --------------------------------------------------
