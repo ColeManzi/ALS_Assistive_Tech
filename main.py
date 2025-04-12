@@ -228,7 +228,7 @@ def previous_song():
 ######################################  TV CONTROL FUNCTIONS    #######################################
 
 if __name__ == "__main__":
-    eel.init("")
+    eel.init("web", allowed_extensions=[".js", ".html"])
     # eel.init('/home/pi/ALS-Assistive-Tech/web', allowed_extensions=[".js",".html"])
     resetMouse()
-    eel.start("./web/index.html", cmdline_args=["--start-maximized"])
+    eel.start("index.html", cmdline_args=["--start-maximized"])
