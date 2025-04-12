@@ -97,6 +97,7 @@ def channelDown():
 
 ######################################  TEXT-2-SPEECH ############################################################
 
+
 # Python function that decides to append a character
 @eel.expose
 def appendCharacter(char):
